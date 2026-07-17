@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>株式会社デジタルプラス 取締役プレゼンテーション</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter & Noto Sans Japanese Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      overflow: hidden;
+      background-color: #F8FAFC;
+    }
+
+    /* 3Dトランジション空間 */
+    .slider-container {
+      perspective: 1200px;
+      overflow: hidden;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateZ(-150px) scale(0.95) rotateY(10deg);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateZ(0) scale(1) rotateY(0);
+      z-index: 10;
+    }
+
+    /* 各スライドを走り抜ける「希望の光（イエローゴールド・スイープ）」 */
+    .light-sweep {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250%;
+      height: 100%;
+      background: linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(251, 191, 36, 0.25) 48%,
+        rgba(255, 251, 235, 0.45) 50%,
+        rgba(245, 158, 11, 0.25) 52%,
+        rgba(255, 255, 255, 0) 60%
+      );
+      transform: translate(-100%, -100%) rotate(-45deg);
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    .active .light-sweep-active {
+      animation: sweepAnimation 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    @keyframes sweepAnimation {
+      0% {
+        transform: translate(-60%, -60%) rotate(-35deg);
+      }
+      100% {
+        transform: translate(60%, 60%) rotate(-35deg);
+      }
+    }
+
+    /* 最終スライドの「未来の大光輪（イエロー・ゴールド）」がふわっと光ってフェードアウト */
+    .super-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 120vw;
+      height: 120vh;
+      background: radial-gradient(
+        circle,
+        rgba(253, 224, 71, 0.45) 0%,
+        rgba(251, 191, 36, 0.2) 30%,
+        rgba(245, 158, 11, 0.05) 60%,
+        rgba(255, 255, 255, 0) 80%
+      );
+      transform: translate(-50%, -50%) scale(0.1);
+      opacity: 0;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .active .super-glow-active {
+      animation: superGlowFade 5.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes superGlowFade {
+      0% {
+        transform: translate(-50%, -50%) scale(0.2);
+        opacity: 0;
+        filter: blur(50px);
+      }
+      12% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.9;
+        filter: blur(100px);
+      }
+      30% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.85;
+        filter: blur(140px);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.6);
+        opacity: 0;
+        filter: blur(200px);
+      }
+    }
+
+    /* 時間差（Stagger）アニメーション */
+    .slide .anim-el {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .slide.active .anim-el {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .active .delay-1 { transition-delay: 0.15s; }
+    .active .delay-2 { transition-delay: 0.3s; }
+    .active .delay-3 { transition-delay: 0.45s; }
+    .active .delay-4 { transition-delay: 0.6s; }
+
+    /* タイトルなどの文字発光（ゴールド） */
+    .title-glow {
+      text-shadow: 0 0 40px rgba(245, 158, 11, 0.2);
+    }
+
+    /* ズーム可能要素の基本ホバー演出 */
+    .zoomable-card {
+      cursor: zoom-in;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .zoomable-card:hover {
+      transform: scale(1.025) translateY(-2px);
+      box-shadow: 0 12px 24px -10px rgba(15, 23, 42, 0.08);
+      border-color: rgba(251, 191, 36, 0.4) !important;
+    }
+    .zoomable-card:active {
+      transform: scale(0.99);
+    }
+  </style>
+</head>
+<body class="select-none text-slate-800">
+
+  <!-- ================= HEADER / TIMER ================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-4 bg-white/70 backdrop-blur-md border-b border-slate-100">
+    <div class="flex items-center space-x-3">
+      <div class="h-4 w-4 rounded-full bg-amber-500 animate-pulse"></div>
+      <span class="text-xs font-bold tracking-widest text-slate-500 uppercase">DIGITAL PLUS / EXECUTIVE BRIEFING</span>
+    </div>
+    
+    <!-- Timer & Control Panel -->
+    <div class="flex items-center space-x-4 bg-slate-50 border border-slate-100 px-4 py-2 rounded-full shadow-inner">
+      <div class="flex items-center space-x-2 text-xs font-semibold text-slate-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="tracking-wider">残り時間:</span>
+        <span id="timer-display" class="font-mono text-sm text-slate-800 font-bold bg-white px-2 py-0.5 rounded border border-slate-200">60:00</span>
+      </div>
+      <div class="flex items-center space-x-2 border-l border-slate-200 pl-3">
+        <button id="timer-toggle-btn" class="p-1 rounded-full text-slate-500 hover:text-slate-800 hover:bg-slate-200 transition-colors focus:outline-none" title="スタート/一時停止">
+          <!-- Play Icon -->
+          <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          </svg>
+          <!-- Pause Icon (Hidden by default) -->
+          <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+        <button id="timer-reset-btn" class="p-1 rounded-full text-slate-400 hover:text-rose-500 hover:bg-rose-50 transition-colors focus:outline-none" title="リセット">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.5M6 20v-5h.581m0 0a8.003 8.003 0 0015.357-2F5.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN SLIDER ================= -->
+  <main class="slider-container">
+
+    <!-- ================= SLIDE 1: INTRO ================= -->
+    <section class="slide active bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep light-sweep-active"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-amber-500 font-extrabold text-sm tracking-widest uppercase bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-full inline-block mb-4">BOARD MEMBERS TALK</span>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-none text-slate-900 mt-2">
+          綺麗事抜きの、<span class="text-amber-500 underline decoration-amber-300 decoration-wavy underline-offset-8">ビジネスの真真実</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-500 font-medium mt-4 md:mt-6 max-w-3xl leading-relaxed">
+          筑波大学新卒から、一度も転職せずに東証上場企業の取締役へ。激動の13年間、会社の天国と地獄のすべてを現場でくぐり抜けてきた当事者が語る「リアルな生存戦略」。
+        </p>
+      </div>
+
+      <!-- Middle Section: Hero Metric / Profile -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 md:grid-cols-3 gap-6 anim-el delay-2">
+        <!-- Profile Card (Includes Family Icebreaker with Florence Natsuka-chan) -->
+        <div class="zoomable-card bg-slate-50 border border-slate-100 p-8 rounded-3xl flex flex-col justify-between shadow-sm">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h3 class="text-slate-400 text-xs font-bold uppercase tracking-wider">PRESENTER PROFILE</h3>
+              <p class="text-2xl font-extrabold text-slate-800 mt-2">千葉 博文</p>
+              <p class="text-slate-500 text-sm mt-1">取締役 共同経営者 / 転職経験なし</p>
+            </div>
+            <!-- Beautiful Thumbnail for Florence Natsuka-chan -->
+            <div class="relative group flex-shrink-0 cursor-zoom-in modal-trigger-image">
+              <img src="PXL_20260705_051631581.jpg" alt="千葉フローレンス夏歌" class="w-16 h-20 md:w-20 md:h-24 object-cover rounded-2xl border-2 border-amber-300 shadow-md transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://placehold.co/150x200/fef3c7/b45309?text=Natsuka+Chan'">
+              <div class="absolute -bottom-2 -right-2 bg-amber-500 text-[9px] font-black text-white px-2 py-0.5 rounded-full shadow-md whitespace-nowrap animate-bounce">愛娘👧</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-200/60 text-xs text-slate-500 flex flex-col gap-1">
+            <span class="font-medium text-slate-400">筑波大学理工学群 社会工学類 経営工学 卒</span>
+            <span class="text-amber-600 font-bold mt-1 text-[11px] leading-snug">「愛娘・フローレンス夏歌（なつか）ちゃんに誇れる明るい未来を創ること」が私の本当のエネルギー源です！</span>
+          </div>
+        </div>
+
+        <div class="zoomable-card bg-slate-50 border border-slate-100 p-8 rounded-3xl flex flex-col justify-between shadow-sm">
+          <div>
+            <h3 class="text-slate-400 text-xs font-bold uppercase tracking-wider">CONTINUITY</h3>
+            <p class="text-4xl font-black text-amber-500 tracking-tight mt-2">910日+</p>
+            <p class="text-slate-600 text-sm font-semibold mt-1">語学（英語）学習の毎日継続</p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-200/60 text-xs text-slate-400">
+            泥臭い「凡事徹底」の精神が自分の強みの原点
+          </div>
+        </div>
+
+        <div class="zoomable-card bg-gradient-to-br from-amber-500 to-amber-600 text-white p-8 rounded-3xl flex flex-col justify-between shadow-lg shadow-amber-500/10">
+          <div>
+            <h3 class="text-amber-100 text-xs font-bold uppercase tracking-wider">THEME OF TODAY</h3>
+            <p class="text-2xl font-black leading-tight mt-2">サバイバル時代の<br>キャリア論</p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-amber-400/40 text-xs text-amber-100">
+            成功も大ピンチもすべて実話ベース。一切隠さずお話しします。
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※ 左右のキー [←] [→] またはタップ・スワイプで進みます</span>
+        <span class="text-xs font-bold">1 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 2: MY ORIGIN & GOAL ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-amber-600 font-extrabold text-sm tracking-widest uppercase bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-full inline-block mb-3">MY ORIGIN & GOAL</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          千葉博文の「キャリア戦略」：原点と最終目標
+        </h2>
+      </div>
+
+      <!-- Middle Section: Origin & Goal Split Layout -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-2 gap-8 anim-el delay-2">
+        <!-- Origin (Left Card) -->
+        <div class="zoomable-card bg-slate-50 border border-slate-100 p-8 rounded-3xl flex flex-col justify-between shadow-sm relative overflow-hidden">
+          <div>
+            <span class="text-xs font-bold text-amber-600 tracking-widest uppercase bg-amber-100/60 px-2 py-0.5 rounded inline-block mb-3">MY ORIGIN : 出発点</span>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-3">2011年 東日本大震災のボランティア</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              宮城県の被災地でボランティア中、お婆さんから言われた言葉が私のすべての原点です。<br>
+              <strong class="text-slate-900 italic font-bold">「この町がきれいになる頃には、私は生きていないだろうし、誰も住んでいないんだろうねぇ」</strong>
+            </p>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              この言葉に強い衝撃を受け、「本当の復興とは、ただ綺麗にすることではなく、この場所でお金を稼ぎ、お金を使えるようになること（＝仕事があること）」だと定義。場所を問わずに仕事を提供できるクラウドソーシング事業に惹かれ、リアルワールド（現デジタルプラス）へ入社を決めました。
+            </p>
+          </div>
+          <div class="border-t border-slate-200/60 pt-4 mt-6 text-xs text-slate-400">
+            クラウドソーシング事業は現在行っていませんが、私はこの会社に残りました。会社の再生と再成長は「やらなくてもよかったこと」かもしれない。しかし、これをやり切った経験は、将来に向けた大きな財産になると考え尽力してきました。
+          </div>
+        </div>
+
+        <!-- Goal (Right Card) -->
+        <div class="zoomable-card bg-gradient-to-br from-amber-500 to-amber-600 text-white p-8 rounded-3xl flex flex-col justify-between shadow-lg shadow-amber-500/10">
+          <div>
+            <span class="text-xs font-bold text-amber-100 tracking-widest uppercase bg-amber-400/50 px-2 py-0.5 rounded inline-block mb-3">FINAL GOAL : 最終目標</span>
+            <h3 class="text-2xl font-black leading-tight mb-4">
+              地方の人々の背中を押し、<br>自ら仕事を生み出す「起業家」が育つ生態系をつくる
+            </h3>
+            <p class="text-amber-50 text-sm leading-relaxed mb-4">
+              ネットで仕事を提供する経験を通じ、さらに深い課題に気づきました。それは、そもそも仕事を選べる環境にない地方の現実、およびその奥にある「仕事を生み出す人がそもそもいない」という根本的な問題です。
+            </p>
+            <p class="text-amber-50 text-sm leading-relaxed">
+              スマホやAIが当たり前の時代でも、情報がないから動けない人々が多い。その現実に強い危機感と寂しさを覚えます。現状や未来に満足していない若者から自律的に仕事を生み出す起業家が生まれるような環境をつくること。それが私の最終目標です。
+            </p>
+          </div>
+          <div class="border-t border-amber-400/40 pt-4 text-xs text-amber-100">
+            雇用を自ら生み出し、挑戦を後押しするリーダーへ。
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※ お婆さんの一言から始まった、場所に縛られない仕事づくりへの情熱</span>
+        <span class="text-xs font-bold">2 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 3: THREE INVESTMENT GUIDELINES ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-amber-600 font-extrabold text-sm tracking-widest uppercase bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-full inline-block mb-3">THREE GUIDELINES</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          自己をアップデートし続ける「3つの投資指針」
+        </h2>
+      </div>
+
+      <!-- Middle Section: 3 Columns of Guidelines -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 md:grid-cols-3 gap-6 anim-el delay-2">
+        <!-- Card 1 -->
+        <div class="zoomable-card bg-slate-50 border border-slate-100 p-8 rounded-3xl flex flex-col justify-between shadow-sm hover:border-amber-400 transition-colors duration-300">
+          <div>
+            <div class="text-3xl font-black text-amber-500">01</div>
+            <h4 class="text-lg font-extrabold text-slate-900 mt-4 mb-2">自分が成長の「ボトルネック」にならないために</h4>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+              1社に13年在籍し、慣れ親しんだ枠組みに留まることは、自身の思考や組織のスケールに限界を作ってしまいます。人口減少が進む日本でビジネスモデルを根底から見直すため、常に自分の限界を押し広げ、組織や挑戦のボトルネックにならないよう成長し続けます。
+            </p>
+          </div>
+          <div class="border-t border-slate-200/60 pt-4 mt-6 text-xs text-slate-400">
+            安住を捨て、常に自らを揺さぶり変化する
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="zoomable-card bg-slate-50 border border-slate-100 p-8 rounded-3xl flex flex-col justify-between shadow-sm hover:border-amber-400 transition-colors duration-300">
+          <div>
+            <div class="text-3xl font-black text-amber-500">02</div>
+            <h4 class="text-lg font-extrabold text-slate-900 mt-4 mb-2">「個人の実績」を「汎用的な仕組み」へ昇華する</h4>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+              これまで会社の再成長に向けて、事業ピボットやM&A、GMV伸長など、個人の突破力で多くの課題を解決してきました。これからは個人の力に依存せず、よりスケーラブルで自律的に動く仕組みや、テクノロジーを活用した「システム思考」を体得し、自身をより高いレベルへ引き上げます。
+            </p>
+          </div>
+          <div class="border-t border-slate-200/60 pt-4 mt-6 text-xs text-slate-400">
+            スケーラビリティと仕組み化へのピボット
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="zoomable-card bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-3xl flex flex-col justify-between shadow-lg">
+          <div>
+            <div class="text-3xl font-black text-amber-500">03</div>
+            <h4 class="text-lg font-extrabold text-white mt-4 mb-2">背中を押すための「圧倒的社会的信用」の獲得</h4>
+            <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+              将来, 地方で挑戦者を本気で支援し、資金を集め、人を動かせるリーダーになるためには、個人の実績だけでなく、誰もが認めざるを得ない「圧倒的な社会的信用」が不可欠です。自らの名前の信用価値を最大化するためのステップを踏み続けます。
+            </p>
+          </div>
+          <div class="border-t border-slate-800 pt-4 mt-6 text-xs text-amber-400 font-bold">
+            自分の名前の信用価値を最大化する
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※ 現在の役職や評価に満足せず、究極の目標のために自己投資を続ける指針です</span>
+        <span class="text-xs font-bold">3 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 4: 2013-2018 (W-STAR) ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-blue-600 font-extrabold text-sm tracking-widest uppercase bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full inline-block mb-3">FIRST PHASE : 2013.4 - 2018.3</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          新卒からプラットフォーム構築、子会社代表社長へ
+        </h2>
+      </div>
+
+      <!-- Middle Section: W-STAR Method Hybrid Grid layout -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 anim-el delay-2">
+        <!-- STAR Cards (4 cards in 2x2 grid) -->
+        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Situation -->
+          <div class="zoomable-card bg-blue-50/20 border border-blue-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-blue-500 tracking-wider uppercase mb-2.5 bg-blue-50/80 px-2 py-0.5 rounded inline-block">S : Situation</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">スマホシフトの波と資源限界</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                年間20億円規模の「げん玉」責任者就任時、急激なスマホシフトが発生。しかし方針上スマホ会員獲得へ大規模な広告投資が不可能で、競合に市場を奪われかける大ピンチ。
+              </p>
+            </div>
+          </div>
+
+          <!-- Task -->
+          <div class="zoomable-card bg-blue-50/20 border border-blue-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-blue-500 tracking-wider uppercase mb-2.5 bg-blue-50/80 px-2 py-0.5 rounded inline-block">T : Task</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">追加予算ゼロでの新規収益確立</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                外部調達や大規模投資に一切頼ることなく、既存のアセットだけをフル活用し、自律的にグロースする「新規マネタイズ事業」を垂直立ち上げすること。
+              </p>
+            </div>
+          </div>
+
+          <!-- Action -->
+          <div class="zoomable-card bg-blue-50/20 border border-blue-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-blue-500 tracking-wider uppercase mb-2.5 bg-blue-50/80 px-2 py-0.5 rounded inline-block">A : Action</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">B2B2C転換 ➔ 仕組み化の決断</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                アドテクと融合した独自の「ゲーム開発」を行い、競合サイトへシステム提供する「プラットフォームモデル」へ転換。また、取引危機から感情的支配を捨て、ミスを防ぐシステム管理体制を構築。
+              </p>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="zoomable-card bg-blue-50/40 border border-blue-200/80 p-6 rounded-2xl flex flex-col justify-between shadow-sm relative">
+            <div>
+              <div class="text-xs font-extrabold text-blue-600 tracking-wider uppercase mb-2 bg-blue-100 px-2.5 py-0.5 rounded inline-block">R : Result</div>
+              <h4 class="text-base font-extrabold text-slate-900 mb-2">年4億の新規営業利益 ➔ 社長就任</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                競合ユーザーの活動すら収益化する構造を確立。追加コストほぼゼロで【年間4億円】の新規利益創出を達成。2017年には事業分社化に伴い子会社の代表取締役社長へ就任。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why (The Dramatic Climax) -->
+        <div class="zoomable-card lg:col-span-4 bg-gradient-to-br from-blue-500 to-blue-600 text-white p-8 rounded-2xl flex flex-col justify-between shadow-md relative overflow-hidden border border-blue-600">
+          <div class="absolute right-4 top-4 text-blue-400/30 font-black text-6xl select-none">W</div>
+          <div>
+            <div class="text-xs font-extrabold text-blue-100 tracking-wider uppercase mb-3 bg-blue-400/50 px-2.5 py-1 rounded inline-block">W : Why</div>
+            <h4 class="text-lg font-black text-white mb-3">置かれた場所で、自分で仕事を生み出す</h4>
+            <p class="text-blue-50 text-xs md:text-sm leading-relaxed">
+              私が担当するポイント事業が、本来自分が本当にやりたかったクラウドソーシング事業への投資源泉だった。直接クラウドソーシングに関われないことへのマイナスな気持ちや葛藤は当然あった。しかし、不満を言うのはダサい。「今の自分の持ち場から死に物狂いで事業を伸ばす」と決め、やるべき仕事を自ら生み出し続けた。
+            </p>
+          </div>
+          <div class="text-2xl font-black text-blue-200 mt-4 text-right">向き合う覚悟</div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※一連の実績は代表・CFOをはじめ苦楽を共にしてきたメンバー全員、組織一丸の協働による成果です</span>
+        <span class="text-xs font-bold">4 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 5: 2018-2023 前半 (W-STAR) ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-purple-600 font-extrabold text-sm tracking-widest uppercase bg-purple-50 border border-purple-100 px-4 py-1.5 rounded-full inline-block mb-3">SECOND PHASE (1) : 2018.4 - 2023.9</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          急降下の嵐。未曾有の事業再構築と「上場維持」
+        </h2>
+      </div>
+
+      <!-- Middle Section: W-STAR Method Hybrid Grid layout -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 anim-el delay-2">
+        <!-- STAR Cards (4 cards in 2x2 grid) -->
+        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Situation -->
+          <div class="zoomable-card bg-purple-50/20 border border-purple-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-purple-500 tracking-wider uppercase mb-2.5 bg-purple-50/80 px-2 py-0.5 rounded inline-block">S : Situation</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">売上98%減、急激な事業不振</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                主力のポイントメディアが市場過熱。次の10年を見据え全事業の撤退・売却（年売上46億から月商500万円へ激減）を決断。社員250名から19名への大幅縮小を伴う経営の極限局面。
+              </p>
+            </div>
+          </div>
+
+          <!-- Task -->
+          <div class="zoomable-card bg-purple-50/20 border border-purple-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-purple-500 tracking-wider uppercase mb-2.5 bg-purple-50/80 px-2 py-0.5 rounded inline-block">T : Task</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">上場維持のためのコスト削減の完遂</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                上場維持に必要な「最低限の機能」だけを厳密に残し、不必要なコストを限界まで削ぎ落として無駄な財務流出を完璧にコントロールする徹底的なコスト削減をやり切ること。
+              </p>
+            </div>
+          </div>
+
+          <!-- Action -->
+          <div class="zoomable-card bg-purple-50/20 border border-purple-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-purple-500 tracking-wider uppercase mb-2.5 bg-purple-50/80 px-2 py-0.5 rounded inline-block">A : Action</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">自身の減給 ➔ 誠実な組織再編</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                経営陣として自身の給与30%カットを即時断行。痛みを伴う組織再編を主導。冷徹な処理に終始せず、一人ひとりの対象メンバーと誠意を持って対話を重ね、合理的な合意形成を実行。
+              </p>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="zoomable-card bg-purple-50/40 border border-purple-200/80 p-6 rounded-2xl flex flex-col justify-between shadow-sm relative">
+            <div>
+              <div class="text-xs font-extrabold text-purple-600 tracking-wider uppercase mb-2 bg-purple-100 px-2.5 py-0.5 rounded inline-block">R : Result</div>
+              <h4 class="text-base font-extrabold text-slate-900 mb-2">上場維持ミッションの完全遂行</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                極限状態の中で組織と財務を完璧にコントロール。最悪の倒産・上場廃止リスクを完全に回避し、不可能に近いと言われた【東証上場維持】を完遂。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why (The Dramatic Climax) -->
+        <div class="zoomable-card lg:col-span-4 bg-gradient-to-br from-purple-500 to-purple-600 text-white p-8 rounded-2xl flex flex-col justify-between shadow-md relative overflow-hidden border border-purple-600">
+          <div class="absolute right-4 top-4 text-purple-400/30 font-black text-6xl select-none">W</div>
+          <div>
+            <div class="text-xs font-extrabold text-purple-100 tracking-wider uppercase mb-3 bg-purple-400/50 px-2.5 py-1 rounded inline-block">W : Why</div>
+            <h4 class="text-lg font-black text-white mb-3">自分が決めたことを、トコトンやり抜く</h4>
+            <p class="text-blue-50 text-xs md:text-sm leading-relaxed">
+              自分のやりたかったクラウドソーシング事業や、自分の子会社もなくなる。入社当時にやりたかったことはなくなる。でも、この会社に残ると決めたのは自分だ。だったら言い訳なくやり抜く。「ダメになるなら、ダメになりきるまでトコトンやりきってやる」という絶対的な覚悟。
+            </p>
+          </div>
+          <div class="text-2xl font-black text-purple-200 mt-4 text-right">退路を断つ</div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※一連の実績は代表・CFOをはじめ苦楽を共にしてきたメンバー全員、組織一丸の協働による成果です</span>
+        <span class="text-xs font-bold">5 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 6: 2018-2023 後半 (W-STAR) ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-amber-600 font-extrabold text-sm tracking-widest uppercase bg-amber-50 border border-amber-200 px-4 py-1.5 rounded-full inline-block mb-3">SECOND PHASE (2) : 2018.4 - 2023.9</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          自社開拓M&Aの泥臭い挑戦と、Google被弾からのV字大逆転
+        </h2>
+      </div>
+
+      <!-- Middle Section: W-STAR Method Hybrid Grid layout -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 anim-el delay-2">
+        <!-- STAR Cards (4 cards in 2x2 grid) -->
+        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Situation -->
+          <div class="zoomable-card bg-amber-50/20 border border-amber-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-amber-500 tracking-wider uppercase mb-2.5 bg-amber-50/80 px-2 py-0.5 rounded inline-block">S : Situation</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">資金制限と、Googleの直撃</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                早期利益の創出に向けWebメディアM&Aを実行するも、仲介手数料ゼロの制約下。さらに買収直後、Googleの検索アップデートにより利益が月1,000万から100万（90%減）へ一瞬で激減する悲劇が発生。
+              </p>
+            </div>
+          </div>
+
+          <!-- Task -->
+          <div class="zoomable-card bg-amber-50/20 border border-amber-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-amber-500 tracking-wider uppercase mb-2.5 bg-amber-50/80 px-2 py-0.5 rounded inline-block">T : Task</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">インハウスM&Aと検索順位復旧</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                仲介に頼らない独自のソーシング開拓モデルを立ち上げ、厳選。Googleに被弾したメディアの検索評価を急ピッチで最速復旧させ、投資資金を安全に全回収すること。
+              </p>
+            </div>
+          </div>
+
+          <!-- Action -->
+          <div class="zoomable-card bg-amber-50/20 border border-amber-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-amber-500 tracking-wider uppercase mb-2.5 bg-amber-50/80 px-2 py-0.5 rounded inline-block">A : Action</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">月2万件の開拓 ➔ 爆速リライト</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                新卒2〜3年目のメンバーと直アプローチを徹底し、150商談を自ら実施。被弾後は落胆する時間をゼロにし、検索意図のデータ分析を敢行。全面的なコンテンツリライトとサイト再構成を断行。
+              </p>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="zoomable-card bg-amber-50/40 border border-blue-200/80 p-6 rounded-2xl flex flex-col justify-between shadow-sm relative">
+            <div>
+              <div class="text-xs font-extrabold text-amber-600 tracking-wider uppercase mb-2 bg-amber-100 px-2.5 py-0.5 rounded inline-block">R : Result</div>
+              <h4 class="text-base font-extrabold text-slate-900 mb-2">150%V字回復 ➔ 7.48億を回収</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed mb-2">
+                被弾からわずか2ヶ月で【月間利益1,500万円（当初比150%）】へ回復。メディア全体で4.21億の投資に対し【7.48億円回収（回収率177%）】を叩き出した。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why (The Dramatic Climax) -->
+        <div class="zoomable-card lg:col-span-4 bg-gradient-to-br from-amber-500 to-amber-600 text-white p-8 rounded-2xl flex flex-col justify-between shadow-md relative overflow-hidden border border-amber-600">
+          <div class="absolute right-4 top-4 text-amber-400/30 font-black text-6xl select-none">W</div>
+          <div>
+            <div class="text-xs font-extrabold text-amber-100 tracking-wider uppercase mb-3 bg-amber-400/50 px-2.5 py-1 rounded inline-block">W : Why</div>
+            <h4 class="text-lg font-black text-white mb-3">会社をやり直す、そのための絶対資金</h4>
+            <p class="text-blue-50 text-xs md:text-sm leading-relaxed">
+              正直、SEOメディア事業だって自分が本当にやりたい仕事ではなかった。でも、これも「会社をやり直す」と決めたこと。決めたからには言い訳なくやり抜く。自分がここでやらなければ、これから主軸になっていくフィンテック事業（デジタルギフト®）が立ち上がらない。だからこそ不退転で挑んだ。
+            </p>
+          </div>
+          <div class="text-2xl font-black text-amber-200 mt-4 text-right">言い訳を捨てる</div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※一連の実績は代表・CFOをはじめ苦楽を共にしてきたメンバー全員、組織一丸の協働による成果です</span>
+        <span class="text-xs font-bold">6 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 7: 2023-現在 (W-STAR) ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-emerald-600 font-extrabold text-sm tracking-widest uppercase bg-emerald-50 border border-emerald-100 px-4 py-1.5 rounded-full inline-block mb-3">THIRD PHASE : 2023.10 - PRESENT</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          「デジタルギフト®」爆発的成長 ＆ 自律的組織への進化
+        </h2>
+      </div>
+
+      <!-- Middle Section: W-STAR Method Hybrid Grid layout -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 lg:grid-cols-12 gap-6 anim-el delay-2">
+        <!-- STAR Cards (4 cards in 2x2 grid) -->
+        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Situation -->
+          <div class="zoomable-card bg-emerald-50/20 border border-emerald-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-emerald-500 tracking-wider uppercase mb-2.5 bg-emerald-50/80 px-2 py-0.5 rounded inline-block">S : Situation</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">資金・増員制限 ＆ 採用人事不在</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                薄利多売モデルゆえ大規模投資が不可能な状況。さらに会社再建の過程で「専任の採用人事」がゼロになり、フィンテックという候補者にとって難解な事業ドメインを発信する難状況。
+              </p>
+            </div>
+          </div>
+
+          <!-- Task -->
+          <div class="zoomable-card bg-emerald-50/20 border border-emerald-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-emerald-500 tracking-wider uppercase mb-2.5 bg-emerald-50/80 px-2 py-0.5 rounded inline-block">T : Task</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">GMV爆速グロースと自社採用推進</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                最小の省人化設計で流通総額（GMV）を最大化させること。同時に外部の力を引き込み、直接自社で将来を担う優秀な「新卒・中途採用」を急成長・拡大させること。
+              </p>
+            </div>
+          </div>
+
+          <!-- Action -->
+          <div class="zoomable-card bg-emerald-50/20 border border-emerald-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="text-xs font-extrabold text-emerald-500 tracking-wider uppercase mb-2.5 bg-emerald-50/80 px-2 py-0.5 rounded inline-block">A : Action</div>
+              <h4 class="text-base font-extrabold text-slate-950 mb-2">ABMの推進 ➔ 取締役自らリクルート</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                取締役としてABM（アカウント型営業）を主導し直接提案。採用においては自らが先頭に立ち、現状の財務や課題、未来へのビジョン（熱量）を一切隠さず「そのままオープンに」語りかけ続けた。
+              </p>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="zoomable-card bg-emerald-50/40 border border-emerald-200/80 p-6 rounded-2xl flex flex-col justify-between shadow-sm relative">
+            <div>
+              <div class="text-xs font-extrabold text-emerald-600 tracking-wider uppercase mb-2 bg-emerald-100 px-2.5 py-0.5 rounded inline-block">R : Result</div>
+              <h4 class="text-base font-extrabold text-slate-900 mb-2">GMV300億規模 ➔ 27卒5名承諾</h4>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed mb-2">
+                GMVを45億円から【300億円規模】（6.6倍）へ拡大。省人化・仕組み化モデルを確立。人事不在ながら、27卒にて「5名」の内定承諾獲得。正社員数を40名規模へ。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why (The Dramatic Climax) -->
+        <div class="zoomable-card lg:col-span-4 bg-gradient-to-br from-emerald-500 to-emerald-600 text-white p-8 rounded-2xl flex flex-col justify-between shadow-md relative overflow-hidden border border-emerald-600">
+          <div class="absolute right-4 top-4 text-emerald-400/30 font-black text-6xl select-none">W</div>
+          <div>
+            <div class="text-xs font-extrabold text-emerald-100 tracking-wider uppercase mb-3 bg-emerald-400/50 px-2.5 py-1 rounded inline-block">W : Why</div>
+            <h4 class="text-lg font-black text-white mb-3">自分が語る未来が、最高のブランド</h4>
+            <p class="text-blue-50 text-xs md:text-sm leading-relaxed">
+              ここは激しく事業も組織も変わる「スタートアップフェーズ」だ。この瞬間に、会社の未来や課題を最も解像度高く、嘘偽りなく熱量を込めて翻訳し伝えられるのは、他でもない自分。自分が採用プロセスに先頭で本気にならなければ、次の大きな成長曲線は絶対に描けない。
+            </p>
+          </div>
+          <div class="text-2xl font-black text-emerald-200 mt-4 text-right">未来を描く</div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※一連の実績は代表・CFOをはじめ苦楽を共にしてきたメンバー全員、組織一丸の協働による成果です</span>
+        <span class="text-xs font-bold">7 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 8: TRUTH 1 ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-rose-500 font-extrabold text-sm tracking-widest uppercase bg-rose-50 border border-rose-100 px-4 py-1.5 rounded-full inline-block mb-3">THE TRUTH OF JOB HUNTING : PART 1</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          就活のウソ①：<span class="text-rose-500 font-black">「ベンチャー＝若手に裁量権」</span>の正体
+        </h2>
+      </div>
+
+      <!-- Middle Section: Dynamic Grid layout with big fonts -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 md:grid-cols-2 gap-8 anim-el delay-2">
+        <div class="zoomable-card bg-rose-50/50 border border-rose-100 p-8 rounded-3xl">
+          <p class="text-rose-600 text-lg font-extrabold tracking-wide mb-2">幻想：</p>
+          <p class="text-2xl md:text-3xl font-extrabold leading-normal text-slate-800">
+            「うちはベンチャーだから、入社1年目から圧倒的な裁量権（決定権）を渡してどんどん任せるよ！」
+          </p>
+          <div class="mt-8 pt-6 border-t border-rose-100 text-xs text-rose-500 font-bold tracking-widest">
+            ベンチャー＝若手の裁量、と宣伝する採用支援会社のテンプレートワード
+          </div>
+        </div>
+
+        <div class="zoomable-card bg-slate-900 text-white p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden shadow-xl">
+          <div class="absolute right-4 bottom-4 text-slate-800 text-9xl font-black select-none pointer-events-none opacity-20">REAL</div>
+          <div>
+            <p class="text-amber-400 text-lg font-extrabold tracking-wide mb-2">リアルな本質：</p>
+            <p class="text-2xl md:text-3xl font-bold leading-normal text-slate-100">
+              実力もない新卒に最初から裁量権を渡せるわけがない。本当は、人が足りないから単に「仕事が丸投げ」されているだけだ。
+            </p>
+            <p class="text-slate-400 text-sm mt-4 leading-relaxed">
+              本当の裁量（権限と責任）とは、まず泥臭い仕事で「結果」を出し、「強固な信頼」を勝ち取ったプロフェッショナルにしか与えられません。自社でも、結果を出した人間にしか大きな打席（チャンス）は絶対に回しません。理想とギャップの罠にハマるな。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※ 綺麗事抜きの、会社を存続させ続けた当事者としてのファクトです</span>
+        <span class="text-xs font-bold">8 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 9: TRUTH 2 ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1">
+        <span class="text-rose-500 font-extrabold text-sm tracking-widest uppercase bg-rose-50 border border-rose-100 px-4 py-1.5 rounded-full inline-block mb-3">THE TRUTH OF JOB HUNTING : PART 2</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          就活のウソ②：<span class="text-rose-500 font-black">「大手＝安定」</span>という幻想と、これからのリアル
+        </h2>
+      </div>
+
+      <!-- Middle Section: Dynamic Grid Layout -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 md:grid-cols-2 gap-8 anim-el delay-2">
+        <div class="zoomable-card bg-rose-50/50 border border-rose-100 p-8 rounded-3xl">
+          <p class="text-rose-600 text-lg font-extrabold tracking-wide mb-2">終身雇用の終わり：</p>
+          <p class="text-2xl md:text-3xl font-extrabold leading-normal text-slate-800">
+            沈みゆく日本。労働集約型からの転換。すでに海外がそうなっているように、日本でも組織再編や見直しは、これからの時代の常識になる。
+          </p>
+          <p class="text-slate-500 text-xs mt-6 leading-relaxed">
+            人口減少が激しく進む中、既存モデルの安定など幻想です。サークル型組織から、これからは成果とコミットの強さで繋がる「プロスポーツチーム（例：Netflix等）」に移行せざるを得ません。結果を出す者が一軍として残り、そうでなければ去る。それが社会の不都合なリアルです。
+          </p>
+        </div>
+
+        <div class="zoomable-card bg-gradient-to-br from-amber-500 to-amber-600 text-white p-8 rounded-3xl flex flex-col justify-between shadow-xl">
+          <div>
+            <p class="text-amber-100 text-lg font-extrabold tracking-wide mb-2">本当の「安定」とは何か：</p>
+            <p class="text-2xl md:text-3xl font-black leading-normal text-white">
+              「会社に守ってもらう安定」を望むな。<br>どこに放り出されても自力で生き残れる「自分自身の市場価値を高めること」だけが本当の安定だ。
+            </p>
+            <p class="text-amber-50 text-sm mt-4 leading-relaxed">
+              私たちはアットホームな家族ではなく、厳しい荒波を渡るプロの戦闘チーム。だからこそ、理不尽に会社に依存せず、どこにいっても通用する「圧倒的な実力・生存技術」を当事者として最速で鍛え上げたい人間のための場所です。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3">
+        <span class="text-xs">※ 自分の市場価値を会社依存から解き放つために、一番知ってほしい話</span>
+        <span class="text-xs font-bold">9 / 10</span>
+      </div>
+    </section>
+
+    <!-- ================= SLIDE 10: CLOSING & Q&A ================= -->
+    <section class="slide bg-white flex flex-col justify-between px-16 py-24 md:px-24">
+      <div class="light-sweep"></div>
+      <div class="super-glow"></div>
+      
+      <!-- Upper Section: Title -->
+      <div class="max-w-7xl mx-auto w-full anim-el delay-1 relative z-10">
+        <span class="text-amber-600 font-extrabold text-sm tracking-widest uppercase bg-amber-50 border border-amber-100 px-4 py-1.5 rounded-full inline-block mb-3">LAST SECTION : NO LIMIT Q&A</span>
+        <h2 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter title-glow leading-none">
+          未来は、<span class="text-amber-500">絶対に明るい。</span>
+        </h2>
+        <p class="text-slate-500 text-base md:text-lg font-bold mt-4 max-w-2xl leading-relaxed">
+          これだけ大変な「地獄」と「大破壊」をやり抜いて、それでも私たちは今、爆発的に未来へ成長している。だからこそ、私たちの前途は明るいと、私は心から確信している。
+        </p>
+      </div>
+
+      <!-- Middle Section: Grid (Direct QA Approach - Simple grid-cols-2) -->
+      <div class="max-w-7xl mx-auto w-full my-auto grid grid-cols-1 md:grid-cols-2 gap-6 anim-el delay-2 relative z-10">
+        <!-- Card 1 -->
+        <div class="zoomable-card bg-slate-50/90 border border-slate-200/60 p-8 rounded-3xl flex flex-col justify-between hover:border-amber-400 transition-colors duration-300">
+          <div>
+            <div class="h-10 w-10 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-600 mb-4 font-bold text-lg">?</div>
+            <h4 class="text-xl font-bold text-slate-900 mb-2">取締役を驚かせる質問を歓迎します</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              「組織再編をやり抜いたときの本当の離職率は？」「不振事業売却時、実際どう声をかけた？」「取締役の今のぶっちゃけた給与はいくら？」等、どんな踏み込んだ質問でも歓迎。嘘、綺麗事は一切なしで真正面から打ち返します。
+            </p>
+          </div>
+          <div class="text-xs font-semibold text-amber-600 tracking-wider mt-4">NG制限質問一切なし・直球でどうぞ</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="zoomable-card bg-slate-50/90 border border-slate-200/60 p-8 rounded-3xl flex flex-col justify-between hover:border-amber-400 transition-colors duration-300">
+          <div>
+            <div class="h-10 w-10 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-600 mb-4 font-bold text-lg">🤝</div>
+            <h4 class="text-xl font-bold text-slate-900 mb-2">本当の仲間だからこそ、本音で向き合う</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              人事不在だからこそ、私自身が本気の熱量で直接あなたと出会いに来ています。採用ブランディングのベールを取り払い、お互いが「本気の生存者」として対話し、実りある1時間をここで完了させましょう。
+            </p>
+          </div>
+          <div class="text-xs font-semibold text-amber-600 tracking-wider mt-4">当事者同士の本気トーク、スタート</div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Guide Footer -->
+      <div class="max-w-7xl mx-auto w-full flex justify-between items-center text-slate-400 border-t border-slate-100 pt-4 anim-el delay-3 relative z-10">
+        <span class="text-xs">※一連の実績は代表・CFOをはじめ苦楽を共にしてきたメンバー全員、組織一丸の協働による成果です</span>
+        <span class="text-xs font-bold">10 / 10</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= PROGRESS BAR & CONTROLS ================= -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 px-8 py-3 bg-white/70 backdrop-blur-md border-t border-slate-100 flex justify-between items-center">
+    <button id="prev-btn" class="p-2 rounded-full text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-all focus:outline-none disabled:opacity-30 disabled:pointer-events-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    
+    <div class="flex-1 max-w-md mx-6 bg-slate-100 h-1.5 rounded-full overflow-hidden">
+      <div id="progress-indicator" class="bg-amber-500 h-full rounded-full transition-all duration-500" style="width: 10%;"></div>
+    </div>
+    
+    <button id="next-btn" class="p-2 rounded-full text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition-all focus:outline-none disabled:opacity-30 disabled:pointer-events-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ================= ZOOM / LIGHTBOX MODAL ================= -->
+  <div id="zoom-modal" class="fixed inset-0 z-[100] hidden bg-slate-900/90 backdrop-blur-md flex flex-col items-center justify-center cursor-zoom-out">
+    <!-- Modal Close Button -->
+    <button class="absolute top-6 right-6 text-white text-4xl font-extralight hover:text-amber-400 transition-colors focus:outline-none" title="閉じる">&times;</button>
+    
+    <!-- Dynamic Content Container -->
+    <div id="zoom-content" class="max-w-5xl max-h-[80vh] p-8 bg-white rounded-3xl shadow-2xl overflow-y-auto transition-all duration-300 transform scale-95 border border-slate-100">
+      <!-- Clicked content will dynamically copy or load here -->
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Slider State Manager
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const progressIndicator = document.getElementById('progress-indicator');
+    let currentSlideIndex = 0;
+
+    function updateSlides() {
+      slides.forEach((slide, idx) => {
+        const sweepEl = slide.querySelector('.light-sweep');
+        const superGlowEl = slide.querySelector('.super-glow');
+        
+        if (idx === currentSlideIndex) {
+          slide.classList.add('active');
+          if (sweepEl) sweepEl.classList.add('light-sweep-active');
+          if (superGlowEl) superGlowEl.classList.add('super-glow-active');
+        } else {
+          slide.classList.remove('active');
+          if (sweepEl) sweepEl.classList.remove('light-sweep-active');
+          if (superGlowEl) superGlowEl.classList.remove('super-glow-active');
+        }
+      });
+
+      // Controls State Update
+      prevBtn.disabled = currentSlideIndex === 0;
+      nextBtn.disabled = currentSlideIndex === slides.length - 1;
+
+      // Progress Tracker
+      const percent = ((currentSlideIndex + 1) / slides.length) * 100;
+      progressIndicator.style.width = `${percent}%`;
+    }
+
+    // Handlers
+    function goToPrev() {
+      if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        updateSlides();
+      }
+    }
+
+    function goToNext() {
+      if (currentSlideIndex < slides.length - 1) {
+        currentSlideIndex++;
+        updateSlides();
+      }
+    }
+
+    // Keyboard bindings
+    document.addEventListener('keydown', (e) => {
+      // If modal is open, ignore slide keys
+      if (!document.getElementById('zoom-modal').classList.contains('hidden')) {
+        if (e.key === 'Escape') {
+          closeZoomModal();
+        }
+        return;
+      }
+      
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        goToNext();
+      } else if (e.key === 'ArrowLeft') {
+        goToPrev();
+      }
+    });
+
+    // Touch Support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      // If modal is open, ignore swipes for sliding
+      if (!document.getElementById('zoom-modal').classList.contains('hidden')) return;
+
+      if (touchStartX - touchEndX > 50) {
+        goToNext(); // Swipe left -> next
+      } else if (touchEndX - touchStartX > 50) {
+        goToPrev(); // Swipe right -> prev
+      }
+    });
+
+    // Button Click Binding
+    prevBtn.addEventListener('click', goToPrev);
+    nextBtn.addEventListener('click', goToNext);
+
+
+    // ================= TIMER CONTROLLERS =================
+    const timerDisplay = document.getElementById('timer-display');
+    const timerToggleBtn = document.getElementById('timer-toggle-btn');
+    const timerResetBtn = document.getElementById('timer-reset-btn');
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+
+    const INITIAL_SECONDS = 60 * 60; // 60 minutes
+    let remainingSeconds = INITIAL_SECONDS;
+    let timerInterval = null;
+
+    function formatTime(seconds) {
+      const min = Math.floor(seconds / 60);
+      const sec = seconds % 60;
+      return `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+    }
+
+    function updateTimerUI() {
+      timerDisplay.textContent = formatTime(remainingSeconds);
+      if (remainingSeconds <= 300) { // Under 5 mins turns red
+        timerDisplay.classList.add('text-rose-600', 'border-rose-300', 'bg-rose-50');
+      } else {
+        timerDisplay.classList.remove('text-rose-600', 'border-rose-300', 'bg-rose-50');
+      }
+    }
+
+    function toggleTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      } else {
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        timerInterval = setInterval(() => {
+          if (remainingSeconds > 0) {
+            remainingSeconds--;
+            updateTimerUI();
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      remainingSeconds = INITIAL_SECONDS;
+      updateTimerUI();
+      playIcon.classList.remove('hidden');
+      pauseIcon.classList.add('hidden');
+    }
+
+    timerToggleBtn.addEventListener('click', toggleTimer);
+    timerResetBtn.addEventListener('click', resetTimer);
+
+
+    // ================= ZOOM MODAL CONTROLLER =================
+    const zoomModal = document.getElementById('zoom-modal');
+    const zoomContent = document.getElementById('zoom-content');
+
+    function openZoomModal(htmlMarkup, customBgClass = 'bg-white') {
+      // Clear previous styles/classes to ensure a clean modal state
+      zoomContent.className = `max-w-5xl max-h-[85vh] p-10 rounded-3xl shadow-2xl overflow-y-auto transition-all duration-300 transform scale-100 border border-slate-100/50 ${customBgClass}`;
+      zoomContent.innerHTML = htmlMarkup;
+      
+      zoomModal.classList.remove('hidden');
+      // Trigger smooth scale-in animation
+      setTimeout(() => {
+        zoomContent.classList.remove('scale-95');
+        zoomContent.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeZoomModal() {
+      zoomContent.classList.remove('scale-100');
+      zoomContent.classList.add('scale-95');
+      setTimeout(() => {
+        zoomModal.classList.add('hidden');
+        zoomContent.innerHTML = '';
+      }, 150);
+    }
+
+    // Click on modal background or close button to collapse
+    zoomModal.addEventListener('click', (e) => {
+      // Close only if clicking the overlay or close button, not the content container
+      if (e.target === zoomModal || e.target.closest('button')) {
+        closeZoomModal();
+      }
+    });
+
+    // Special Trigger for Florence Natsuka-chan Image
+    const natsukaImgTrigger = document.querySelector('.modal-trigger-image');
+    if (natsukaImgTrigger) {
+      natsukaImgTrigger.addEventListener('click', (e) => {
+        e.stopPropagation(); // Avoid triggering card zoom
+        const imgElement = natsukaImgTrigger.querySelector('img');
+        const src = imgElement.getAttribute('src');
+        
+        const markup = `
+          <div class="flex flex-col items-center justify-center p-2 text-center">
+            <div class="relative inline-block overflow-hidden rounded-2xl shadow-xl border-4 border-amber-300 max-w-full">
+              <img src="${src}" alt="千葉フローレンス夏歌" class="max-h-[60vh] object-contain rounded-lg">
+            </div>
+            <h4 class="text-2xl font-black text-slate-800 mt-5">千葉フローレンス夏歌ちゃん👧</h4>
+            <p class="text-amber-600 font-bold mt-2 text-sm max-w-lg leading-relaxed">
+              丸太トンネルからひょっこり！千葉パパの限界を突破させる、世界一のガソリンであり最高の愛娘です！
+            </p>
+          </div>
+        `;
+        openZoomModal(markup, 'bg-white');
+      });
+    }
+
+    // Attach zoom trigger to all Zoomable Cards
+    const zoomableCards = document.querySelectorAll('.zoomable-card');
+    zoomableCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        // If clicking on the image trigger directly, do not handle normal card duplication
+        if (e.target.closest('.modal-trigger-image')) return;
+
+        // Clone the content of the clicked card
+        let clonedMarkup = card.innerHTML;
+        
+        // Check if the card is the white-text gradient layout (Why, themed cards) to matches background style
+        let customBg = 'bg-white text-slate-800';
+        if (card.classList.contains('bg-gradient-to-br') || card.classList.contains('from-amber-500') || card.classList.contains('from-blue-500') || card.classList.contains('from-purple-500') || card.classList.contains('from-emerald-500') || card.classList.contains('bg-slate-900')) {
+          customBg = 'bg-gradient-to-br from-slate-900 to-slate-800 text-white border-slate-700 shadow-amber-500/5';
+        }
+
+        // Generate zoom layout markup
+        const wrapperMarkup = `
+          <div class="p-6 md:p-10 space-y-4 max-w-3xl mx-auto leading-relaxed">
+            ${clonedMarkup}
+          </div>
+        `;
+        openZoomModal(wrapperMarkup, customBg);
+      });
+    });
+
+    // Initializer
+    updateSlides();
+    updateTimerUI();
+  </script>
+</body>
+</html>
