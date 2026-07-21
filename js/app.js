@@ -1,7 +1,7 @@
 /**
  * PRESENTATION ENGINE & CONTROLLER
  * Google Workspace / Material Design Edition
- * Features: Unified Title Positioning, Space-Efficient Layouts,
+ * Features: Unified Title Positioning, Space-Efficient Layouts, Rhythmic Typographic Cadence,
  * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg,
  * Light Sweep Transition Streak, and Final Slide Ray of Hope Aura.
  */
@@ -97,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>
             <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
             <h3 style="font-size: 1.45rem; font-weight: 800; color: #202124; margin: 0.75rem 0 0.85rem 0; line-height: 1.35;">${c.title}</h3>
-            <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
+            ${c.lead ? `<p style="font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.4rem;">${c.lead}</p>` : ''}
+            <p style="font-size: 1.025rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
           </div>
         </div>
       `).join('');
@@ -111,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>
             <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
             <h3 style="font-size: 1.3rem; font-weight: 700; color: #202124; margin: 0.75rem 0 0.65rem 0; line-height: 1.35;">${c.title}</h3>
-            <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
+            ${c.lead ? `<p style="font-size: 1.075rem; font-weight: 700; color: #202124; margin-bottom: 0.35rem;">${c.lead}</p>` : ''}
+            <p style="font-size: 0.975rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
           </div>
         </div>
       `).join('');
@@ -160,7 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: var(--google-blue-bg);">
             <div>
               <span style="font-size: 0.75rem; font-weight: 700; color: var(--google-blue); tracking-wider; text-transform: uppercase;">${w.title}</span>
-              <p style="font-size: 1.05rem; color: #202124; margin-top: 0.75rem; line-height: 1.65; font-weight: 500;">${w.body}</p>
+              ${w.lead ? `<p style="font-size: 1.15rem; font-weight: 800; color: #202124; margin-top: 0.6rem; line-height: 1.4;">${w.lead}</p>` : ''}
+              <p style="font-size: 1.025rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">${w.body}</p>
             </div>
           </div>
         </div>
@@ -188,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div>
               <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: var(--google-red-bg); border-radius: 4px;">${f.label}</span>
               <h3 style="font-size: 1.45rem; font-weight: 800; color: #202124; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${f.quote}"</h3>
+              ${f.lead ? `<p style="font-size: 1.125rem; font-weight: 800; color: #202124; margin: 0.5rem 0;">${f.lead}</p>` : ''}
               <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">${f.body}</p>
             </div>
           </div>
@@ -202,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div>
             <div style="font-size: 2.2rem; margin-bottom: 0.65rem;">${c.icon}</div>
             <h3 style="font-size: 1.35rem; font-weight: 800; color: #202124; margin-bottom: 0.75rem;">${c.title}</h3>
+            ${c.lead ? `<p style="font-size: 1.1rem; font-weight: 700; color: #202124; margin-bottom: 0.5rem;">${c.lead}</p>` : ''}
             <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
           </div>
           <div style="font-size: 0.85rem; color: var(--google-blue); font-weight: 700; margin-top: 1.5rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
@@ -278,14 +283,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (idx === currentSlideIndex) {
           slide.classList.add('active');
           
-          // Trigger Light Sweep Streak
           if (sweepEl) {
             sweepEl.classList.remove('light-sweep-active');
             void sweepEl.offsetWidth; // Reflow
             sweepEl.classList.add('light-sweep-active');
           }
 
-          // Trigger Ray of Hope Grand Aura on Final Slide
           if (superGlowEl) {
             superGlowEl.classList.remove('super-glow-active');
             void superGlowEl.offsetWidth;
@@ -366,7 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. GOOGLE EASTER EGGS & INTERACTIVE TRICKS
   // ==========================================
 
-  // Google Barrel Roll
   window.doBarrelRoll = function() {
     document.body.classList.remove('barrel-roll');
     void document.body.offsetWidth;
@@ -381,7 +383,6 @@ document.addEventListener('DOMContentLoaded', () => {
     brandLogo.addEventListener('click', window.doBarrelRoll);
   }
 
-  // Google "I'm Feeling Lucky" Random Jump
   const luckyBtn = document.getElementById('lucky-btn');
   if (luckyBtn) {
     luckyBtn.addEventListener('click', () => {
@@ -547,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3 style="font-size: 1.8rem; font-weight: 800; color: #202124;">千葉フローレンス夏歌 ちゃん</h3>
           <p style="font-size: 0.95rem; color: var(--google-blue); font-weight: 700; margin-top: 0.2rem;">Natsuka Florence Chiba</p>
           <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-top: 0.85rem; max-width: 520px;">
-            「娘に誇れる圧倒的に明るい未来をつくること」<br>
+            「娘に誇れる明るい未来をつくること」<br>
             千葉パパを無限に走らせるエネルギー源であり、泥臭い仕事もすべての逆境も笑顔で乗り越えるための原点です。
           </p>
         </div>
@@ -624,7 +625,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // INITIALIZATION
   // ==========================================
   renderSlides();
-  jumpToSlide(0); // Trigger initial animations
+  jumpToSlide(0);
   updateControls();
   updateTimerUI();
 });
