@@ -36,7 +36,7 @@ const PRESENTATION_DATA = {
       },
       theme: {
         badge: "THEME OF TODAY",
-        title: "不確実性を生き抜く<br><span class="text-highlight-amber">キャリアの「第一原理」</span>",
+        title: '不確実性を生き抜く<br><span class="text-highlight-amber">キャリアの「第一原理」</span>',
         note: "成功・失敗・経営の本音まで100%オープンに開示"
       },
       footerNote: "※ 左右のキー [←] [→] または下部ボタンで進みます"
