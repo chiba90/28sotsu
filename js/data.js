@@ -1,6 +1,6 @@
 /**
  * PRESENTATION SLIDE DATA DB
- * Storytelling Edition: Rhythmic, high-impact narrative.
+ * Storytelling Edition: Clean, punchy text without redundant label repetitions.
  */
 const PRESENTATION_DATA = {
   meta: {
@@ -117,10 +117,10 @@ const PRESENTATION_DATA = {
       title: '新卒から新規事業構築、子会社代表取締役社長へ',
       subtitle: '追加投資ゼロの制約を仕組みで突破し、年間4億円の新規営業利益を創出',
       star: {
-        s: "【Situation】主力ポイントサイト責任者に就任も、スマホシフトに投資予算ゼロ。",
-        t: "【Task】追加資金ゼロの制約下で、競合を超える「新規収益エンジン」の立ち上げ。",
-        a: "【Action】ポイントゲームを自社開発し、競合メディア群へもOEM展開（B2B2C）。",
-        r: '【Result】<span class="stat-callout text-highlight-blue">年間4億円の新規営業利益</span>を創出し、子会社社長に就任。'
+        s: "主力ポイントサイト責任者に就任も、スマホシフトに対し獲得投資資金ゼロの極限状態。",
+        t: "追加資金ゼロの制約下で、競合を超える「新規収益エンジン」を立ち上げること。",
+        a: "ポイントゲームを自社開発し、競合メディア群へもOEM展開（B2B2C）するプラットフォーム戦略を実行。",
+        r: '<span class="stat-callout text-highlight-blue">年間4億円の新規営業利益</span>を創出し、子会社社長に就任。'
       },
       why: {
         title: "W : Why (当事者意識の覚悟)",
@@ -139,10 +139,10 @@ const PRESENTATION_DATA = {
       title: '売上99%減の極限状態から、痛みを伴う事業再生と上場維持',
       subtitle: '主力事業の撤退・構造改革を自ら主導し、倒産の危機から会社を守り抜く',
       star: {
-        s: "【Situation】主力事業の急減速。年商46億円から<span class=\"text-highlight-rose\">月商500万円（99%減）</span>へ。",
-        t: "【Task】倒産回避と、東証マザーズにおける「上場維持」条件のクリア。",
-        a: "【Action】役員報酬30%カット断行。不採算事業売却と誠意ある対話による事業再生。",
-        r: '【Result】<span class="stat-callout text-highlight-purple">不可能と言われた「上場維持」を完遂</span>し、財務基盤を守る。'
+        s: "主力事業の急減速により抜本ピボットを決断。年商46億円から<span class=\"text-highlight-rose\">月商500万円（99%減）</span>へ。",
+        t: "倒産回避と、東証マザーズにおける「上場維持」条件のクリア。",
+        a: "役員報酬30%カット断行。不採算事業売却と誠意ある対話による事業再生を主導。",
+        r: '<span class="stat-callout text-highlight-purple">不可能と言われた「上場維持」を完遂</span>し、財務基盤を守る。'
       },
       why: {
         title: "W : Why (不退転の意志)",
@@ -161,10 +161,10 @@ const PRESENTATION_DATA = {
       title: '直開拓M&Aと、Googleアルゴリズム大被弾からのV字回復',
       subtitle: '泥臭い行動量とデータ分析力で、投資回収率177%を達成',
       star: {
-        s: "【Situation】新事業補強のメディアM&A直後に、Googleアルゴリズム大被弾（利益90%減）。",
-        t: "【Task】仲介なし直開拓M&Aの構築と、被弾メディアの爆速V字回復。",
-        a: "【Action】月2万件アプローチ・自ら200件商談。SEO構造を不眠不休でリライト。",
-        r: '【Result】<span class="stat-callout text-highlight-amber">投資4.21億円に対し 7.48億円回収（回収率177%）</span>。'
+        s: "新事業補強のWebメディアM&A直後に、Googleアルゴリズム大被弾（利益90%減）。",
+        t: "仲介なし直開拓M&Aの構築と、被弾メディアの爆速V字回復。",
+        a: "月2万件アプローチ・自ら200件商談。SEO構造を不眠不休でリライト。",
+        r: '<span class="stat-callout text-highlight-amber">投資4.21億円に対し 7.48億円回収（回収率177%）</span>。'
       },
       why: {
         title: "W : Why (絶対的オーナーシップ)",
@@ -183,10 +183,10 @@ const PRESENTATION_DATA = {
       title: 'デジタルギフト®の爆発的成長と組織倍増',
       subtitle: '流通額（GMV）6.6倍成長と、取締役自らが先頭に立つトップリクルート',
       star: {
-        s: "【Situation】フィンテック事業管掌役に就任。社内に専任人事担当者が完全不在。",
-        t: "【Task】流通総額（GMV）の劇的成長と、人事不在の中での優秀人材獲得。",
-        a: "【Action】ABMマーケティング主導。取締役自らがトップリクルーターとして最前線へ。",
-        r: '【Result】GMVを45億円から<span class="stat-callout text-highlight-emerald">300億円規模（6.6倍）</span>へ拡大。'
+        s: "フィンテック事業管掌役に就任。社内に専任人事担当者が完全不在。",
+        t: "流通総額（GMV）の劇的成長と、人事不在の中での優秀人材獲得。",
+        a: "ABMマーケティング主導。取締役自らがトップリクルーターとして最前線へ。",
+        r: 'GMVを45億円から<span class="stat-callout text-highlight-emerald">300億円規模（6.6倍）</span>へ拡大。'
       },
       why: {
         title: "W : Why (トップリクルートの思想)",
@@ -252,14 +252,14 @@ const PRESENTATION_DATA = {
         {
           icon: "❓",
           title: "取締役を焦らせる「NGなし」の直球質問を歓迎",
-          lead: "【NG制限なし】どんなタブー質問でも直球回答します。",
+          lead: "NG制限なしの直球回答。",
           body: "「事業再生時の離職率は？」「退職勧奨時どう声をかけた？」「取締役の今のぶっちゃけた給与は？」など、リアルな経営現場を開示します。",
           note: "💡 クリックで質問例をモーダル表示＆ダイレクト対話が可能です"
         },
         {
           icon: "🤝",
           title: "本気の仲間を探すため、着飾らず向き合う",
-          lead: "【本気の対話】装飾された採用ベールを取り払う。",
+          lead: "本気の対話。",
           body: "人事を通さず取締役が直接対話するのは、お互いが「本気で未来を創るパートナー」になれるかを見極めるため。熱量のある対話を始めましょう。",
           note: "🔥 あなたの本気のキャリア観と疑問をぶつけてください"
         }
