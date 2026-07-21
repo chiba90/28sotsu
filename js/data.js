@@ -1,6 +1,6 @@
 /**
  * PRESENTATION SLIDE DATA DB
- * Refined for High Impact: Concise text, enlarged emphasis, high readability.
+ * Refined for Google-like minimalist style: Shorter titles (single line), punchy details, high visibility.
  */
 const PRESENTATION_DATA = {
   meta: {
@@ -15,9 +15,9 @@ const PRESENTATION_DATA = {
       id: "slide-1",
       type: "hero",
       badge: "EXECUTIVE BRIEFING / CAREER LOG",
-      accent: "amber",
-      title: '綺麗事抜きの、<span class="text-highlight-amber">ビジネスと自己生存のリアル</span>',
-      subtitle: '筑波大学新卒入社から13年。逆境・ピボット・危機を越え、東証上場企業の取締役へ。',
+      accent: "blue",
+      title: '綺麗事抜きの、ビジネスと自己生存のリアル',
+      subtitle: '新卒入社から13年。逆境・ピボット・危機を越え、東証上場企業の取締役へ。',
       presenter: {
         name: "千葉 博文",
         englishName: "Hirofumi Chiba",
@@ -25,7 +25,7 @@ const PRESENTATION_DATA = {
         university: "筑波大学理工学群 社会工学類 卒",
         tagline: "「逆境を仕組みで突破し、非連続な成長を生み出す」",
         daughterName: "千葉フローレンス夏歌 ちゃん",
-        daughterNote: "👧 愛娘に誇れる圧倒的に明るい未来をつくることが、すべての挑戦の原動力！",
+        daughterNote: "👧 娘に誇れる圧倒的に明るい未来をつくることが、すべての原動力！",
         daughterImg: "PXL_20260705_051631581.jpg"
       },
       metric: {
@@ -36,7 +36,7 @@ const PRESENTATION_DATA = {
       },
       theme: {
         badge: "THEME OF TODAY",
-        title: '不確実性を生き抜く<br><span class="text-highlight-amber">キャリアの「第一原理」</span>',
+        title: "不確実性を生き抜くキャリアの「第一原理」",
         note: "成功・失敗・経営の本音まで100%オープンに開示"
       },
       footerNote: "※ 左右のキー [←] [→] または下部ボタンで進みます"
@@ -47,8 +47,8 @@ const PRESENTATION_DATA = {
       id: "slide-2",
       type: "split",
       badge: "ORIGIN & PURPOSE",
-      accent: "amber",
-      title: '人生の最終目標と、<span class="text-highlight-amber">原点となった衝撃</span>',
+      accent: "blue",
+      title: '人生の最終目標と、原点となった衝撃',
       subtitle: '何のために働き、どんな未来を創るのか。すべての挑戦の根底にある意志',
       cards: [
         {
@@ -72,27 +72,27 @@ const PRESENTATION_DATA = {
       id: "slide-3",
       type: "grid",
       badge: "COMPETENCY & CORE VALUES",
-      accent: "amber",
-      title: '自己をアップデートし続ける<span class="text-highlight-amber">「3つの投資指針」</span>',
+      accent: "blue",
+      title: '自己をアップデートし続ける3つの投資指針',
       subtitle: '自身の成長を組織の限界にしないための行動基準',
       cards: [
         {
           badge: "1. Unlearn & Scale",
           badgeColor: "amber",
           title: "自分が組織のボトルネックにならない",
-          body: '常に自らの既成概念を<span class="text-highlight-amber">アンラーン（学習棄却）</span>し、挑戦の限界を自ら押し広げ続けます。'
+          body: "常に自らの既成概念を<span class=\"text-highlight-amber\">アンラーン（学習棄却）</span>し、挑戦の限界を自ら押し広げ続けます。"
         },
         {
           badge: "2. Systems over Heroism",
           badgeColor: "blue",
           title: "個人の実績を「再現可能なシステム」へ",
-          body: '属人性に頼らず、テクノロジーとシステム思考で<span class="text-highlight-blue">自律的に回る拡大仕組み</span>を構築します。'
+          body: "属人性に頼らず、テクノロジーとシステム思考で<span class=\"text-highlight-blue\">自律的に回る拡大仕組み</span>を構築します。"
         },
         {
           badge: "3. Gravitational Credibility",
           badgeColor: "purple",
           title: "圧倒的な「社会的信用」を勝ち取る",
-          body: '将来、地方で挑戦者を支援し資金と人を動かすため、<span class="text-highlight-purple">誰もが認める信用価値</span>を高め続けます。'
+          body: "将来、地方で挑戦者を支援し資金と人を動かすため、<span class=\"text-highlight-purple\">誰もが認める信用価値</span>を高め続けます。"
         }
       ],
       footerNote: "※現在のポジションに安住せず、自分自身を投資対象としてアップデートし続ける"
@@ -104,7 +104,7 @@ const PRESENTATION_DATA = {
       type: "w-star",
       badge: "FIRST PHASE : 2013.4 - 2018.3",
       accent: "blue",
-      title: '新卒から新規事業構築、<span class="text-highlight-blue">子会社代表取締役社長へ</span>',
+      title: '新卒から新規事業構築、子会社代表取締役社長へ',
       subtitle: 'アセットの限界を仕組みで突破し、大幅な新規利益を創出',
       star: {
         s: "主力ポイントメディア責任者に就任も、急激なスマホシフトに対し獲得投資資金ゼロの極限状態。",
@@ -125,7 +125,7 @@ const PRESENTATION_DATA = {
       type: "w-star",
       badge: "SECOND PHASE (1) : 2018.4 - 2023.9",
       accent: "purple",
-      title: '売上99%減の極限状態から、<span class="text-highlight-purple">事業再生と上場維持</span>',
+      title: '売上99%減の極限状態から、事業再生と上場維持',
       subtitle: '主力事業の撤退・構造改革を主導し、企業の最悪の危機を回避',
       star: {
         s: "主力事業の急減速により抜本ピボットを決断。年商46億円から月商500万円（99%減）まで縮小。",
@@ -146,7 +146,7 @@ const PRESENTATION_DATA = {
       type: "w-star",
       badge: "SECOND PHASE (2) : 2018.4 - 2023.9",
       accent: "amber",
-      title: '直開拓M&Aと、<span class="text-highlight-amber">Googleアルゴリズム大被弾からのV字回復</span>',
+      title: '直開拓M&Aと、Googleアルゴリズム大被弾からのV字回復',
       subtitle: '泥臭い営業開拓とデータ駆動の高速改善で、投資回収率177%達成',
       star: {
         s: "新事業補強のためWebメディアM&Aを企画も仲介手数料の予算なし。直後にGoogle大被弾（利益90%減）。",
@@ -156,7 +156,7 @@ const PRESENTATION_DATA = {
       },
       why: {
         title: "W : Why (絶対的オーナーシップ)",
-        body: "「自分が利益の太い柱を作らなければ、新事業（デジタルギフト®）が育つ前に会社が倒れる」。言い訳を一切捨て、自らの行動量と分析力で切り開く。"
+        body: "「自分が利益 of 太い柱を作らなければ、新事業（デジタルギフト®）が育つ前に会社が倒れる」。言い訳を一切捨て、自らの行動量と分析力で切り開く。"
       },
       footerNote: "※2023年には自立を見極め戦略売却。フィンテック事業へ全経営資源を集中"
     },
@@ -167,7 +167,7 @@ const PRESENTATION_DATA = {
       type: "w-star",
       badge: "THIRD PHASE : 2023.10 - PRESENT",
       accent: "emerald",
-      title: 'デジタルギフト®の爆発的成長と<span class="text-highlight-emerald">専任人事ゼロからの組織倍増</span>',
+      title: 'デジタルギフト®の爆発的成長と組織倍増',
       subtitle: '流通額（GMV）6.6倍成長と、取締役自らが牽引するタレント採用',
       star: {
         s: "フィンテック事業管掌役に就任。薄利多売モデルのため巨額広告不可。専任人事担当者も完全不在。",
@@ -177,7 +177,7 @@ const PRESENTATION_DATA = {
       },
       why: {
         title: "W : Why (トップリクルートの思想)",
-        body: "変化の激しい成長現場において、ビジョンと課題の解像度を最も高く語れるのは経営陣自身。人事に任せきりにせず、自ら汗をかくことこそが最高の仲間を惹きつける。"
+        body: "変化 of 激しい成長現場において、ビジョンと課題の解像度を最も高く語れるのは経営陣自身。人事に任せきりにせず、自ら汗をかくことこそが最高の仲間を惹きつける。"
       },
       footerNote: "※GMV300億を支えるための筋肉質で自律的な組織づくりの構造化"
     },
@@ -188,7 +188,7 @@ const PRESENTATION_DATA = {
       type: "truth",
       badge: "FIRST-PRINCIPLES CAREER : PART 1",
       accent: "rose",
-      title: 'キャリアの真実①：<span class="text-highlight-rose">「ベンチャー＝若手に裁量権」の嘘と本質</span>',
+      title: 'キャリアの真実①：「ベンチャー＝若手に裁量権」の嘘と本質',
       subtitle: '単なる作業の丸投げと、本物の意思決定権の違い',
       myth: {
         label: "よくある採用ピッチの甘い言葉",
@@ -198,7 +198,7 @@ const PRESENTATION_DATA = {
       fact: {
         label: "経営者・プロリクルーターの本音ファクト",
         quote: "実力も信頼関係もない人物に、決定権を渡せるわけがありません。",
-        body: '多くの場合、人員不足による<span class="text-highlight-rose">「作業の丸投げ（自由度）」</span>に過ぎません。<br><br>本当の裁量権とは、**「成果」と「信頼残高」**をもぎ取ったプロにのみ与えられる報酬です。成果を出したメンバーには最高の打席を用意します。'
+        body: "多くの場合、人員不足による<span class=\"text-highlight-rose\">「作業の丸投げ（自由度）」</span>に過ぎません。<br><br>本当の裁量権とは、**「成果」と「信頼残高」**をもぎ取ったプロにのみ与えられる報酬です。成果を出したメンバーには最高の打席を用意します。"
       },
       footerNote: "※綺麗事ばかりを吹聴する採用マーケティングではなく、リアルな成長環境を語りたい"
     },
@@ -209,7 +209,7 @@ const PRESENTATION_DATA = {
       type: "truth",
       badge: "FIRST-PRINCIPLES CAREER : PART 2",
       accent: "rose",
-      title: 'キャリアの真実②：<span class="text-highlight-rose">「大手＝安泰」の幻想と、これからのリアル</span>',
+      title: 'キャリアの真実②：「大手＝安泰」の幻想と、これからのリアル',
       subtitle: '会社に守られる安定から、どこでも通用する「自立した市場価値」へ',
       myth: {
         label: "旧来の安定モデルの崩壊",
@@ -219,7 +219,7 @@ const PRESENTATION_DATA = {
       fact: {
         label: "真の「安定」の再定義",
         quote: "明日どんな荒野に放り出されても稼げる「自分の腕＝実力」こそが唯一の安定。",
-        body: '組織の看板を失った時、何が残るか。<span class="text-highlight-rose">自らの足で立ち、市場価値を高め続けたい個人</span>のための最高の鍛錬場であり続けます。'
+        body: "組織の看板を失った時、何が残るか。<span class=\"text-highlight-rose\">自らの足で立ち、市場価値を高め続けたい個人</span>のための最高の鍛錬場であり続けます。"
       },
       footerNote: "※自分の市場価値を会社依存から解き放つために、一番知ってほしい話"
     },
@@ -229,8 +229,8 @@ const PRESENTATION_DATA = {
       id: "slide-10",
       type: "closing",
       badge: "LAST SECTION : NO-LIMIT DIALOGUE",
-      accent: "amber",
-      title: '未来は、<span class="text-highlight-amber">絶対に自分たちの手で明るくできる。</span>',
+      accent: "blue",
+      title: '未来は、絶対に自分たちの手で明るくできる。',
       subtitle: '大改革と危機を乗り越えてきたからこそ語れる、本音のQ&Aセッション',
       cards: [
         {
