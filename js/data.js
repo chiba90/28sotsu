@@ -80,19 +80,19 @@ const PRESENTATION_DATA = {
           badge: "1. Unlearn & Scale",
           badgeColor: "amber",
           title: "自分が組織のボトルネックにならない",
-          body: "常に自らの既成概念を<span class="text-highlight-amber">アンラーン（学習棄却）</span>し、挑戦の限界を自ら押し広げ続けます。"
+          body: '常に自らの既成概念を<span class="text-highlight-amber">アンラーン（学習棄却）</span>し、挑戦の限界を自ら押し広げ続けます。'
         },
         {
           badge: "2. Systems over Heroism",
           badgeColor: "blue",
           title: "個人の実績を「再現可能なシステム」へ",
-          body: "属人性に頼らず、テクノロジーとシステム思考で<span class="text-highlight-blue">自律的に回る拡大仕組み</span>を構築します。"
+          body: '属人性に頼らず、テクノロジーとシステム思考で<span class="text-highlight-blue">自律的に回る拡大仕組み</span>を構築します。'
         },
         {
           badge: "3. Gravitational Credibility",
           badgeColor: "purple",
           title: "圧倒的な「社会的信用」を勝ち取る",
-          body: "将来、地方で挑戦者を支援し資金と人を動かすため、<span class="text-highlight-purple">誰もが認める信用価値</span>を高め続けます。"
+          body: '将来、地方で挑戦者を支援し資金と人を動かすため、<span class="text-highlight-purple">誰もが認める信用価値</span>を高め続けます。'
         }
       ],
       footerNote: "※現在のポジションに安住せず、自分自身を投資対象としてアップデートし続ける"
@@ -110,7 +110,7 @@ const PRESENTATION_DATA = {
         s: "主力ポイントメディア責任者に就任も、急激なスマホシフトに対し獲得投資資金ゼロの極限状態。",
         t: "追加資金ゼロの制約下で、競合を上回る強力な「新規収益エンジン」を立ち上げること。",
         a: "アドテク融合の「ポイントゲーム」システムを自社開発。競合メディア群へもOEM展開（B2B2C）。",
-        r: "<span class="stat-callout text-highlight-blue">年間4億円の新規営業利益</span>を創出し、子会社代表取締役社長に就任。"
+        r: '<span class="stat-callout text-highlight-blue">年間4億円の新規営業利益</span>を創出し、子会社代表取締役社長に就任。'
       },
       why: {
         title: "W : Why (当事者意識の覚悟)",
@@ -131,7 +131,7 @@ const PRESENTATION_DATA = {
         s: "主力事業の急減速により抜本ピボットを決断。年商46億円から月商500万円（99%減）まで縮小。",
         t: "倒産リスクを回避し、東証マザーズ（現グロース）における「上場維持」条件をクリアすること。",
         a: "役員報酬30%カットを即座に断行。不採算事業の売却と誠意ある対話による組織再構築を主導。",
-        r: "<span class="stat-callout text-highlight-purple">不可能と言われた「上場維持」を完遂</span>。筋肉質な財務基盤を守り抜く。"
+        r: '<span class="stat-callout text-highlight-purple">不可能と言われた「上場維持」を完遂</span>。筋肉質な財務基盤を守り抜く。'
       },
       why: {
         title: "W : Why (不退転の意志)",
@@ -152,7 +152,7 @@ const PRESENTATION_DATA = {
         s: "新事業補強のためWebメディアM&Aを企画も仲介手数料の予算なし。直後にGoogle大被弾（利益90%減）。",
         t: "仲介なしの直開拓スキーム構築と、被弾メディアの爆速V字回復。",
         a: "自身と若手のみで月2万件アプローチ・200件商談。SEO構造を不眠不休で全面リライト。",
-        r: "被弾メディアを2ヶ月で回復。<span class="stat-callout text-highlight-amber">投資4.21億円に対し 7.48億円回収（回収率177%）</span>。"
+        r: '被弾メディアを2ヶ月で回復。<span class="stat-callout text-highlight-amber">投資4.21億円に対し 7.48億円回収（回収率177%）</span>。'
       },
       why: {
         title: "W : Why (絶対的オーナーシップ)",
@@ -173,7 +173,7 @@ const PRESENTATION_DATA = {
         s: "フィンテック事業管掌役に就任。薄利多売モデルのため巨額広告不可。専任人事担当者も完全不在。",
         t: "流通総額（GMV）の非連続成長と、人事不在の中での優秀人材の獲得。",
         a: "ABMマーケティング主導。採用では取締役自らがトップリクルーターとして最前線に立つ。",
-        r: "GMVを45億円から<span class="stat-callout text-highlight-emerald">300億円規模（6.6倍）</span>へ拡大。27卒内定承諾5名獲得。"
+        r: 'GMVを45億円から<span class="stat-callout text-highlight-emerald">300億円規模（6.6倍）</span>へ拡大。27卒内定承諾5名獲得。'
       },
       why: {
         title: "W : Why (トップリクルートの思想)",
@@ -198,7 +198,7 @@ const PRESENTATION_DATA = {
       fact: {
         label: "経営者・プロリクルーターの本音ファクト",
         quote: "実力も信頼関係もない人物に、決定権を渡せるわけがありません。",
-        body: "多くの場合、人員不足による<span class="text-highlight-rose">「作業の丸投げ（自由度）」</span>に過ぎません。<br><br>本当の裁量権とは、**「成果」と「信頼残高」**をもぎ取ったプロにのみ与えられる報酬です。成果を出したメンバーには最高の打席を用意します。"
+        body: '多くの場合、人員不足による<span class="text-highlight-rose">「作業の丸投げ（自由度）」</span>に過ぎません。<br><br>本当の裁量権とは、**「成果」と「信頼残高」**をもぎ取ったプロにのみ与えられる報酬です。成果を出したメンバーには最高の打席を用意します。'
       },
       footerNote: "※綺麗事ばかりを吹聴する採用マーケティングではなく、リアルな成長環境を語りたい"
     },
@@ -219,7 +219,7 @@ const PRESENTATION_DATA = {
       fact: {
         label: "真の「安定」の再定義",
         quote: "明日どんな荒野に放り出されても稼げる「自分の腕＝実力」こそが唯一の安定。",
-        body: "組織の看板を失った時、何が残るか。<span class="text-highlight-rose">自らの足で立ち、市場価値を高め続けたい個人</span>のための最高の鍛錬場であり続けます。"
+        body: '組織の看板を失った時、何が残るか。<span class="text-highlight-rose">自らの足で立ち、市場価値を高め続けたい個人</span>のための最高の鍛錬場であり続けます。'
       },
       footerNote: "※自分の市場価値を会社依存から解き放つために、一番知ってほしい話"
     },
