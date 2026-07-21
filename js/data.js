@@ -1,6 +1,6 @@
 /**
  * PRESENTATION SLIDE DATA DB
- * Storytelling Edition: With bottom impact footers for perfect vertical card balance.
+ * Executive Longform Storytelling Edition: 10-Chapter Inspirational Autobiography.
  */
 const PRESENTATION_DATA = {
   meta: {
@@ -10,22 +10,22 @@ const PRESENTATION_DATA = {
     totalSlides: 10
   },
   slides: [
-    /* SLIDE 1: INTRO */
+    /* CHAPTER 01: INTRO */
     {
       id: "slide-1",
       type: "hero",
-      badge: "EXECUTIVE BRIEFING / CAREER LOG",
+      badge: "CHAPTER 01 / 序章：綺麗事抜きの生存リアル",
       accent: "blue",
-      title: '綺麗事抜きの、ビジネスと自己生存のリアル',
-      subtitle: '新卒入社から13年。天国と地獄のすべてを現場でくぐり抜けた当事者が語る「リアルな生存戦略」。',
+      title: '天国と地獄のすべてを現場でくぐり抜けた13年の記録',
+      subtitle: '筑波大学新卒入社から一度も転職せず取締役へ。なぜ私はこの場所で泥臭く戦い続けるのか。',
       presenter: {
         name: "千葉 博文",
         englishName: "Hirofumi Chiba",
         role: "取締役 (2013年新卒入社)",
         university: "筑波大学理工学群 社会工学類 卒",
-        tagline: "「どんな逆境も仕組みで突破し、娘に誇れる明るい未来を創る」",
+        tagline: "「どんな逆境も仕組みで突破し、娘に誇れる圧倒的に明るい未来を創る」",
         daughterName: "千葉フローレンス夏歌 ちゃん",
-        daughterNote: "👧 愛娘に誇れる明るい未来をつくることが、すべての原動力！",
+        daughterNote: "👧 愛娘に誇れる明るい未来をつくることが、すべての挑戦の原動力！",
         daughterImg: "PXL_20260705_051631581.jpg"
       },
       metric: {
@@ -44,46 +44,46 @@ const PRESENTATION_DATA = {
         title: "13年・1社完遂の不屈スピリット",
         note: "東証上場維持・M&A・GMV300億拡大を現場で完遂"
       },
-      footerNote: "※ 左右のキー [←] [→] または下部ボタンで進みます"
+      footerNote: "※ 左右のキー [←] [→] または下部ボタンでストーリーが進みます"
     },
 
-    /* SLIDE 2: MY GOAL & ORIGIN */
+    /* CHAPTER 02: ORIGIN */
     {
       id: "slide-2",
       type: "split",
-      badge: "ORIGIN & PURPOSE",
+      badge: "CHAPTER 02 / 原点：2011年 震災の記憶",
       accent: "blue",
-      title: '人生の最終目標と、原点となった衝撃',
-      subtitle: '何のために働き、どんな未来を創るのか。すべての挑戦の根底にある意志',
+      title: '言葉を失ったお婆さんの一言と、一生をかけた誓い',
+      subtitle: '被災地の瓦礫の中で悟った「真の復興」の定義と、ビジネスが果たすべき真の存在意義',
       cards: [
         {
-          badge: "GOAL : 最終目的地",
+          badge: "GOAL : 志と最終目的地",
           badgeColor: "amber",
           title: "地方から「自ら仕事を生み出す起業家」が育つエコシステム構築",
-          lead: "雇用創出と挑戦の後押し。",
-          body: "単なる支援に留まらず、若者から自立した起業家が生まれる<span class=\"text-highlight-amber\">持続可能な事業生態系</span>を全国に創り出すことが私のミッションです。",
+          lead: "雇用創出と挑戦者の後押し。",
+          body: "単なる資金支援に留まらず、若者から自立した起業家が生まれる<span class=\"text-highlight-amber\">持続可能な事業生態系</span>を全国に創り出すことが、私の人生をかけたミッションです。",
           footer: "💡 MISSION : 挑戦者が自立し稼げる仕組みを全国へ"
         },
         {
-          badge: "ORIGIN : 2011年 震災ボランティア",
+          badge: "ORIGIN : 2011年 震災ボランティアの衝撃",
           badgeColor: "blue",
           title: "「この街が綺麗になる頃には、もう誰も住んでいないだろうね」",
-          lead: "被災地のお婆さんの一言に衝撃を受けた。",
-          body: "<strong>「真の復興とは支援ではなく、持続的にお金を稼ぎ使える仕組み＝仕事の創出である」</strong>と確信し、新卒入社しました。",
+          lead: "被災地のお婆さんの一言に言葉を失った。",
+          body: "<strong>「真の復興とは支援ではなく、この場所で持続的にお金を稼ぎ使える仕組み＝仕事の創出である」</strong>と強く確信し、リアルワールドへ新卒入社しました。",
           footer: "🔥 TURNING POINT : 「仕事の創出」こそが最大の社会貢献"
         }
       ],
       footerNote: "※一切の妥協なくやり切り、会社を再成長軌道に乗せるプロセスこそが自身の財産"
     },
 
-    /* SLIDE 3: 3 INVESTMENT GUIDELINES */
+    /* CHAPTER 03: PHILOSOPHY */
     {
       id: "slide-3",
       type: "grid",
-      badge: "COMPETENCY & CORE VALUES",
+      badge: "CHAPTER 03 / 哲学：自己アップデートの法則",
       accent: "blue",
-      title: '自己をアップデートし続ける「3つの投資指針」',
-      subtitle: '自身の成長を組織の限界にしないためのプロフェッショナルとしての行動基準',
+      title: '自分が組織の限界にならない「3つの投資指針」',
+      subtitle: '自身の成長を止ませず、常に思考の枠組みを脱皮させ続けるプロフェッショナルとしての行動原則',
       cards: [
         {
           badge: "1. Unlearn & Scale",
@@ -113,14 +113,14 @@ const PRESENTATION_DATA = {
       footerNote: "※現在のポジションに安住せず、自分自身を投資対象としてアップデートし続ける"
     },
 
-    /* SLIDE 4: W-STAR 2013-2018 */
+    /* CHAPTER 04: BREAKTHROUGH */
     {
       id: "slide-4",
       type: "w-star",
-      badge: "PHASE 1 : 0からの突破 (2013-2018)",
+      badge: "CHAPTER 04 / 突破：年間4億円の新規利益創出",
       accent: "blue",
       title: '新卒から新規事業構築、子会社代表取締役社長へ',
-      subtitle: '追加投資ゼロの制約を仕組みで突破し、年間4億円の新規営業利益を創出',
+      subtitle: '追加投資ゼロの制約を仕組みで突破し、年間4億円の新規営業利益を創出した軌跡',
       star: {
         s: "主力ポイントサイト責任者に就任も、スマホシフトに対し獲得投資資金ゼロの極限状態。",
         t: "追加資金ゼロの制約下で、競合を超える「新規収益エンジン」を立ち上げること。",
@@ -130,20 +130,20 @@ const PRESENTATION_DATA = {
       why: {
         title: "W : Why (当事者意識の覚悟)",
         lead: "「自身の事業が全体の投資源泉である」と解釈を転換。",
-        body: "置かれた場所で圧倒的な結果を出し、自ら存在意義を創出しました。",
+        body: "置かれた場所で言い訳を捨て圧倒的な結果を出し、自ら存在意義を創出しました。",
         footer: "🔥 PRINCIPLE : 置かれた場所で圧倒的結果を出す"
       },
       footerNote: "※感情のマネジメントから、システムとエコシステムによる仕組み化への転換"
     },
 
-    /* SLIDE 5: W-STAR 2018-2023 (1) */
+    /* CHAPTER 05: DARKEST HOUR */
     {
       id: "slide-5",
       type: "w-star",
-      badge: "PHASE 2-1 : 売上99%減の地獄 (2018-2023)",
+      badge: "CHAPTER 05 / 苦闘：売上99%減と上場維持",
       accent: "purple",
       title: '売上99%減の極限状態から、痛みを伴う事業再生と上場維持',
-      subtitle: '主力事業の撤退・構造改革を自ら主導し、倒産の危機から会社を守り抜く',
+      subtitle: '主力事業の撤退・構造改革を自ら主導し、会社の最悪の危機から命脈を守り抜く',
       star: {
         s: "主力事業の急減速により抜本ピボットを決断。年商46億円から<span class=\"text-highlight-rose\">月商500万円（99%減）</span>へ。",
         t: "倒産回避と、東証マザーズにおける「上場維持」条件のクリア。",
@@ -159,14 +159,14 @@ const PRESENTATION_DATA = {
       footerNote: "※綺麗事抜きの、会社とステークホルダーを絶対に守り抜く意思決定プロセス"
     },
 
-    /* SLIDE 6: W-STAR 2018-2023 (2) */
+    /* CHAPTER 06: RESURRECTION */
     {
       id: "slide-6",
       type: "w-star",
-      badge: "PHASE 2-2 : 不屈のV字回復 (2018-2023)",
+      badge: "CHAPTER 06 / 不屈：Google大被弾からのV字回復",
       accent: "amber",
       title: '直開拓M&Aと、Googleアルゴリズム大被弾からのV字回復',
-      subtitle: '泥臭い行動量とデータ分析力で、投資回収率177%を達成',
+      subtitle: '泥臭い行動量とデータ分析力で、投資回収率177%を叩き出した逆転劇',
       star: {
         s: "新事業補強のWebメディアM&A直後に、Googleアルゴリズム大被弾（利益90%減）。",
         t: "仲介なし直開拓M&Aの構築と、被弾メディアの爆速V字回復。",
@@ -182,14 +182,14 @@ const PRESENTATION_DATA = {
       footerNote: "※2023年には自立を見極め戦略売却。フィンテック事業へ全経営資源を集中"
     },
 
-    /* SLIDE 7: W-STAR 2023-PRESENT */
+    /* CHAPTER 07: EXPANSION */
     {
       id: "slide-7",
       type: "w-star",
-      badge: "PHASE 3 : 流通300億と拡大 (2023-現在)",
+      badge: "CHAPTER 07 / 飛躍：デジタルギフト®300億規模へ",
       accent: "emerald",
       title: 'デジタルギフト®の爆発的成長と組織倍増',
-      subtitle: '流通額（GMV）6.6倍成長と、取締役自らが先頭に立つトップリクルート',
+      subtitle: '流通額（GMV）6.6倍成長と、取締役自らが最前線に立つトップリクルート',
       star: {
         s: "フィンテック事業管掌役に就任。社内に専任人事担当者が完全不在。",
         t: "流通総額（GMV）の劇的成長と、人事不在の中での優秀人材獲得。",
@@ -205,11 +205,11 @@ const PRESENTATION_DATA = {
       footerNote: "※GMV300億を支えるための筋肉質で自律的な組織づくりの構造化"
     },
 
-    /* SLIDE 8: TRUTH 1 */
+    /* CHAPTER 08: TRUTH 1 */
     {
       id: "slide-8",
       type: "truth",
-      badge: "FIRST-PRINCIPLES CAREER : PART 1",
+      badge: "CHAPTER 08 / 洞察：ベンチャー裁量権の真実",
       accent: "rose",
       title: 'キャリアの真実①：「ベンチャー＝若手に裁量権」の嘘と本質',
       subtitle: '単なる作業の丸投げと、本物の意思決定権の違い',
@@ -229,11 +229,11 @@ const PRESENTATION_DATA = {
       footerNote: "※綺麗事ばかりを吹聴する採用マーケティングではなく、リアルな成長環境を語りたい"
     },
 
-    /* SLIDE 9: TRUTH 2 */
+    /* CHAPTER 09: TRUTH 2 */
     {
       id: "slide-9",
       type: "truth",
-      badge: "FIRST-PRINCIPLES CAREER : PART 2",
+      badge: "CHAPTER 09 / 覚悟：大手安泰神話の終焉",
       accent: "rose",
       title: 'キャリアの真実②：「大手＝安泰」の幻想と、これからのリアル',
       subtitle: '会社に守られる安定から、どこでも通用する「自立した市場価値」へ',
@@ -253,13 +253,13 @@ const PRESENTATION_DATA = {
       footerNote: "※自分の市場価値を会社依存から解き放つために、一番知ってほしい話"
     },
 
-    /* SLIDE 10: CLOSING */
+    /* CHAPTER 10: CLOSING */
     {
       id: "slide-10",
       type: "closing",
-      badge: "LAST SECTION : NO-LIMIT DIALOGUE",
+      badge: "CHAPTER 10 / 結び：未来は自分たちの手で創る",
       accent: "blue",
-      title: '未来は、絶対に自分たちの手で明るくできる。',
+      title: '「未来は、絶対に自分たちの手で明るくできる。」',
       subtitle: '大改革と危機を乗り越えてきたからこそ語れる、本音のQ&Aセッション',
       cards: [
         {

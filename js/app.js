@@ -1,8 +1,8 @@
 /**
  * PRESENTATION ENGINE & CONTROLLER
- * Hyper-Modern Bento Edition (Linear / Apple / Stripe Inspired)
- * Features: Living Background Orbs, Bento Glass Cards, Particle Reaction Generator,
- * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
+ * Executive Longform Storytelling Edition
+ * Features: Web Audio API Ambient Synth, Living Background Orbs, Bento Glass Cards,
+ * Particle Reaction Generator, Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -391,7 +391,74 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // ==========================================
-  // 4. FLOATING REACTION PARTICLE GENERATOR
+  // 4. WEB AUDIO API AMBIENT BGM SYNTHESIZER
+  // ==========================================
+
+  let audioCtx = null;
+  let isPlayingBgm = false;
+  let bgmGainNode = null;
+  let bgmOscillators = [];
+
+  const bgmBtn = document.getElementById('bgm-toggle-btn');
+
+  function toggleBgm() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    if (isPlayingBgm) {
+      // Stop BGM
+      if (bgmGainNode) {
+        bgmGainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
+        setTimeout(() => {
+          bgmOscillators.forEach(osc => osc.stop());
+          bgmOscillators = [];
+        }, 500);
+      }
+      isPlayingBgm = false;
+      if (bgmBtn) bgmBtn.innerHTML = '<span>🎵 STORY BGM</span>';
+    } else {
+      // Start Inspirational Soft Ambient Chord Synth (C Maj9: C4, E4, G4, B4, D5)
+      const frequencies = [261.63, 329.63, 392.00, 493.88, 587.33];
+      bgmGainNode = audioCtx.createGain();
+      bgmGainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+      bgmGainNode.gain.exponentialRampToValueAtTime(0.04, audioCtx.currentTime + 2);
+
+      bgmOscillators = frequencies.map(freq => {
+        const osc = audioCtx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        // Gentle modulation for warm pad feel
+        const lfo = audioCtx.createOscillator();
+        lfo.frequency.value = 0.2 + Math.random() * 0.3;
+        const lfoGain = audioCtx.createGain();
+        lfoGain.gain.value = 1.5;
+        lfo.connect(lfoGain);
+        lfoGain.connect(osc.frequency);
+        lfo.start();
+
+        osc.connect(bgmGainNode);
+        osc.start();
+        return osc;
+      });
+
+      bgmGainNode.connect(audioCtx.destination);
+      isPlayingBgm = true;
+      if (bgmBtn) bgmBtn.innerHTML = '<span>🎶 BGM PLAYING...</span>';
+    }
+  }
+
+  if (bgmBtn) {
+    bgmBtn.addEventListener('click', toggleBgm);
+  }
+
+  // ==========================================
+  // 5. FLOATING REACTION PARTICLE GENERATOR
   // ==========================================
 
   const reactionBtn = document.getElementById('reaction-btn');
@@ -425,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 5. GOOGLE EASTER EGGS & INTERACTIVE TRICKS
+  // 6. GOOGLE EASTER EGGS & INTERACTIVE TRICKS
   // ==========================================
 
   window.doBarrelRoll = function() {
@@ -452,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 6. GOOGLE PRESENTATION SEARCH SYSTEM
+  // 7. GOOGLE PRESENTATION SEARCH SYSTEM
   // ==========================================
 
   const searchModal = document.getElementById('search-modal');
@@ -511,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const plainSubtitle = slide.subtitle.replace(/<\/?[^>]+(>|$)/g, "");
 
       item.innerHTML = `
-        <div style="font-size: 0.75rem; font-weight: 800; color: #2563eb;">SLIDE ${slideIndex + 1} • ${slide.badge}</div>
+        <div style="font-size: 0.75rem; font-weight: 800; color: #2563eb;">CHAPTER ${slideIndex + 1} • ${slide.badge}</div>
         <div style="font-size: 1rem; font-weight: 800; color: var(--text-main);">${plainTitle}</div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">${plainSubtitle}</div>
       `;
@@ -526,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 7. MODALS & INDEX TIMELINE DRAWER
+  // 8. MODALS & INDEX TIMELINE DRAWER
   // ==========================================
 
   const indexDrawer = document.getElementById('index-drawer');
@@ -548,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 8. INTERACTIVE ZOOM MODAL
+  // 9. INTERACTIVE ZOOM MODAL
   // ==========================================
 
   const zoomModal = document.getElementById('zoom-modal');
@@ -607,7 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3 style="font-size: 1.85rem; font-weight: 900; color: #0f172a;">千葉フローレンス夏歌 ちゃん</h3>
           <p style="font-size: 0.95rem; color: #2563eb; font-weight: 800; margin-top: 0.25rem;">Natsuka Florence Chiba</p>
           <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-top: 0.85rem; max-width: 520px;">
-            「娘に誇れる明るい未来をつくること」<br>
+            「娘に誇れる圧倒的に明るい未来をつくること」<br>
             千葉パパを無限に走らせるエネルギー源であり、泥臭い仕事もすべての逆境も笑顔で乗り越えるための原点です。
           </p>
         </div>
@@ -617,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 9. PRESENTATION TIMER
+  // 10. PRESENTATION TIMER
   // ==========================================
 
   const timerToggle = document.getElementById('timer-toggle');
