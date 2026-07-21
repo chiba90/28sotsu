@@ -1,6 +1,6 @@
 /**
  * PRESENTATION SLIDE DATA DB
- * Storytelling Edition: Clean, punchy text without redundant label repetitions.
+ * Storytelling Edition: With bottom impact footers for perfect vertical card balance.
  */
 const PRESENTATION_DATA = {
   meta: {
@@ -61,14 +61,16 @@ const PRESENTATION_DATA = {
           badgeColor: "amber",
           title: "地方から「自ら仕事を生み出す起業家」が育つエコシステム構築",
           lead: "雇用創出と挑戦の後押し。",
-          body: "単なる支援に留まらず、若者から自立した起業家が生まれる<span class=\"text-highlight-amber\">持続可能な事業生態系</span>を全国に創り出すことが私のミッションです。"
+          body: "単なる支援に留まらず、若者から自立した起業家が生まれる<span class=\"text-highlight-amber\">持続可能な事業生態系</span>を全国に創り出すことが私のミッションです。",
+          footer: "💡 MISSION : 挑戦者が自立し稼げる仕組みを全国へ"
         },
         {
           badge: "ORIGIN : 2011年 震災ボランティア",
           badgeColor: "blue",
           title: "「この街が綺麗になる頃には、もう誰も住んでいないだろうね」",
           lead: "被災地のお婆さんの一言に衝撃を受けた。",
-          body: "<strong>「真の復興とは支援ではなく、持続的にお金を稼ぎ使える仕組み＝仕事の創出である」</strong>と確信し、新卒入社しました。"
+          body: "<strong>「真の復興とは支援ではなく、持続的にお金を稼ぎ使える仕組み＝仕事の創出である」</strong>と確信し、新卒入社しました。",
+          footer: "🔥 TURNING POINT : 「仕事の創出」こそが最大の社会貢献"
         }
       ],
       footerNote: "※一切の妥協なくやり切り、会社を再成長軌道に乗せるプロセスこそが自身の財産"
@@ -88,21 +90,24 @@ const PRESENTATION_DATA = {
           badgeColor: "amber",
           title: "自分が組織の成長のボトルネックにならない",
           lead: "思考の枠組みを脱ぎ捨てる。",
-          body: "常に自らの既成概念を<span class=\"text-highlight-amber\">アンラーン（学習棄却）</span>し、挑戦の限界を押し広げ続けます。"
+          body: "常に自らの既成概念を<span class=\"text-highlight-amber\">アンラーン（学習棄却）</span>し、挑戦の限界を押し広げ続けます。",
+          footer: "💡 UNLEARN : 過去の成功体験を壊し進化"
         },
         {
           badge: "2. Systems over Heroism",
           badgeColor: "blue",
           title: "個人の実績を「再現可能なシステム」へ昇華",
           lead: "属人性に頼らない組織へ。",
-          body: "テクノロジーとシステム思考で<span class=\"text-highlight-blue\">自律的に回る仕組み</span>を構築します。"
+          body: "テクノロジーとシステム思考で<span class=\"text-highlight-blue\">自律的に回る仕組み</span>を構築します。",
+          footer: "⚡ SYSTEM : 個人技に頼らず仕組みで勝つ"
         },
         {
           badge: "3. Gravitational Credibility",
           badgeColor: "purple",
           title: "圧倒的な「社会的信用」を勝ち取る",
           lead: "誰もが認める信用価値。",
-          body: "将来、地方で挑戦者を支援し資金と人を動かすための<span class=\"text-highlight-purple\">揺るぎない信用</span>を高めます。"
+          body: "将来、地方で挑戦者を支援し資金と人を動かすための<span class=\"text-highlight-purple\">揺るぎない信用</span>を高めます。",
+          footer: "💎 TRUST : 人と資金を動かす真の信用力"
         }
       ],
       footerNote: "※現在のポジションに安住せず、自分自身を投資対象としてアップデートし続ける"
@@ -125,7 +130,8 @@ const PRESENTATION_DATA = {
       why: {
         title: "W : Why (当事者意識の覚悟)",
         lead: "「自身の事業が全体の投資源泉である」と解釈を転換。",
-        body: "置かれた場所で圧倒的な結果を出し、自ら存在意義を創出しました。"
+        body: "置かれた場所で圧倒的な結果を出し、自ら存在意義を創出しました。",
+        footer: "🔥 PRINCIPLE : 置かれた場所で圧倒的結果を出す"
       },
       footerNote: "※感情のマネジメントから、システムとエコシステムによる仕組み化への転換"
     },
@@ -147,7 +153,8 @@ const PRESENTATION_DATA = {
       why: {
         title: "W : Why (不退転の意志)",
         lead: "「自分が選択した場所で最後まで戦い抜く」と決意。",
-        body: "ダメになるなら極限までやり切るという責任と誇りを貫きました。"
+        body: "ダメになるなら極限までやり切るという責任と誇りを貫きました。",
+        footer: "🔥 RESILIENCE : 地獄の危機でも逃げずに守り抜く"
       },
       footerNote: "※綺麗事抜きの、会社とステークホルダーを絶対に守り抜く意思決定プロセス"
     },
@@ -169,7 +176,8 @@ const PRESENTATION_DATA = {
       why: {
         title: "W : Why (絶対的オーナーシップ)",
         lead: "「自分が利益の太い柱を作らなければ会社が倒れる」。",
-        body: "言い訳を一切捨て、自らの行動量と分析力で切り開きました。"
+        body: "言い訳を一切捨て、自らの行動量と分析力で切り開きました。",
+        footer: "🚀 RECOVERY : 泥臭い行動量と分析でV字回復"
       },
       footerNote: "※2023年には自立を見極め戦略売却。フィンテック事業へ全経営資源を集中"
     },
@@ -191,7 +199,8 @@ const PRESENTATION_DATA = {
       why: {
         title: "W : Why (トップリクルートの思想)",
         lead: "「ビジョンを解像度高く語れるのは経営陣自身」。",
-        body: "自ら汗をかくことこそが最高の仲間を惹きつけると確信。"
+        body: "自ら汗をかくことこそが最高の仲間を惹きつけると確信。",
+        footer: "✨ LEADERSHIP : 自ら汗をかき仲間を惹きつける"
       },
       footerNote: "※GMV300億を支えるための筋肉質で自律的な組織づくりの構造化"
     },
@@ -207,13 +216,15 @@ const PRESENTATION_DATA = {
       myth: {
         label: "よくある採用ピッチの甘い言葉",
         quote: "「うちはベンチャーだから、1年目から億円単位の予算と裁量を渡して自由に挑戦させるよ！」",
-        note: "採用ブランディング用の耳ざわりの良い定型文。"
+        note: "採用ブランディング用の耳ざわりの良い定型文。",
+        footer: "⚠️ CAUTION : 自由という名の「作業丸投げ」に注意"
       },
       fact: {
         label: "経営者・プロリクルーターの本音ファクト",
         quote: "実力も信頼関係もない人物に、決定権を渡せるわけがありません。",
         lead: "多くの場合、人員不足による「作業の丸投げ」に過ぎません。",
-        body: "本当の裁量権とは、<strong>「成果」と「信頼残高」</strong>をもぎ取ったプロにのみ与えられる報酬です。成果を出したメンバーには最高の打席を用意します。"
+        body: "本当の裁量権とは、<strong>「成果」と「信頼残高」</strong>をもぎ取ったプロにのみ与えられる報酬です。成果を出したメンバーには最高の打席を用意します。",
+        footer: "🔥 KEY REALITY : 「成果と信用」をもぎ取ったプロに裁量を与える"
       },
       footerNote: "※綺麗事ばかりを吹聴する採用マーケティングではなく、リアルな成長環境を語りたい"
     },
@@ -229,13 +240,15 @@ const PRESENTATION_DATA = {
       myth: {
         label: "旧来の安定モデルの崩壊",
         quote: "「有名な大手にいれば、定年まで守られて安泰な人生が約束される」",
-        body: "従来の終身雇用モデルは崩壊。サークルではなく、成果にコミットする<strong>Netflix型「高密度プロスポーツチーム」</strong>へ移行します。"
+        body: "従来の終身雇用モデルは崩壊。サークルではなく、成果にコミットする<strong>Netflix型「高密度プロスポーツチーム」</strong>へ移行します。",
+        footer: "⚠️ CAUTION : 「大手＝終身雇用」の神話は完結"
       },
       fact: {
         label: "真の「安定」の再定義",
         quote: "明日どんな荒野に放り出されても稼げる「自分の腕＝実力」こそが唯一の安定。",
         lead: "従来の終身雇用モデルは崩壊しました。",
-        body: "組織の看板を失った時、何が残るか。<span class=\"text-highlight-rose\">自らの足で立ち、市場価値を高め続けたい個人</span>のための最高の鍛錬場であり続けます。"
+        body: "組織の看板を失った時、何が残るか。<span class=\"text-highlight-rose\">自らの足で立ち、市場価値を高め続けたい個人</span>のための最高の鍛錬場であり続けます。",
+        footer: "🔥 KEY REALITY : 荒野でも稼げる「個人の市場価値」を研ぎ澄ます"
       },
       footerNote: "※自分の市場価値を会社依存から解き放つために、一番知ってほしい話"
     },
@@ -254,14 +267,16 @@ const PRESENTATION_DATA = {
           title: "取締役を焦らせる「NGなし」の直球質問を歓迎",
           lead: "NG制限なしの直球回答。",
           body: "「事業再生時の離職率は？」「退職勧奨時どう声をかけた？」「取締役の今のぶっちゃけた給与は？」など、リアルな経営現場を開示します。",
-          note: "💡 クリックで質問例をモーダル表示＆ダイレクト対話が可能です"
+          note: "💡 クリックで質問例をモーダル表示＆ダイレクト対話が可能です",
+          footer: "❓ DIRECT Q&A : 経営の裏側もすべてオープンに開示"
         },
         {
           icon: "🤝",
           title: "本気の仲間を探すため、着飾らず向き合う",
           lead: "本気の対話。",
           body: "人事を通さず取締役が直接対話するのは、お互いが「本気で未来を創るパートナー」になれるかを見極めるため。熱量のある対話を始めましょう。",
-          note: "🔥 あなたの本気のキャリア観と疑問をぶつけてください"
+          note: "🔥 あなたの本気のキャリア観と疑問をぶつけてください",
+          footer: "🤝 PARTNERSHIP : 未来を創る本気の仲間を探す対話"
         }
       ],
       footerNote: "※千葉 博文の「生存戦略」、これにて終了。本番のQ&Aセッションに入ります"
