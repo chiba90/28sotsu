@@ -1,6 +1,7 @@
 /* ==========================================================================
    DIGITAL PLUS - EXECUTIVE BRIEFING SLIDE PRESENTATION STYLESHEET
    Design Theme: Google Material Workspace (Minimalist, Clean, High Space Efficiency)
+   With Transition Light Sweep & Final Slide Ray of Hope Aura
    ========================================================================== */
 
 /* --- CSS Variables & Design Tokens (Google Design System) --- */
@@ -63,6 +64,66 @@ html, body {
 @keyframes barrelRoll {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* --- LIGHT SWEEP STREAK ANIMATION (スライド切り替え時の一筋の光) --- */
+.light-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(251, 191, 36, 0.25) 48%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(245, 158, 11, 0.25) 52%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: translate(-100%, -100%) rotate(-35deg);
+  pointer-events: none;
+  z-index: 99;
+}
+
+.active .light-sweep-active {
+  animation: sweepAnimation 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes sweepAnimation {
+  0% { transform: translate(-60%, -60%) rotate(-35deg); }
+  100% { transform: translate(60%, 60%) rotate(-35deg); }
+}
+
+/* --- FINAL SLIDE RAY OF HOPE AURA (最終ページの未来の大光輪) --- */
+.super-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120vw;
+  height: 120vh;
+  background: radial-gradient(
+    circle,
+    rgba(253, 224, 71, 0.35) 0%,
+    rgba(251, 191, 36, 0.18) 30%,
+    rgba(245, 158, 11, 0.05) 60%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.active .super-glow-active {
+  animation: superGlowFade 5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes superGlowFade {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0; filter: blur(50px); }
+  20% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; filter: blur(90px); }
+  100% { transform: translate(-50%, -50%) scale(1.55); opacity: 0; filter: blur(180px); }
 }
 
 /* --- High-Contrast Google Style Highlight Tags --- */
@@ -298,7 +359,7 @@ html, body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Title aligned consistently to top across ALL slides */
+  justify-content: flex-start;
 }
 
 .slide-header-block {
@@ -373,7 +434,7 @@ html, body {
   transform: translateY(0);
 }
 
-/* --- Card Design System (Google Card Layout Efficiency) --- */
+/* --- Card Design System --- */
 .glass-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
@@ -415,7 +476,7 @@ html, body {
   color: var(--text-muted);
 }
 
-/* --- Layout Grids (Fills Available Vertical Space) --- */
+/* --- Layout Grids --- */
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -568,7 +629,7 @@ html, body {
   transition: width 0.3s ease;
 }
 
-/* --- Slide Index Drawer (Google Navigation Drawer) --- */
+/* --- Slide Index Drawer --- */
 .index-drawer {
   position: fixed;
   inset: 0;
