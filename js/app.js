@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const templates = {
-    // HERO / INTRO TEMPLATE (3 CARDS IN BOTTOM ROW)
+    // HERO / INTRO TEMPLATE
     hero: (slide) => {
       const p = slide.presenter;
       const m = slide.metric;
@@ -105,11 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
     split: (slide) => {
       const cardsHtml = slide.cards.map(c => `
         <div class="glass-card ${getCardAccentClass(c.badgeColor)}">
-          <div>
-            <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
-            <h3 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0.75rem 0 0.85rem 0; line-height: 1.35;">${c.title}</h3>
-            ${c.lead ? `<p style="font-size: 1.125rem; font-weight: 800; color: #0f172a; margin-bottom: 0.45rem;">${c.lead}</p>` : ''}
-            <p style="font-size: 1.025rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
+          <div style="display: flex; flex-direction: column; height: 100%;">
+            <div>
+              <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
+              <h3 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0.75rem 0 0.85rem 0; line-height: 1.35;">${c.title}</h3>
+              ${c.lead ? `<p style="font-size: 1.125rem; font-weight: 800; color: #0f172a; margin-bottom: 0.45rem;">${c.lead}</p>` : ''}
+              <p style="font-size: 1.025rem; color: var(--text-muted); line-height: 1.7;">${c.body}</p>
+            </div>
+            ${c.footer ? `<div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8); font-size: 0.875rem; font-weight: 800; color: #2563eb;">${c.footer}</div>` : ''}
           </div>
         </div>
       `).join('');
@@ -120,11 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
     grid: (slide) => {
       const cardsHtml = slide.cards.map(c => `
         <div class="glass-card ${getCardAccentClass(c.badgeColor)}">
-          <div>
-            <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
-            <h3 style="font-size: 1.3rem; font-weight: 800; color: #0f172a; margin: 0.75rem 0 0.65rem 0; line-height: 1.35;">${c.title}</h3>
-            ${c.lead ? `<p style="font-size: 1.075rem; font-weight: 800; color: #0f172a; margin-bottom: 0.4rem;">${c.lead}</p>` : ''}
-            <p style="font-size: 0.975rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
+          <div style="display: flex; flex-direction: column; height: 100%;">
+            <div>
+              <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
+              <h3 style="font-size: 1.3rem; font-weight: 800; color: #0f172a; margin: 0.75rem 0 0.65rem 0; line-height: 1.35;">${c.title}</h3>
+              ${c.lead ? `<p style="font-size: 1.075rem; font-weight: 800; color: #0f172a; margin-bottom: 0.4rem;">${c.lead}</p>` : ''}
+              <p style="font-size: 0.975rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
+            </div>
+            ${c.footer ? `<div style="margin-top: auto; padding-top: 0.85rem; border-top: 1px solid rgba(226, 232, 240, 0.8); font-size: 0.825rem; font-weight: 800; color: #2563eb;">${c.footer}</div>` : ''}
           </div>
         </div>
       `).join('');
@@ -143,38 +149,41 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="glass-card">
               <div>
                 <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; tracking-wider; text-transform: uppercase;">S : Situation</span>
-                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.55;">${s.s}</p>
+                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.6;">${s.s}</p>
               </div>
             </div>
             <!-- Task -->
             <div class="glass-card">
               <div>
                 <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; tracking-wider; text-transform: uppercase;">T : Task</span>
-                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.55;">${s.t}</p>
+                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.6;">${s.t}</p>
               </div>
             </div>
             <!-- Action -->
             <div class="glass-card">
               <div>
                 <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; tracking-wider; text-transform: uppercase;">A : Action</span>
-                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.55;">${s.a}</p>
+                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.6;">${s.a}</p>
               </div>
             </div>
             <!-- Result -->
             <div class="glass-card ${getCardAccentClass(slide.accent)}">
               <div>
                 <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">R : Result</span>
-                <p style="font-size: 1rem; color: #0f172a; margin-top: 0.65rem; line-height: 1.55; font-weight: 700;">${s.r}</p>
+                <p style="font-size: 1rem; color: #0f172a; margin-top: 0.65rem; line-height: 1.6; font-weight: 700;">${s.r}</p>
               </div>
             </div>
           </div>
 
           <!-- Why Highlight Card -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-color: #bfdbfe;">
-            <div>
-              <span style="font-size: 0.75rem; font-weight: 800; color: #1d4ed8; tracking-wider; text-transform: uppercase;">${w.title}</span>
-              ${w.lead ? `<p style="font-size: 1.15rem; font-weight: 900; color: #0f172a; margin-top: 0.6rem; line-height: 1.4;">${w.lead}</p>` : ''}
-              <p style="font-size: 1.025rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">${w.body}</p>
+            <div style="display: flex; flex-direction: column; height: 100%;">
+              <div>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #1d4ed8; tracking-wider; text-transform: uppercase;">${w.title}</span>
+                ${w.lead ? `<p style="font-size: 1.15rem; font-weight: 900; color: #0f172a; margin-top: 0.6rem; line-height: 1.4;">${w.lead}</p>` : ''}
+                <p style="font-size: 1.025rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.65;">${w.body}</p>
+              </div>
+              ${w.footer ? `<div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(191, 219, 254, 0.8); font-size: 0.85rem; font-weight: 800; color: #1d4ed8;">${w.footer}</div>` : ''}
             </div>
           </div>
         </div>
@@ -189,21 +198,26 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="truth-grid anim-el delay-2">
           <!-- Myth Card -->
           <div class="glass-card" style="border-color: rgba(225, 29, 72, 0.4); background: linear-gradient(135deg, #fff1f2, #ffe4e6);">
-            <div>
-              <span style="font-size: 0.75rem; font-weight: 800; color: #be123c; tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: #ffffff; border-radius: 6px;">${m.label}</span>
-              <h3 style="font-size: 1.35rem; font-weight: 900; color: #9f1239; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${m.quote}"</h3>
-              ${m.body ? `<p style="font-size: 1rem; color: #881337; line-height: 1.6; border-top: 1px solid rgba(225, 29, 72, 0.2); padding-top: 0.75rem;">${m.body}</p>` : ''}
+            <div style="display: flex; flex-direction: column; height: 100%;">
+              <div>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #be123c; tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: #ffffff; border-radius: 6px;">${m.label}</span>
+                <h3 style="font-size: 1.35rem; font-weight: 900; color: #9f1239; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${m.quote}"</h3>
+                ${m.body ? `<p style="font-size: 1rem; color: #881337; line-height: 1.65; border-top: 1px solid rgba(225, 29, 72, 0.2); padding-top: 0.75rem;">${m.body}</p>` : ''}
+              </div>
+              ${m.footer ? `<div style="margin-top: auto; padding-top: 0.85rem; border-top: 1px solid rgba(225, 29, 72, 0.2); font-size: 0.825rem; font-weight: 800; color: #be123c;">${m.footer}</div>` : ''}
             </div>
-            <div style="font-size: 0.8rem; color: #9f1239; margin-top: 1.25rem; font-weight: 700;">${m.note || ''}</div>
           </div>
 
           <!-- Fact Card -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: #ffffff;">
-            <div>
-              <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: linear-gradient(135deg, #fff1f2, #ffe4e6); border-radius: 6px;">${f.label}</span>
-              <h3 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${f.quote}"</h3>
-              ${f.lead ? `<p style="font-size: 1.125rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0;">${f.lead}</p>` : ''}
-              <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">${f.body}</p>
+            <div style="display: flex; flex-direction: column; height: 100%;">
+              <div>
+                <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: linear-gradient(135deg, #fff1f2, #ffe4e6); border-radius: 6px;">${f.label}</span>
+                <h3 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${f.quote}"</h3>
+                ${f.lead ? `<p style="font-size: 1.125rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0;">${f.lead}</p>` : ''}
+                <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">${f.body}</p>
+              </div>
+              ${f.footer ? `<div style="margin-top: auto; padding-top: 0.85rem; border-top: 1px solid rgba(226, 232, 240, 0.8); font-size: 0.85rem; font-weight: 800; color: #2563eb;">${f.footer}</div>` : ''}
             </div>
           </div>
         </div>
@@ -214,14 +228,14 @@ document.addEventListener('DOMContentLoaded', () => {
     closing: (slide) => {
       const cardsHtml = slide.cards.map(c => `
         <div class="glass-card ${getCardAccentClass(slide.accent)}">
-          <div>
-            <div style="font-size: 2.4rem; margin-bottom: 0.65rem;">${c.icon}</div>
-            <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 0.75rem;">${c.title}</h3>
-            ${c.lead ? `<p style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">${c.lead}</p>` : ''}
-            <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
-          </div>
-          <div style="font-size: 0.85rem; color: #2563eb; font-weight: 800; margin-top: 1.5rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
-            ${c.note}
+          <div style="display: flex; flex-direction: column; height: 100%;">
+            <div>
+              <div style="font-size: 2.4rem; margin-bottom: 0.65rem;">${c.icon}</div>
+              <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 0.75rem;">${c.title}</h3>
+              ${c.lead ? `<p style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">${c.lead}</p>` : ''}
+              <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
+            </div>
+            ${c.footer ? `<div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(226, 232, 240, 0.8); font-size: 0.85rem; font-weight: 800; color: #2563eb;">${c.footer}</div>` : ''}
           </div>
         </div>
       `).join('');
