@@ -1,7 +1,7 @@
 /**
  * PRESENTATION ENGINE & CONTROLLER
  * Handles HTML generation, slide navigation, keyboard/touch input,
- * interactive zoom modal, and presentation timer.
+ * interactive zoom modal, and presentation timer for High-Visibility White Theme.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -46,30 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="glass-card" style="grid-column: 1 / -1; min-height: 220px; md:grid-column: span 1;">
             <div class="profile-card-header">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">PRESENTER PROFILE</span>
-                <h3 style="font-size: 1.6rem; font-weight: 900; margin-top: 0.25rem;">${p.name}</h3>
-                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.1rem;">${p.role}</p>
+                <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">PRESENTER PROFILE</span>
+                <h3 style="font-size: 1.85rem; font-weight: 900; margin-top: 0.25rem; color: #0f172a;">${p.name}</h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.1rem; font-weight: 600;">${p.role}</p>
               </div>
               <div class="avatar-thumb" onclick="event.stopPropagation(); zoomDaughter();" title="クリックで娘の写真拡大！">
                 <img src="${p.daughterImg}" alt="${p.daughterName}">
               </div>
             </div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.5;">
+            <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.6; font-weight: 500;">
               ${p.daughterNote}
             </p>
-            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1.25rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
+            <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 1.25rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem; font-weight: 600;">
               ${p.university}
             </p>
           </div>
 
           <!-- Continuity Metric Card -->
-          <div class="glass-card">
+          <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
-              <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${m.badge}</span>
-              <div style="font-size: 3.2rem; font-weight: 900; color: var(--accent-${slide.accent}); margin-top: 0.5rem; line-height: 1;">${m.value}</div>
-              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-top: 0.75rem;">${m.label}</h4>
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${m.badge}</span>
+              <div style="font-size: 3.8rem; font-weight: 900; color: var(--accent-${slide.accent}); margin-top: 0.5rem; line-height: 1; letter-spacing: -0.02em;">${m.value}</div>
+              <h4 style="font-size: 1.2rem; font-weight: 800; color: #0f172a; margin-top: 0.75rem;">${m.label}</h4>
             </div>
-            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 1rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
               ${m.note}
             </p>
           </div>
@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Today's Theme Card -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
-              <span style="font-size: 0.7rem; font-weight: 800; color: #ffffff; tracking-wider; text-transform: uppercase; opacity: 0.85;">${t.badge}</span>
-              <h4 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; margin-top: 0.75rem; line-height: 1.3;">${t.title}</h4>
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${t.badge}</span>
+              <h4 style="font-size: 1.5rem; font-weight: 900; color: #0f172a; margin-top: 0.75rem; line-height: 1.35;">${t.title}</h4>
             </div>
-            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.75rem;">
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 1rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
               ${t.note}
             </p>
           </div>
@@ -91,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // SPLIT CARDS TEMPLATE (2 COLUMNS)
     split: (slide) => {
       const cardsHtml = slide.cards.map(c => `
-        <div class="glass-card">
+        <div class="glass-card ${getCardAccentClass(c.badgeColor)}">
           <div>
             <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
-            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin: 0.75rem 0 1rem 0; line-height: 1.3;">${c.title}</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
+            <h3 style="font-size: 1.6rem; font-weight: 900; color: #0f172a; margin: 0.85rem 0 1rem 0; line-height: 1.35;">${c.title}</h3>
+            <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.7;">${c.body}</p>
           </div>
         </div>
       `).join('');
@@ -105,18 +105,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // GRID CARDS TEMPLATE (3 COLUMNS)
     grid: (slide) => {
       const cardsHtml = slide.cards.map(c => `
-        <div class="glass-card">
+        <div class="glass-card ${getCardAccentClass(c.badgeColor)}">
           <div>
             <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
-            <h3 style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin: 0.75rem 0 0.75rem 0; line-height: 1.3;">${c.title}</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0.85rem 0 0.75rem 0; line-height: 1.35;">${c.title}</h3>
+            <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
           </div>
         </div>
       `).join('');
       return `<div class="grid-3 anim-el delay-2">${cardsHtml}</div>`;
     },
 
-    // W-STAR CASE STUDY TEMPLATE (STAR grid + Why highlight)
+    // W-STAR CASE STUDY TEMPLATE
     "w-star": (slide) => {
       const s = slide.star;
       const w = slide.why;
@@ -127,40 +127,40 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Situation -->
             <div class="glass-card">
               <div>
-                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">S : Situation</span>
-                <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.55;">${s.s}</p>
+                <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">S : Situation</span>
+                <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.6;">${s.s}</p>
               </div>
             </div>
             <!-- Task -->
             <div class="glass-card">
               <div>
-                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">T : Task</span>
-                <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.55;">${s.t}</p>
+                <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">T : Task</span>
+                <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.6;">${s.t}</p>
               </div>
             </div>
             <!-- Action -->
             <div class="glass-card">
               <div>
-                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">A : Action</span>
-                <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.55;">${s.a}</p>
+                <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">A : Action</span>
+                <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.6;">${s.a}</p>
               </div>
             </div>
             <!-- Result -->
             <div class="glass-card ${getCardAccentClass(slide.accent)}">
               <div>
-                <span style="font-size: 0.7rem; font-weight: 800; color: #ffffff; tracking-wider; text-transform: uppercase; opacity: 0.85;">R : Result</span>
-                <p style="font-size: 0.825rem; color: #ffffff; margin-top: 0.75rem; line-height: 1.55;">${s.r}</p>
+                <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">R : Result</span>
+                <p style="font-size: 1.05rem; color: #0f172a; margin-top: 0.75rem; line-height: 1.6; font-weight: 600;">${s.r}</p>
               </div>
             </div>
           </div>
 
           <!-- Why Highlight Card -->
-          <div class="glass-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 100%); border-color: rgba(255,255,255,0.15);">
+          <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: #faf5ff;">
             <div>
-              <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${w.title}</span>
-              <p style="font-size: 0.85rem; color: var(--text-main); margin-top: 0.75rem; line-height: 1.6;">${w.body}</p>
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${w.title}</span>
+              <p style="font-size: 1.1rem; color: #0f172a; margin-top: 0.85rem; line-height: 1.7; font-weight: 600;">${w.body}</p>
             </div>
-            <div style="position: absolute; right: -10px; bottom: -20px; font-size: 6rem; font-weight: 900; color: rgba(255,255,255,0.02); select-none: none; pointer-events: none;">W</div>
+            <div style="position: absolute; right: 10px; bottom: -10px; font-size: 7rem; font-weight: 900; color: rgba(0,0,0,0.03); select-none: none; pointer-events: none;">W</div>
           </div>
         </div>
       `;
@@ -173,21 +173,21 @@ document.addEventListener('DOMContentLoaded', () => {
       return `
         <div class="truth-grid anim-el delay-2">
           <!-- Myth Card -->
-          <div class="glass-card" style="border-color: rgba(244, 63, 94, 0.25); background: rgba(244, 63, 94, 0.02);">
+          <div class="glass-card" style="border-color: rgba(244, 63, 94, 0.3); background: #fff1f2;">
             <div>
-              <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-rose); tracking-wider; text-transform: uppercase; padding: 0.2rem 0.5rem; background: rgba(244,63,94,0.1); border-radius: 4px;">${m.label}</span>
-              <h3 style="font-size: 1.2rem; font-weight: 800; color: #fda4af; margin: 1rem 0; line-height: 1.45;">"${m.quote}"</h3>
-              ${m.body ? `<p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; border-top: 1px solid rgba(244,63,94,0.15); padding-top: 0.75rem;">${m.body}</p>` : ''}
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-rose); tracking-wider; text-transform: uppercase; padding: 0.3rem 0.75rem; background: #ffe4e6; border-radius: 6px;">${m.label}</span>
+              <h3 style="font-size: 1.45rem; font-weight: 800; color: #9f1239; margin: 1.25rem 0 1rem 0; line-height: 1.45;">"${m.quote}"</h3>
+              ${m.body ? `<p style="font-size: 1.05rem; color: #4c0519; line-height: 1.65; border-top: 1px solid rgba(244,63,94,0.2); padding-top: 0.85rem;">${m.body}</p>` : ''}
             </div>
-            <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1.5rem;">${m.note || ''}</div>
+            <div style="font-size: 0.85rem; color: #be123c; margin-top: 1.5rem; font-weight: 600;">${m.note || ''}</div>
           </div>
 
           <!-- Fact Card -->
-          <div class="glass-card ${getCardAccentClass(slide.accent)}">
+          <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: #ffffff;">
             <div>
-              <span style="font-size: 0.7rem; font-weight: 800; color: #ffffff; tracking-wider; text-transform: uppercase; padding: 0.2rem 0.5rem; background: rgba(255,255,255,0.15); border-radius: 4px;">${f.label}</span>
-              <h3 style="font-size: 1.2rem; font-weight: 900; color: #ffffff; margin: 1rem 0; line-height: 1.45;">"${f.quote}"</h3>
-              <p style="font-size: 0.85rem; color: rgba(255,255,255,0.85); line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.75rem;">${f.body}</p>
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase; padding: 0.3rem 0.75rem; background: #ffe4e6; border-radius: 6px;">${f.label}</span>
+              <h3 style="font-size: 1.55rem; font-weight: 900; color: #0f172a; margin: 1.25rem 0 1rem 0; line-height: 1.4;">"${f.quote}"</h3>
+              <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; border-top: 1px solid var(--border-card); padding-top: 0.85rem;">${f.body}</p>
             </div>
           </div>
         </div>
@@ -197,13 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // CLOSING / QA TEMPLATE
     closing: (slide) => {
       const cardsHtml = slide.cards.map(c => `
-        <div class="glass-card">
+        <div class="glass-card ${getCardAccentClass(slide.accent)}">
           <div>
-            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">${c.icon}</div>
-            <h3 style="font-size: 1.15rem; font-weight: 900; color: #ffffff; margin-bottom: 0.75rem;">${c.title}</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
+            <div style="font-size: 2.5rem; margin-bottom: 0.85rem;">${c.icon}</div>
+            <h3 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin-bottom: 0.85rem;">${c.title}</h3>
+            <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.7;">${c.body}</p>
           </div>
-          <div style="font-size: 0.75rem; color: var(--accent-${slide.accent}); font-weight: 700; margin-top: 1.5rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
+          <div style="font-size: 0.9rem; color: var(--accent-${slide.accent}); font-weight: 800; margin-top: 1.75rem; border-top: 1px solid var(--border-card); padding-top: 0.85rem;">
             ${c.note}
           </div>
         </div>
@@ -321,7 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    // Avoid conflicts if modal or index drawer is focused
     if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
 
     if (e.key === 'ArrowRight' || e.key === ' ') {
@@ -379,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openZoomModal(contentHtml) {
     zoomModalBody.innerHTML = `
-      <div style="font-size: 1rem; color: var(--text-main); line-height: 1.7;">
+      <div style="font-size: 1.15rem; color: #0f172a; line-height: 1.75;">
         ${contentHtml}
       </div>
     `;
@@ -402,16 +401,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function bindCardClickEvents() {
-    // Zoom general glass cards
     document.querySelectorAll('.glass-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        // Exclude specific elements like the avatar thumbnail click
         if (e.target.closest('.avatar-thumb')) return;
 
-        // Clone internal content and remove scaling modifiers or tiny margins for reading view
         const clone = card.cloneNode(true);
-        
-        // Clean badge shapes, layout paddings, zoom icons for a cleaner reading flow
         const badges = clone.querySelectorAll('.slide-badge');
         badges.forEach(b => {
           b.style.marginBottom = '1.5rem';
@@ -426,13 +420,13 @@ document.addEventListener('DOMContentLoaded', () => {
   window.zoomDaughter = function() {
     const daughterHtml = `
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem;">
-        <div style="width: 100%; max-width: 380px; aspect-ratio: 3/4; overflow: hidden; border-radius: 20px; border: 2px solid var(--accent-amber); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div style="width: 100%; max-width: 380px; aspect-ratio: 3/4; overflow: hidden; border-radius: 20px; border: 3px solid #f59e0b; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
           <img src="PXL_20260705_051631581.jpg" alt="千葉フローレンス夏歌" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div>
-          <h3 style="font-size: 1.75rem; font-weight: 900; color: #ffffff;">千葉フローレンス夏歌 ちゃん</h3>
-          <p style="font-size: 0.9rem; color: var(--accent-amber); font-weight: 700; margin-top: 0.25rem;">Natsuka Florence Chiba</p>
-          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-top: 1rem; max-w: 520px;">
+          <h3 style="font-size: 2rem; font-weight: 900; color: #0f172a;">千葉フローレンス夏歌 ちゃん</h3>
+          <p style="font-size: 1rem; color: var(--accent-amber); font-weight: 800; margin-top: 0.25rem;">Natsuka Florence Chiba</p>
+          <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.75; margin-top: 1rem; max-width: 540px;">
             「娘に誇れる圧倒的に明るい未来をつくること」<br>
             千葉パパを無限に走らせるエネルギー源であり、泥臭い仕事もすべての逆境も笑顔で乗り越えるための原点です。
           </p>
@@ -464,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateTimerUI() {
     timerDisplay.textContent = formatTime(remainingSeconds);
-    if (remainingSeconds <= 300) { // Under 5 minutes: warning color
+    if (remainingSeconds <= 300) {
       timerDisplay.classList.add('timer-warning');
     } else {
       timerDisplay.classList.remove('timer-warning');
@@ -473,13 +467,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function toggleTimer() {
     if (timerInterval) {
-      // Pause
       clearInterval(timerInterval);
       timerInterval = null;
       timerPlayIcon.style.display = 'block';
       timerPauseIcon.style.display = 'none';
     } else {
-      // Play
       timerPlayIcon.style.display = 'none';
       timerPauseIcon.style.display = 'block';
       timerInterval = setInterval(() => {
