@@ -1,0 +1,517 @@
+/**
+ * PRESENTATION ENGINE & CONTROLLER
+ * Handles HTML generation, slide navigation, keyboard/touch input,
+ * interactive zoom modal, and presentation timer.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('slides-container');
+  const slideIndexList = document.getElementById('slide-index-list');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const progressFill = document.getElementById('progress-fill');
+  const currentNumDisplay = document.getElementById('current-slide-num');
+  
+  let currentSlideIndex = 0;
+  const slidesData = PRESENTATION_DATA.slides;
+
+  // ==========================================
+  // 1. SLIDE TEMPLATE GENERATORS
+  // ==========================================
+
+  function createBadge(badge, accent) {
+    return `<div class="slide-badge badge-${accent}">${badge}</div>`;
+  }
+
+  function getCardAccentClass(accent) {
+    switch (accent) {
+      case 'amber': return 'glass-card-accent-amber';
+      case 'blue': return 'glass-card-accent-blue';
+      case 'purple': return 'glass-card-accent-purple';
+      case 'emerald': return 'glass-card-accent-emerald';
+      case 'rose': return 'glass-card-accent-rose';
+      default: return '';
+    }
+  }
+
+  const templates = {
+    // HERO / INTRO TEMPLATE
+    hero: (slide) => {
+      const p = slide.presenter;
+      const m = slide.metric;
+      const t = slide.theme;
+      return `
+        <div class="hero-grid anim-el delay-2">
+          <!-- Presenter Info -->
+          <div class="glass-card" style="grid-column: 1 / -1; min-height: 220px; md:grid-column: span 1;">
+            <div class="profile-card-header">
+              <div>
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">PRESENTER PROFILE</span>
+                <h3 style="font-size: 1.6rem; font-weight: 900; margin-top: 0.25rem;">${p.name}</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.1rem;">${p.role}</p>
+              </div>
+              <div class="avatar-thumb" onclick="event.stopPropagation(); zoomDaughter();" title="クリックで娘の写真拡大！">
+                <img src="${p.daughterImg}" alt="${p.daughterName}">
+              </div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.5;">
+              ${p.daughterNote}
+            </p>
+            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1.25rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
+              ${p.university}
+            </p>
+          </div>
+
+          <!-- Continuity Metric Card -->
+          <div class="glass-card">
+            <div>
+              <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${m.badge}</span>
+              <div style="font-size: 3.2rem; font-weight: 900; color: var(--accent-${slide.accent}); margin-top: 0.5rem; line-height: 1;">${m.value}</div>
+              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-top: 0.75rem;">${m.label}</h4>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
+              ${m.note}
+            </p>
+          </div>
+
+          <!-- Today's Theme Card -->
+          <div class="glass-card ${getCardAccentClass(slide.accent)}">
+            <div>
+              <span style="font-size: 0.7rem; font-weight: 800; color: #ffffff; tracking-wider; text-transform: uppercase; opacity: 0.85;">${t.badge}</span>
+              <h4 style="font-size: 1.35rem; font-weight: 900; color: #ffffff; margin-top: 0.75rem; line-height: 1.3;">${t.title}</h4>
+            </div>
+            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.75rem;">
+              ${t.note}
+            </p>
+          </div>
+        </div>
+      `;
+    },
+
+    // SPLIT CARDS TEMPLATE (2 COLUMNS)
+    split: (slide) => {
+      const cardsHtml = slide.cards.map(c => `
+        <div class="glass-card">
+          <div>
+            <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: #ffffff; margin: 0.75rem 0 1rem 0; line-height: 1.3;">${c.title}</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
+          </div>
+        </div>
+      `).join('');
+      return `<div class="split-grid anim-el delay-2">${cardsHtml}</div>`;
+    },
+
+    // GRID CARDS TEMPLATE (3 COLUMNS)
+    grid: (slide) => {
+      const cardsHtml = slide.cards.map(c => `
+        <div class="glass-card">
+          <div>
+            <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: #ffffff; margin: 0.75rem 0 0.75rem 0; line-height: 1.3;">${c.title}</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
+          </div>
+        </div>
+      `).join('');
+      return `<div class="grid-3 anim-el delay-2">${cardsHtml}</div>`;
+    },
+
+    // W-STAR CASE STUDY TEMPLATE (STAR grid + Why highlight)
+    "w-star": (slide) => {
+      const s = slide.star;
+      const w = slide.why;
+      return `
+        <div class="wstar-container anim-el delay-2">
+          <!-- STAR 2x2 Columns -->
+          <div class="star-2x2">
+            <!-- Situation -->
+            <div class="glass-card">
+              <div>
+                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">S : Situation</span>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.55;">${s.s}</p>
+              </div>
+            </div>
+            <!-- Task -->
+            <div class="glass-card">
+              <div>
+                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">T : Task</span>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.55;">${s.t}</p>
+              </div>
+            </div>
+            <!-- Action -->
+            <div class="glass-card">
+              <div>
+                <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">A : Action</span>
+                <p style="font-size: 0.825rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.55;">${s.a}</p>
+              </div>
+            </div>
+            <!-- Result -->
+            <div class="glass-card ${getCardAccentClass(slide.accent)}">
+              <div>
+                <span style="font-size: 0.7rem; font-weight: 800; color: #ffffff; tracking-wider; text-transform: uppercase; opacity: 0.85;">R : Result</span>
+                <p style="font-size: 0.825rem; color: #ffffff; margin-top: 0.75rem; line-height: 1.55;">${s.r}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why Highlight Card -->
+          <div class="glass-card" style="background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.06) 100%); border-color: rgba(255,255,255,0.15);">
+            <div>
+              <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${w.title}</span>
+              <p style="font-size: 0.85rem; color: var(--text-main); margin-top: 0.75rem; line-height: 1.6;">${w.body}</p>
+            </div>
+            <div style="position: absolute; right: -10px; bottom: -20px; font-size: 6rem; font-weight: 900; color: rgba(255,255,255,0.02); select-none: none; pointer-events: none;">W</div>
+          </div>
+        </div>
+      `;
+    },
+
+    // TRUTH & FANTASY COMPARISON TEMPLATE
+    truth: (slide) => {
+      const m = slide.myth;
+      const f = slide.fact;
+      return `
+        <div class="truth-grid anim-el delay-2">
+          <!-- Myth Card -->
+          <div class="glass-card" style="border-color: rgba(244, 63, 94, 0.25); background: rgba(244, 63, 94, 0.02);">
+            <div>
+              <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent-rose); tracking-wider; text-transform: uppercase; padding: 0.2rem 0.5rem; background: rgba(244,63,94,0.1); border-radius: 4px;">${m.label}</span>
+              <h3 style="font-size: 1.2rem; font-weight: 800; color: #fda4af; margin: 1rem 0; line-height: 1.45;">"${m.quote}"</h3>
+              ${m.body ? `<p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; border-top: 1px solid rgba(244,63,94,0.15); padding-top: 0.75rem;">${m.body}</p>` : ''}
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 1.5rem;">${m.note || ''}</div>
+          </div>
+
+          <!-- Fact Card -->
+          <div class="glass-card ${getCardAccentClass(slide.accent)}">
+            <div>
+              <span style="font-size: 0.7rem; font-weight: 800; color: #ffffff; tracking-wider; text-transform: uppercase; padding: 0.2rem 0.5rem; background: rgba(255,255,255,0.15); border-radius: 4px;">${f.label}</span>
+              <h3 style="font-size: 1.2rem; font-weight: 900; color: #ffffff; margin: 1rem 0; line-height: 1.45;">"${f.quote}"</h3>
+              <p style="font-size: 0.85rem; color: rgba(255,255,255,0.85); line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.75rem;">${f.body}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    },
+
+    // CLOSING / QA TEMPLATE
+    closing: (slide) => {
+      const cardsHtml = slide.cards.map(c => `
+        <div class="glass-card">
+          <div>
+            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">${c.icon}</div>
+            <h3 style="font-size: 1.15rem; font-weight: 900; color: #ffffff; margin-bottom: 0.75rem;">${c.title}</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--accent-${slide.accent}); font-weight: 700; margin-top: 1.5rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
+            ${c.note}
+          </div>
+        </div>
+      `).join('');
+      return `<div class="split-grid anim-el delay-2">${cardsHtml}</div>`;
+    }
+  };
+
+  // ==========================================
+  // 2. RENDER SLIDES & BUILD TIMELINE
+  // ==========================================
+
+  function renderSlides() {
+    container.innerHTML = '';
+    slideIndexList.innerHTML = '';
+
+    slidesData.forEach((slide, index) => {
+      // Create DOM slide structure
+      const slideSection = document.createElement('section');
+      slideSection.className = `slide ${index === currentSlideIndex ? 'active' : ''}`;
+      slideSection.id = slide.id;
+
+      // Select proper template renderer
+      const renderContent = templates[slide.type];
+      const contentHtml = renderContent ? renderContent(slide) : '';
+
+      slideSection.innerHTML = `
+        <div class="slide-content-scroll">
+          <div class="anim-el delay-1">
+            ${createBadge(slide.badge, slide.accent)}
+            <h2 class="slide-title">${slide.title}</h2>
+            <p class="slide-subtitle">${slide.subtitle}</p>
+          </div>
+          ${contentHtml}
+        </div>
+      `;
+
+      container.appendChild(slideSection);
+
+      // Create Sidebar Drawer items
+      const drawerItem = document.createElement('div');
+      drawerItem.className = `index-item ${index === currentSlideIndex ? 'active' : ''}`;
+      // Clean HTML tags from slide titles for drawer
+      const plainTitle = slide.title.replace(/<\/?[^>]+(>|$)/g, "");
+      drawerItem.innerHTML = `<span style="font-weight: 800;">${index + 1}.</span> ${plainTitle}`;
+      drawerItem.addEventListener('click', () => {
+        jumpToSlide(index);
+        closeDrawer();
+      });
+      slideIndexList.appendChild(drawerItem);
+    });
+
+    bindCardClickEvents();
+  }
+
+  // ==========================================
+  // 3. SLIDE CONTROLLER & STATE
+  // ==========================================
+
+  function jumpToSlide(index) {
+    if (index >= 0 && index < slidesData.length) {
+      currentSlideIndex = index;
+      
+      // Update DOM classes
+      const domSlides = document.querySelectorAll('.slide');
+      domSlides.forEach((slide, idx) => {
+        if (idx === currentSlideIndex) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      // Update Sidebar Drawer active state
+      const drawerItems = document.querySelectorAll('.index-item');
+      drawerItems.forEach((item, idx) => {
+        if (idx === currentSlideIndex) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      updateControls();
+    }
+  }
+
+  function updateControls() {
+    prevBtn.disabled = currentSlideIndex === 0;
+    nextBtn.disabled = currentSlideIndex === slidesData.length - 1;
+
+    // Progress Bar
+    const progressPercent = ((currentSlideIndex + 1) / slidesData.length) * 100;
+    progressFill.style.width = `${progressPercent}%`;
+
+    // Footer page number
+    currentNumDisplay.textContent = `${currentSlideIndex + 1} / ${slidesData.length}`;
+  }
+
+  function goToNext() {
+    if (currentSlideIndex < slidesData.length - 1) {
+      jumpToSlide(currentSlideIndex + 1);
+    }
+  }
+
+  function goToPrev() {
+    if (currentSlideIndex > 0) {
+      jumpToSlide(currentSlideIndex - 1);
+    }
+  }
+
+  // Bind Buttons
+  prevBtn.addEventListener('click', goToPrev);
+  nextBtn.addEventListener('click', goToNext);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    // Avoid conflicts if modal or index drawer is focused
+    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      goToNext();
+    } else if (e.key === 'ArrowLeft') {
+      goToPrev();
+    }
+  });
+
+  // Mobile Touch Swipe Handling
+  let touchStartX = 0;
+  let touchEndX = 0;
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 65) {
+      goToNext(); // Swiped left
+    } else if (touchEndX - touchStartX > 65) {
+      goToPrev(); // Swiped right
+    }
+  }, { passive: true });
+
+  // ==========================================
+  // 4. MODALS & INDEX TIMELINE DRAWER
+  // ==========================================
+
+  const indexDrawer = document.getElementById('index-drawer');
+  const drawerCloseBtn = document.getElementById('drawer-close');
+  const openDrawerBtn = document.getElementById('open-drawer-btn');
+
+  function openDrawer() {
+    indexDrawer.classList.add('open');
+  }
+
+  function closeDrawer() {
+    indexDrawer.classList.remove('open');
+  }
+
+  openDrawerBtn.addEventListener('click', openDrawer);
+  drawerCloseBtn.addEventListener('click', closeDrawer);
+  indexDrawer.addEventListener('click', (e) => {
+    if (e.target === indexDrawer) closeDrawer();
+  });
+
+  // ==========================================
+  // 5. INTERACTIVE GLASS CARD ZOOM MODAL
+  // ==========================================
+
+  const zoomModal = document.getElementById('zoom-modal');
+  const zoomModalBody = document.getElementById('zoom-modal-body');
+  const zoomCloseBtn = document.getElementById('zoom-close');
+
+  function openZoomModal(contentHtml) {
+    zoomModalBody.innerHTML = `
+      <div style="font-size: 1rem; color: var(--text-main); line-height: 1.7;">
+        ${contentHtml}
+      </div>
+    `;
+    zoomModal.classList.add('open');
+  }
+
+  function closeZoomModal() {
+    zoomModal.classList.remove('open');
+  }
+
+  zoomCloseBtn.addEventListener('click', closeZoomModal);
+  zoomModal.addEventListener('click', (e) => {
+    if (e.target === zoomModal) closeZoomModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeZoomModal();
+      closeDrawer();
+    }
+  });
+
+  function bindCardClickEvents() {
+    // Zoom general glass cards
+    document.querySelectorAll('.glass-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        // Exclude specific elements like the avatar thumbnail click
+        if (e.target.closest('.avatar-thumb')) return;
+
+        // Clone internal content and remove scaling modifiers or tiny margins for reading view
+        const clone = card.cloneNode(true);
+        
+        // Clean badge shapes, layout paddings, zoom icons for a cleaner reading flow
+        const badges = clone.querySelectorAll('.slide-badge');
+        badges.forEach(b => {
+          b.style.marginBottom = '1.5rem';
+        });
+
+        openZoomModal(clone.innerHTML);
+      });
+    });
+  }
+
+  // Daughter Zoom Specific Handler
+  window.zoomDaughter = function() {
+    const daughterHtml = `
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem;">
+        <div style="width: 100%; max-width: 380px; aspect-ratio: 3/4; overflow: hidden; border-radius: 20px; border: 2px solid var(--accent-amber); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <img src="PXL_20260705_051631581.jpg" alt="千葉フローレンス夏歌" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div>
+          <h3 style="font-size: 1.75rem; font-weight: 900; color: #ffffff;">千葉フローレンス夏歌 ちゃん</h3>
+          <p style="font-size: 0.9rem; color: var(--accent-amber); font-weight: 700; margin-top: 0.25rem;">Natsuka Florence Chiba</p>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-top: 1rem; max-w: 520px;">
+            「娘に誇れる圧倒的に明るい未来をつくること」<br>
+            千葉パパを無限に走らせるエネルギー源であり、泥臭い仕事もすべての逆境も笑顔で乗り越えるための原点です。
+          </p>
+        </div>
+      </div>
+    `;
+    openZoomModal(daughterHtml);
+  };
+
+  // ==========================================
+  // 6. PRESENTATION TIMER
+  // ==========================================
+
+  const timerToggle = document.getElementById('timer-toggle');
+  const timerReset = document.getElementById('timer-reset');
+  const timerDisplay = document.getElementById('timer-display');
+  const timerPlayIcon = document.getElementById('timer-play-icon');
+  const timerPauseIcon = document.getElementById('timer-pause-icon');
+
+  const INITIAL_SECONDS = 60 * 60; // 60 minutes
+  let remainingSeconds = INITIAL_SECONDS;
+  let timerInterval = null;
+
+  function formatTime(seconds) {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }
+
+  function updateTimerUI() {
+    timerDisplay.textContent = formatTime(remainingSeconds);
+    if (remainingSeconds <= 300) { // Under 5 minutes: warning color
+      timerDisplay.classList.add('timer-warning');
+    } else {
+      timerDisplay.classList.remove('timer-warning');
+    }
+  }
+
+  function toggleTimer() {
+    if (timerInterval) {
+      // Pause
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timerPlayIcon.style.display = 'block';
+      timerPauseIcon.style.display = 'none';
+    } else {
+      // Play
+      timerPlayIcon.style.display = 'none';
+      timerPauseIcon.style.display = 'block';
+      timerInterval = setInterval(() => {
+        if (remainingSeconds > 0) {
+          remainingSeconds--;
+          updateTimerUI();
+        } else {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          timerPlayIcon.style.display = 'block';
+          timerPauseIcon.style.display = 'none';
+        }
+      }, 1000);
+    }
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    remainingSeconds = INITIAL_SECONDS;
+    updateTimerUI();
+    timerPlayIcon.style.display = 'block';
+    timerPauseIcon.style.display = 'none';
+  }
+
+  timerToggle.addEventListener('click', toggleTimer);
+  timerReset.addEventListener('click', resetTimer);
+
+  // ==========================================
+  // INITIALIZATION
+  // ==========================================
+  renderSlides();
+  updateControls();
+  updateTimerUI();
+});
