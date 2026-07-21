@@ -1,6 +1,6 @@
 /**
  * PRESENTATION SLIDE DATA DB
- * Rhythmic Edition: High-visual rhythm, structured lead-ins, punchy text beats.
+ * Storytelling Edition: Rhythmic, high-impact narrative.
  */
 const PRESENTATION_DATA = {
   meta: {
@@ -38,6 +38,11 @@ const PRESENTATION_DATA = {
         badge: "THEME OF TODAY",
         title: "不確実性を生き抜くキャリアの「第一原理」",
         note: "成功談・大ピンチ・経営の本音まで100%オープンに開示"
+      },
+      impact: {
+        badge: "CAREER TRACK RECORD",
+        title: "13年・1社完遂の不屈スピリット",
+        note: "東証上場維持・M&A・GMV300億拡大を現場で完遂"
       },
       footerNote: "※ 左右のキー [←] [→] または下部ボタンで進みます"
     },
