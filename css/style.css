@@ -1,7 +1,6 @@
 /* ==========================================================================
    DIGITAL PLUS - EXECUTIVE BRIEFING SLIDE PRESENTATION STYLESHEET
-   Design Theme: Hyper-Modern Bento Glassmorphism (Linear / Apple / Stripe Inspired)
-   With Dynamic Gradient Orbs, Card Shimmers, and Interactive Reaction Particles
+   Design Theme: Hyper-Modern Longform Magazine & Bento Glassmorphism
    ========================================================================== */
 
 /* --- CSS Variables & Design Tokens --- */
@@ -44,7 +43,7 @@ html, body {
   user-select: none;
 }
 
-/* --- Dynamic Flowing Gradient Orbs (Living Background) --- */
+/* --- Living Flowing Background Orbs --- */
 .gradient-orb {
   position: fixed;
   border-radius: 50%;
@@ -250,6 +249,26 @@ html, body {
   text-transform: uppercase;
 }
 
+/* Sound / BGM Indicator Button */
+.bgm-btn {
+  background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+  border: 1px solid #e9d5ff;
+  color: #7e22ce;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-smooth);
+}
+.bgm-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.2);
+}
+
 /* Search Trigger Button */
 .search-trigger-btn {
   background: rgba(241, 245, 249, 0.8);
@@ -263,7 +282,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  min-width: 220px;
+  min-width: 200px;
   transition: var(--transition-smooth);
 }
 .search-trigger-btn:hover {
@@ -485,7 +504,7 @@ html, body {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-card);
   border-radius: 20px;
-  padding: 1.95rem 1.75rem;
+  padding: 2.1rem 1.85rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -518,7 +537,7 @@ html, body {
 }
 .glass-card p {
   font-size: 1.025rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-muted);
 }
 
@@ -682,7 +701,7 @@ html, body {
   box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
 }
 
-/* --- Floating Reaction Button & Counter (Candidate Delight) --- */
+/* --- Floating Reaction Button & Counter --- */
 .reaction-floating-btn {
   position: fixed;
   bottom: 80px;
@@ -708,7 +727,6 @@ html, body {
   background: #fff7ed;
 }
 
-/* Particle animation */
 .floating-particle {
   position: fixed;
   pointer-events: none;
