@@ -36,15 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const templates = {
-    // HERO / INTRO TEMPLATE
+    // HERO / INTRO TEMPLATE (3 CARDS IN BOTTOM ROW)
     hero: (slide) => {
       const p = slide.presenter;
       const m = slide.metric;
       const t = slide.theme;
+      const imp = slide.impact;
       return `
         <div class="hero-grid anim-el delay-2">
-          <!-- Presenter Info -->
-          <div class="glass-card" style="grid-column: 1 / -1; min-height: 200px; md:grid-column: span 1;">
+          <!-- Presenter Info (Full Row) -->
+          <div class="glass-card" style="grid-column: 1 / -1; min-height: 190px;">
             <div class="profile-card-header">
               <div>
                 <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; tracking-wider; text-transform: uppercase;">PRESENTER PROFILE</span>
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </p>
           </div>
 
-          <!-- Continuity Metric Card -->
+          <!-- Bottom Row Card 1: Continuity Metric -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
               <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${m.badge}</span>
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </p>
           </div>
 
-          <!-- Today's Theme Card -->
+          <!-- Bottom Row Card 2: Today's Theme -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
               <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${t.badge}</span>
@@ -83,6 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem;">
               ${t.note}
+            </p>
+          </div>
+
+          <!-- Bottom Row Card 3: Career Track Record -->
+          <div class="glass-card ${getCardAccentClass(slide.accent)}">
+            <div>
+              <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${imp.badge}</span>
+              <h4 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-top: 0.6rem; line-height: 1.35;">${imp.title}</h4>
+            </div>
+            <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem;">
+              ${imp.note}
             </p>
           </div>
         </div>
@@ -365,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // ==========================================
-  // 4. FLOATING REACTION PARTICLE GENERATOR (CANDIDATE DELIGHT)
+  // 4. FLOATING REACTION PARTICLE GENERATOR
   // ==========================================
 
   const reactionBtn = document.getElementById('reaction-btn');
@@ -379,7 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
       currentReactions++;
       reactionCount.textContent = currentReactions;
 
-      // Spawn 3 floating particles
       for (let i = 0; i < 3; i++) {
         const particle = document.createElement('div');
         particle.className = 'floating-particle';
