@@ -1,9 +1,8 @@
 /**
  * PRESENTATION ENGINE & CONTROLLER
- * Google Workspace / Material Design Edition
- * Features: Unified Title Positioning, Space-Efficient Layouts, Rhythmic Typographic Cadence,
- * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg,
- * Light Sweep Transition Streak, and Final Slide Ray of Hope Aura.
+ * Hyper-Modern Bento Edition (Linear / Apple / Stripe Inspired)
+ * Features: Living Background Orbs, Bento Glass Cards, Particle Reaction Generator,
+ * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -48,18 +47,18 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="glass-card" style="grid-column: 1 / -1; min-height: 200px; md:grid-column: span 1;">
             <div class="profile-card-header">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--google-blue); tracking-wider; text-transform: uppercase;">PRESENTER PROFILE</span>
-                <h3 style="font-size: 1.6rem; font-weight: 800; margin-top: 0.2rem; color: #202124;">${p.name}</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.1rem; font-weight: 500;">${p.role}</p>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; tracking-wider; text-transform: uppercase;">PRESENTER PROFILE</span>
+                <h3 style="font-size: 1.65rem; font-weight: 900; margin-top: 0.25rem; color: #0f172a;">${p.name}</h3>
+                <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.1rem; font-weight: 600;">${p.role}</p>
               </div>
               <div class="avatar-thumb" onclick="event.stopPropagation(); zoomDaughter();" title="クリックで娘の写真拡大！">
                 <img src="${p.daughterImg}" alt="${p.daughterName}">
               </div>
             </div>
-            <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.85rem; line-height: 1.5; font-weight: 500;">
+            <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.85rem; line-height: 1.55; font-weight: 500;">
               ${p.daughterNote}
             </p>
-            <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.6rem; font-weight: 600;">
+            <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem; font-weight: 700;">
               ${p.university}
             </p>
           </div>
@@ -67,11 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Continuity Metric Card -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
-              <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${m.badge}</span>
-              <div style="font-size: 3.4rem; font-weight: 800; color: var(--google-blue); margin-top: 0.35rem; line-height: 1; letter-spacing: -0.02em;">${m.value}</div>
-              <h4 style="font-size: 1.15rem; font-weight: 700; color: #202124; margin-top: 0.6rem;">${m.label}</h4>
+              <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${m.badge}</span>
+              <div style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #2563eb, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 0.35rem; line-height: 1; letter-spacing: -0.03em;">${m.value}</div>
+              <h4 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin-top: 0.6rem;">${m.label}</h4>
             </div>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.6rem;">
+            <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem;">
               ${m.note}
             </p>
           </div>
@@ -79,10 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Today's Theme Card -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
-              <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${t.badge}</span>
-              <h4 style="font-size: 1.35rem; font-weight: 800; color: #202124; margin-top: 0.6rem; line-height: 1.35;">${t.title}</h4>
+              <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">${t.badge}</span>
+              <h4 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-top: 0.6rem; line-height: 1.35;">${t.title}</h4>
             </div>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.6rem;">
+            <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem;">
               ${t.note}
             </p>
           </div>
@@ -90,14 +89,14 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     },
 
-    // SPLIT CARDS TEMPLATE (2 COLUMNS)
+    // SPLIT CARDS TEMPLATE
     split: (slide) => {
       const cardsHtml = slide.cards.map(c => `
         <div class="glass-card ${getCardAccentClass(c.badgeColor)}">
           <div>
             <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
-            <h3 style="font-size: 1.45rem; font-weight: 800; color: #202124; margin: 0.75rem 0 0.85rem 0; line-height: 1.35;">${c.title}</h3>
-            ${c.lead ? `<p style="font-size: 1.125rem; font-weight: 700; color: #202124; margin-bottom: 0.4rem;">${c.lead}</p>` : ''}
+            <h3 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 0.75rem 0 0.85rem 0; line-height: 1.35;">${c.title}</h3>
+            ${c.lead ? `<p style="font-size: 1.125rem; font-weight: 800; color: #0f172a; margin-bottom: 0.45rem;">${c.lead}</p>` : ''}
             <p style="font-size: 1.025rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
           </div>
         </div>
@@ -105,14 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return `<div class="split-grid anim-el delay-2">${cardsHtml}</div>`;
     },
 
-    // GRID CARDS TEMPLATE (3 COLUMNS)
+    // GRID CARDS TEMPLATE
     grid: (slide) => {
       const cardsHtml = slide.cards.map(c => `
         <div class="glass-card ${getCardAccentClass(c.badgeColor)}">
           <div>
             <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
-            <h3 style="font-size: 1.3rem; font-weight: 700; color: #202124; margin: 0.75rem 0 0.65rem 0; line-height: 1.35;">${c.title}</h3>
-            ${c.lead ? `<p style="font-size: 1.075rem; font-weight: 700; color: #202124; margin-bottom: 0.35rem;">${c.lead}</p>` : ''}
+            <h3 style="font-size: 1.3rem; font-weight: 800; color: #0f172a; margin: 0.75rem 0 0.65rem 0; line-height: 1.35;">${c.title}</h3>
+            ${c.lead ? `<p style="font-size: 1.075rem; font-weight: 800; color: #0f172a; margin-bottom: 0.4rem;">${c.lead}</p>` : ''}
             <p style="font-size: 0.975rem; color: var(--text-muted); line-height: 1.6;">${c.body}</p>
           </div>
         </div>
@@ -131,38 +130,38 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Situation -->
             <div class="glass-card">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--google-blue); tracking-wider; text-transform: uppercase;">S : Situation</span>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; tracking-wider; text-transform: uppercase;">S : Situation</span>
                 <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.55;">${s.s}</p>
               </div>
             </div>
             <!-- Task -->
             <div class="glass-card">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--google-blue); tracking-wider; text-transform: uppercase;">T : Task</span>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; tracking-wider; text-transform: uppercase;">T : Task</span>
                 <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.55;">${s.t}</p>
               </div>
             </div>
             <!-- Action -->
             <div class="glass-card">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--google-blue); tracking-wider; text-transform: uppercase;">A : Action</span>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #2563eb; tracking-wider; text-transform: uppercase;">A : Action</span>
                 <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.55;">${s.a}</p>
               </div>
             </div>
             <!-- Result -->
             <div class="glass-card ${getCardAccentClass(slide.accent)}">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">R : Result</span>
-                <p style="font-size: 1rem; color: #202124; margin-top: 0.65rem; line-height: 1.55; font-weight: 600;">${s.r}</p>
+                <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase;">R : Result</span>
+                <p style="font-size: 1rem; color: #0f172a; margin-top: 0.65rem; line-height: 1.55; font-weight: 700;">${s.r}</p>
               </div>
             </div>
           </div>
 
           <!-- Why Highlight Card -->
-          <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: var(--google-blue-bg);">
+          <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-color: #bfdbfe;">
             <div>
-              <span style="font-size: 0.75rem; font-weight: 700; color: var(--google-blue); tracking-wider; text-transform: uppercase;">${w.title}</span>
-              ${w.lead ? `<p style="font-size: 1.15rem; font-weight: 800; color: #202124; margin-top: 0.6rem; line-height: 1.4;">${w.lead}</p>` : ''}
+              <span style="font-size: 0.75rem; font-weight: 800; color: #1d4ed8; tracking-wider; text-transform: uppercase;">${w.title}</span>
+              ${w.lead ? `<p style="font-size: 1.15rem; font-weight: 900; color: #0f172a; margin-top: 0.6rem; line-height: 1.4;">${w.lead}</p>` : ''}
               <p style="font-size: 1.025rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">${w.body}</p>
             </div>
           </div>
@@ -177,21 +176,21 @@ document.addEventListener('DOMContentLoaded', () => {
       return `
         <div class="truth-grid anim-el delay-2">
           <!-- Myth Card -->
-          <div class="glass-card" style="border-color: rgba(217, 48, 37, 0.3); background: var(--google-red-bg);">
+          <div class="glass-card" style="border-color: rgba(225, 29, 72, 0.4); background: linear-gradient(135deg, #fff1f2, #ffe4e6);">
             <div>
-              <span style="font-size: 0.75rem; font-weight: 700; color: var(--google-red); tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: #ffffff; border-radius: 4px;">${m.label}</span>
-              <h3 style="font-size: 1.35rem; font-weight: 800; color: #c5221f; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${m.quote}"</h3>
-              ${m.body ? `<p style="font-size: 1rem; color: #5c0b0a; line-height: 1.6; border-top: 1px solid rgba(217, 48, 37, 0.15); padding-top: 0.75rem;">${m.body}</p>` : ''}
+              <span style="font-size: 0.75rem; font-weight: 800; color: #be123c; tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: #ffffff; border-radius: 6px;">${m.label}</span>
+              <h3 style="font-size: 1.35rem; font-weight: 900; color: #9f1239; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${m.quote}"</h3>
+              ${m.body ? `<p style="font-size: 1rem; color: #881337; line-height: 1.6; border-top: 1px solid rgba(225, 29, 72, 0.2); padding-top: 0.75rem;">${m.body}</p>` : ''}
             </div>
-            <div style="font-size: 0.8rem; color: #c5221f; margin-top: 1.25rem; font-weight: 600;">${m.note || ''}</div>
+            <div style="font-size: 0.8rem; color: #9f1239; margin-top: 1.25rem; font-weight: 700;">${m.note || ''}</div>
           </div>
 
           <!-- Fact Card -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: #ffffff;">
             <div>
-              <span style="font-size: 0.75rem; font-weight: 700; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: var(--google-red-bg); border-radius: 4px;">${f.label}</span>
-              <h3 style="font-size: 1.45rem; font-weight: 800; color: #202124; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${f.quote}"</h3>
-              ${f.lead ? `<p style="font-size: 1.125rem; font-weight: 800; color: #202124; margin: 0.5rem 0;">${f.lead}</p>` : ''}
+              <span style="font-size: 0.75rem; font-weight: 800; color: var(--accent-${slide.accent}); tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: linear-gradient(135deg, #fff1f2, #ffe4e6); border-radius: 6px;">${f.label}</span>
+              <h3 style="font-size: 1.45rem; font-weight: 900; color: #0f172a; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${f.quote}"</h3>
+              ${f.lead ? `<p style="font-size: 1.125rem; font-weight: 900; color: #0f172a; margin: 0.5rem 0;">${f.lead}</p>` : ''}
               <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">${f.body}</p>
             </div>
           </div>
@@ -204,12 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const cardsHtml = slide.cards.map(c => `
         <div class="glass-card ${getCardAccentClass(slide.accent)}">
           <div>
-            <div style="font-size: 2.2rem; margin-bottom: 0.65rem;">${c.icon}</div>
-            <h3 style="font-size: 1.35rem; font-weight: 800; color: #202124; margin-bottom: 0.75rem;">${c.title}</h3>
-            ${c.lead ? `<p style="font-size: 1.1rem; font-weight: 700; color: #202124; margin-bottom: 0.5rem;">${c.lead}</p>` : ''}
+            <div style="font-size: 2.4rem; margin-bottom: 0.65rem;">${c.icon}</div>
+            <h3 style="font-size: 1.35rem; font-weight: 900; color: #0f172a; margin-bottom: 0.75rem;">${c.title}</h3>
+            ${c.lead ? `<p style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">${c.lead}</p>` : ''}
             <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
           </div>
-          <div style="font-size: 0.85rem; color: var(--google-blue); font-weight: 700; margin-top: 1.5rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
+          <div style="font-size: 0.85rem; color: #2563eb; font-weight: 800; margin-top: 1.5rem; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">
             ${c.note}
           </div>
         </div>
@@ -256,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const drawerItem = document.createElement('div');
       drawerItem.className = `index-item ${index === currentSlideIndex ? 'active' : ''}`;
       const plainTitle = slide.title.replace(/<\/?[^>]+(>|$)/g, "");
-      drawerItem.innerHTML = `<span style="font-weight: 700;">${index + 1}.</span> ${plainTitle}`;
+      drawerItem.innerHTML = `<span style="font-weight: 800;">${index + 1}.</span> ${plainTitle}`;
       drawerItem.addEventListener('click', () => {
         jumpToSlide(index);
         closeDrawer();
@@ -366,7 +365,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // ==========================================
-  // 4. GOOGLE EASTER EGGS & INTERACTIVE TRICKS
+  // 4. FLOATING REACTION PARTICLE GENERATOR (CANDIDATE DELIGHT)
+  // ==========================================
+
+  const reactionBtn = document.getElementById('reaction-btn');
+  const reactionCount = document.getElementById('reaction-count');
+  let currentReactions = 128;
+
+  const emojiList = ['🔥', '🚀', '👏', '💎', '⚡', '✨', '❤️'];
+
+  if (reactionBtn) {
+    reactionBtn.addEventListener('click', (e) => {
+      currentReactions++;
+      reactionCount.textContent = currentReactions;
+
+      // Spawn 3 floating particles
+      for (let i = 0; i < 3; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'floating-particle';
+        particle.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+        
+        const rect = reactionBtn.getBoundingClientRect();
+        const offsetX = (Math.random() - 0.5) * 40;
+        particle.style.left = `${rect.left + rect.width / 2 + offsetX}px`;
+        particle.style.top = `${rect.top}px`;
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 1500);
+      }
+    });
+  }
+
+  // ==========================================
+  // 5. GOOGLE EASTER EGGS & INTERACTIVE TRICKS
   // ==========================================
 
   window.doBarrelRoll = function() {
@@ -393,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 5. GOOGLE PRESENTATION SEARCH SYSTEM
+  // 6. GOOGLE PRESENTATION SEARCH SYSTEM
   // ==========================================
 
   const searchModal = document.getElementById('search-modal');
@@ -452,8 +486,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const plainSubtitle = slide.subtitle.replace(/<\/?[^>]+(>|$)/g, "");
 
       item.innerHTML = `
-        <div style="font-size: 0.75rem; font-weight: 700; color: var(--google-blue);">SLIDE ${slideIndex + 1} • ${slide.badge}</div>
-        <div style="font-size: 1rem; font-weight: 700; color: var(--text-main);">${plainTitle}</div>
+        <div style="font-size: 0.75rem; font-weight: 800; color: #2563eb;">SLIDE ${slideIndex + 1} • ${slide.badge}</div>
+        <div style="font-size: 1rem; font-weight: 800; color: var(--text-main);">${plainTitle}</div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">${plainSubtitle}</div>
       `;
 
@@ -467,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 6. MODALS & INDEX TIMELINE DRAWER
+  // 7. MODALS & INDEX TIMELINE DRAWER
   // ==========================================
 
   const indexDrawer = document.getElementById('index-drawer');
@@ -489,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 7. INTERACTIVE ZOOM MODAL
+  // 8. INTERACTIVE ZOOM MODAL
   // ==========================================
 
   const zoomModal = document.getElementById('zoom-modal');
@@ -498,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openZoomModal(contentHtml) {
     zoomModalBody.innerHTML = `
-      <div style="font-size: 1.1rem; color: #202124; line-height: 1.75;">
+      <div style="font-size: 1.1rem; color: #0f172a; line-height: 1.75;">
         ${contentHtml}
       </div>
     `;
@@ -541,12 +575,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.zoomDaughter = function() {
     const daughterHtml = `
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.25rem;">
-        <div style="width: 100%; max-width: 360px; aspect-ratio: 3/4; overflow: hidden; border-radius: 16px; border: 2px solid var(--google-blue); box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <div style="width: 100%; max-width: 360px; aspect-ratio: 3/4; overflow: hidden; border-radius: 20px; border: 3px solid #2563eb; box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);">
           <img src="PXL_20260705_051631581.jpg" alt="千葉フローレンス夏歌" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div>
-          <h3 style="font-size: 1.8rem; font-weight: 800; color: #202124;">千葉フローレンス夏歌 ちゃん</h3>
-          <p style="font-size: 0.95rem; color: var(--google-blue); font-weight: 700; margin-top: 0.2rem;">Natsuka Florence Chiba</p>
+          <h3 style="font-size: 1.85rem; font-weight: 900; color: #0f172a;">千葉フローレンス夏歌 ちゃん</h3>
+          <p style="font-size: 0.95rem; color: #2563eb; font-weight: 800; margin-top: 0.25rem;">Natsuka Florence Chiba</p>
           <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-top: 0.85rem; max-width: 520px;">
             「娘に誇れる明るい未来をつくること」<br>
             千葉パパを無限に走らせるエネルギー源であり、泥臭い仕事もすべての逆境も笑顔で乗り越えるための原点です。
@@ -558,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 8. PRESENTATION TIMER
+  // 9. PRESENTATION TIMER
   // ==========================================
 
   const timerToggle = document.getElementById('timer-toggle');
@@ -567,7 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const timerPlayIcon = document.getElementById('timer-play-icon');
   const timerPauseIcon = document.getElementById('timer-pause-icon');
 
-  const INITIAL_SECONDS = 60 * 60; // 60 minutes
+  const INITIAL_SECONDS = 60 * 60;
   let remainingSeconds = INITIAL_SECONDS;
   let timerInterval = null;
 
