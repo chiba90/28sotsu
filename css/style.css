@@ -1,6 +1,6 @@
 /* ==========================================================================
    DIGITAL PLUS - EXECUTIVE BRIEFING SLIDE PRESENTATION STYLESHEET
-   Design Theme: Google Material Workspace (Minimalist, Clean, High Trust)
+   Design Theme: Google Material Workspace (Minimalist, Clean, High Space Efficiency)
    ========================================================================== */
 
 /* --- CSS Variables & Design Tokens (Google Design System) --- */
@@ -54,6 +54,15 @@ html, body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   user-select: none;
+}
+
+/* Barrel Roll Easter Egg Animation */
+.barrel-roll {
+  animation: barrelRoll 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+@keyframes barrelRoll {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* --- High-Contrast Google Style Highlight Tags --- */
@@ -113,7 +122,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 1.75rem;
   background: #ffffff;
   border-bottom: 1px solid var(--border-card);
 }
@@ -122,6 +131,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  cursor: pointer;
 }
 .pulse-dot {
   width: 10px;
@@ -136,6 +146,56 @@ html, body {
   letter-spacing: 0.08em;
   color: var(--text-muted);
   text-transform: uppercase;
+}
+
+/* Google Search Input in Header */
+.search-trigger-btn {
+  background: #f1f3f4;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 0.4rem 1rem;
+  border-radius: 24px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 220px;
+  transition: var(--transition-smooth);
+}
+.search-trigger-btn:hover {
+  background: #e8eaed;
+  color: var(--text-main);
+}
+.shortcut-badge {
+  font-size: 0.7rem;
+  background: #ffffff;
+  border: 1px solid #dadce0;
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+/* Google "I'm Feeling Lucky" Button */
+.lucky-btn {
+  background: var(--google-blue-bg);
+  border: 1px solid #c2e7ff;
+  color: var(--google-blue);
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: var(--transition-smooth);
+}
+.lucky-btn:hover {
+  background: #d3e3fd;
+  transform: translateY(-1px);
 }
 
 .index-trigger-btn {
@@ -213,12 +273,12 @@ html, body {
   inset: 0;
   width: 100%;
   height: 100%;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 64px;
+  padding-bottom: 64px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.35s ease, transform 0.35s ease;
   z-index: 1;
 }
 .slide.active {
@@ -228,21 +288,22 @@ html, body {
   z-index: 10;
 }
 
+/* CONSISTENT TITLE ALIGNMENT & EFFICIENT LAYOUT SPACING */
 .slide-content-scroll {
   width: 100%;
   height: 100%;
-  max-width: 1280px;
+  max-width: 1380px;
   margin: 0 auto;
   padding: 1.5rem 2rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-start; /* Title aligned consistently to top across ALL slides */
 }
-@media (min-width: 1024px) and (min-height: 660px) {
-  .slide-content-scroll {
-    justify-content: center;
-  }
+
+.slide-header-block {
+  flex-shrink: 0;
+  margin-bottom: 1rem;
 }
 
 /* Clean Scrollbar */
@@ -265,9 +326,9 @@ html, body {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 0.35rem 0.85rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 6px;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.6rem;
   width: fit-content;
 }
 .badge-amber { background: var(--google-yellow-bg); color: #b45309; border: 1px solid #fde68a; }
@@ -276,25 +337,25 @@ html, body {
 .badge-emerald { background: var(--google-green-bg); color: var(--google-green); border: 1px solid #c6edd5; }
 .badge-rose { background: var(--google-red-bg); color: var(--google-red); border: 1px solid #fad2cf; }
 
-/* SINGLE-LINE SLIDE TITLE FORCE */
+/* SINGLE-LINE SLIDE TITLE FORCE WITH EXACT UNIFIED HEIGHT */
 .slide-title {
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.01em;
   color: var(--text-main);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .slide-subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
   color: var(--text-muted);
   line-height: 1.5;
-  max-width: 1000px;
-  margin-bottom: 1.75rem;
+  max-width: 1100px;
+  margin-bottom: 0;
   font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
@@ -305,19 +366,19 @@ html, body {
 .slide .anim-el {
   opacity: 0;
   transform: translateY(10px);
-  transition: all 0.4s ease;
+  transition: all 0.35s ease;
 }
 .slide.active .anim-el {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* --- Card Design System (Google Card) --- */
+/* --- Card Design System (Google Card Layout Efficiency) --- */
 .glass-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: 16px;
-  padding: 2rem 1.75rem;
+  padding: 1.85rem 1.65rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -346,7 +407,7 @@ html, body {
   font-weight: 700;
   line-height: 1.35;
   color: var(--text-main);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 .glass-card p {
   font-size: 1.025rem;
@@ -354,12 +415,13 @@ html, body {
   color: var(--text-muted);
 }
 
-/* --- Layout Grids --- */
+/* --- Layout Grids (Fills Available Vertical Space) --- */
 .hero-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 1.25rem;
   width: 100%;
+  flex: 1;
 }
 @media (min-width: 900px) {
   .hero-grid {
@@ -393,6 +455,7 @@ html, body {
   grid-template-columns: 1fr;
   gap: 1.5rem;
   width: 100%;
+  flex: 1;
 }
 @media (min-width: 768px) {
   .split-grid {
@@ -405,6 +468,7 @@ html, body {
   grid-template-columns: 1fr;
   gap: 1.25rem;
   width: 100%;
+  flex: 1;
 }
 @media (min-width: 900px) {
   .grid-3 {
@@ -415,8 +479,9 @@ html, body {
 .wstar-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
   width: 100%;
+  flex: 1;
 }
 @media (min-width: 1024px) {
   .wstar-container {
@@ -434,7 +499,7 @@ html, body {
   }
 }
 .star-2x2 .glass-card {
-  padding: 1.5rem 1.5rem;
+  padding: 1.4rem 1.4rem;
 }
 
 .truth-grid {
@@ -442,6 +507,7 @@ html, body {
   grid-template-columns: 1fr;
   gap: 1.5rem;
   width: 100%;
+  flex: 1;
 }
 @media (min-width: 768px) {
   .truth-grid {
@@ -581,7 +647,7 @@ html, body {
   width: 100%;
   max-height: 85vh;
   padding: 2.5rem;
-  overflow-y_auto;
+  overflow-y: auto;
   box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 12px 4px rgba(60,64,67,0.15);
   transform: scale(0.97);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -610,18 +676,62 @@ html, body {
   color: var(--text-main);
   background: #e8eaed;
 }
-.zoom-card-body .glass-card {
-  box-shadow: none !important;
-  border: none !important;
-  transform: none !important;
-  padding: 0 !important;
-  cursor: default !important;
+
+/* Google Presentation Search Modal */
+.search-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(32, 33, 36, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 100px;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-smooth);
 }
-.zoom-card-body .glass-card h3 {
-  font-size: 1.6rem !important;
-  margin-bottom: 1rem !important;
+.search-modal.open {
+  opacity: 1;
+  visibility: visible;
 }
-.zoom-card-body .glass-card p {
-  font-size: 1.1rem !important;
-  line-height: 1.7 !important;
+.search-modal-box {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 8px 24px 6px rgba(60,64,67,0.15);
+  width: 100%;
+  max-width: 640px;
+  overflow: hidden;
+}
+.search-input-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-card);
+  gap: 0.75rem;
+}
+.search-input-field {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-family: var(--font-family);
+  color: var(--text-main);
+}
+.search-results-list {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+.search-result-item {
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: var(--transition-smooth);
+}
+.search-result-item:hover {
+  background: #f1f3f4;
 }
