@@ -2,7 +2,8 @@
  * PRESENTATION ENGINE & CONTROLLER
  * Google Workspace / Material Design Edition
  * Features: Unified Title Positioning, Space-Efficient Layouts,
- * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
+ * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg,
+ * Light Sweep Transition Streak, and Final Slide Ray of Hope Aura.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -208,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `).join('');
-      return `<div class="split-grid anim-el delay-2">${cardsHtml}</div>`;
+      return `<div class="split-grid anim-el delay-2" style="position: relative; z-index: 10;">${cardsHtml}</div>`;
     }
   };
 
@@ -221,18 +222,21 @@ document.addEventListener('DOMContentLoaded', () => {
     slideIndexList.innerHTML = '';
 
     slidesData.forEach((slide, index) => {
-      // Create DOM slide structure
       const slideSection = document.createElement('section');
       slideSection.className = `slide ${index === currentSlideIndex ? 'active' : ''}`;
       slideSection.id = slide.id;
 
-      // Select proper template renderer
       const renderContent = templates[slide.type];
       const contentHtml = renderContent ? renderContent(slide) : '';
 
-      // UNIFIED FIXED SLIDE HEADER BLOCK
+      const isFinalSlide = index === slidesData.length - 1;
+      const extraEffects = isFinalSlide 
+        ? '<div class="light-sweep"></div><div class="super-glow"></div>' 
+        : '<div class="light-sweep"></div>';
+
       slideSection.innerHTML = `
-        <div class="slide-content-scroll">
+        ${extraEffects}
+        <div class="slide-content-scroll" style="position: relative; z-index: 5;">
           <div class="slide-header-block anim-el delay-1">
             ${createBadge(slide.badge, slide.accent)}
             <h2 class="slide-title">${slide.title}</h2>
@@ -244,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       container.appendChild(slideSection);
 
-      // Create Sidebar Drawer items
       const drawerItem = document.createElement('div');
       drawerItem.className = `index-item ${index === currentSlideIndex ? 'active' : ''}`;
       const plainTitle = slide.title.replace(/<\/?[^>]+(>|$)/g, "");
@@ -269,10 +272,29 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const domSlides = document.querySelectorAll('.slide');
       domSlides.forEach((slide, idx) => {
+        const sweepEl = slide.querySelector('.light-sweep');
+        const superGlowEl = slide.querySelector('.super-glow');
+
         if (idx === currentSlideIndex) {
           slide.classList.add('active');
+          
+          // Trigger Light Sweep Streak
+          if (sweepEl) {
+            sweepEl.classList.remove('light-sweep-active');
+            void sweepEl.offsetWidth; // Reflow
+            sweepEl.classList.add('light-sweep-active');
+          }
+
+          // Trigger Ray of Hope Grand Aura on Final Slide
+          if (superGlowEl) {
+            superGlowEl.classList.remove('super-glow-active');
+            void superGlowEl.offsetWidth;
+            superGlowEl.classList.add('super-glow-active');
+          }
         } else {
           slide.classList.remove('active');
+          if (sweepEl) sweepEl.classList.remove('light-sweep-active');
+          if (superGlowEl) superGlowEl.classList.remove('super-glow-active');
         }
       });
 
@@ -347,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Google Barrel Roll
   window.doBarrelRoll = function() {
     document.body.classList.remove('barrel-roll');
-    void document.body.offsetWidth; // Trigger reflow
+    void document.body.offsetWidth;
     document.body.classList.add('barrel-roll');
     setTimeout(() => {
       document.body.classList.remove('barrel-roll');
@@ -396,7 +418,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === searchModal) closeSearch();
   });
 
-  // Shortcut key (Ctrl + K / Cmd + K)
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -603,6 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // INITIALIZATION
   // ==========================================
   renderSlides();
+  jumpToSlide(0); // Trigger initial animations
   updateControls();
   updateTimerUI();
 });
