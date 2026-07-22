@@ -1,7 +1,7 @@
 /**
  * PRESENTATION ENGINE & CONTROLLER
- * Executive Longform Storytelling Edition
- * Features: Living Background Orbs, Bento Glass Cards, Particle Reaction Generator,
+ * Chronological Narrative Edition with Interactive Growing Timeline Character.
+ * Features: Timeline Avatar Growth Progression, Bento Glass Cards, Particle Reaction Generator,
  * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
  */
 
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           slide.classList.remove('active');
           if (sweepEl) sweepEl.classList.remove('light-sweep-active');
-          if (superGlowEl) superGlowEl.classList.remove('super-glow-active');
+          if (superGlowEl) sweepEl.classList.remove('super-glow-active');
         }
       });
 
@@ -346,6 +346,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressPercent = ((currentSlideIndex + 1) / slidesData.length) * 100;
     progressFill.style.width = `${progressPercent}%`;
     currentNumDisplay.textContent = `${currentSlideIndex + 1} / ${slidesData.length}`;
+
+    // Update Interactive Timeline Growing Character
+    const avatarStages = [
+      { label: "学生・原点", emoji: "👦" },
+      { label: "志・原点", emoji: "🎒" },
+      { label: "新人起業家", emoji: "🏃‍♂️" },
+      { label: "子会社社長", emoji: "👔" },
+      { label: "逆境の闘士", emoji: "🔥" },
+      { label: "V字回復者", emoji: "🛠️" },
+      { label: "取締役・飛躍", emoji: "📈" },
+      { label: "覚悟と哲学", emoji: "💼" },
+      { label: "愛娘の父", emoji: "👨‍👧" },
+      { label: "変革のリーダー", emoji: "🌟" }
+    ];
+
+    const avatarEl = document.getElementById('timeline-avatar');
+    const avatarLabel = document.getElementById('avatar-label');
+    const avatarGraphic = document.getElementById('avatar-graphic');
+
+    if (avatarEl && avatarLabel && avatarGraphic) {
+      const stage = avatarStages[currentSlideIndex] || avatarStages[0];
+      
+      // Compute horizontal position dynamically matching progress width (10% to 100%)
+      const leftPercent = 10 + (currentSlideIndex * 10);
+      avatarEl.style.left = `${leftPercent}%`;
+
+      // Trigger walking bounce bounce
+      avatarGraphic.classList.remove('avatar-walking');
+      void avatarGraphic.offsetWidth; // Reflow
+      avatarGraphic.classList.add('avatar-walking');
+
+      // Update contents
+      avatarLabel.textContent = stage.label;
+      avatarGraphic.textContent = stage.emoji;
+    }
   }
 
   function goToNext() {
@@ -526,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 7. MODALS & INDEX TIMELINE DRAWER
+  // 8. MODALS & INDEX TIMELINE DRAWER
   // ==========================================
 
   const indexDrawer = document.getElementById('index-drawer');
@@ -548,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 8. INTERACTIVE ZOOM MODAL
+  // 9. INTERACTIVE ZOOM MODAL
   // ==========================================
 
   const zoomModal = document.getElementById('zoom-modal');
@@ -617,7 +652,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 9. PRESENTATION TIMER
+  // 10. PRESENTATION TIMER
   // ==========================================
 
   const timerToggle = document.getElementById('timer-toggle');
