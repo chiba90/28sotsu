@@ -1,7 +1,7 @@
 /**
  * PRESENTATION ENGINE & CONTROLLER
- * Chronological Narrative Edition with Interactive Growing Timeline Character.
- * Features: Timeline Avatar Growth Progression, Bento Glass Cards, Particle Reaction Generator,
+ * Chronological Narrative Edition with Interactive Adult Dignity Timeline Character.
+ * Features: Timeline Avatar Growth Progression (Dignity & Pathos), Bento Glass Cards, Particle Reaction Generator,
  * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
  */
 
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           slide.classList.remove('active');
           if (sweepEl) sweepEl.classList.remove('light-sweep-active');
-          if (superGlowEl) sweepEl.classList.remove('super-glow-active');
+          if (superGlowEl) superGlowEl.classList.remove('super-glow-active');
         }
       });
 
@@ -347,18 +347,18 @@ document.addEventListener('DOMContentLoaded', () => {
     progressFill.style.width = `${progressPercent}%`;
     currentNumDisplay.textContent = `${currentSlideIndex + 1} / ${slidesData.length}`;
 
-    // Update Interactive Timeline Growing Character
+    // Update Interactive Timeline Adult Executive Character (威厳と哀愁)
     const avatarStages = [
-      { label: "学生・原点", emoji: "👦" },
-      { label: "志・原点", emoji: "🎒" },
-      { label: "新人起業家", emoji: "🏃‍♂️" },
-      { label: "子会社社長", emoji: "👔" },
-      { label: "逆境の闘士", emoji: "🔥" },
-      { label: "V字回復者", emoji: "🛠️" },
-      { label: "取締役・飛躍", emoji: "📈" },
-      { label: "覚悟と哲学", emoji: "💼" },
-      { label: "愛娘の父", emoji: "👨‍👧" },
-      { label: "変革のリーダー", emoji: "🌟" }
+      { label: "2013 覚悟の出発", emoji: "👨‍💼" },
+      { label: "2011 震災の誓い", emoji: "🧥" },
+      { label: "2015 泥臭い奮闘", emoji: "🏃‍♂️" },
+      { label: "2017 社長就任", emoji: "🕴️" },
+      { label: "2019 不屈の決断", emoji: "⛈️" },
+      { label: "2021 逆境突破", emoji: "🧗‍♂️" },
+      { label: "2023 取締役飛躍", emoji: "🏛️" },
+      { label: "キャリアの真実", emoji: "🧭" },
+      { label: "未来への志", emoji: "🌅" },
+      { label: "共創の対話", emoji: "🤝" }
     ];
 
     const avatarEl = document.getElementById('timeline-avatar');
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const leftPercent = 10 + (currentSlideIndex * 10);
       avatarEl.style.left = `${leftPercent}%`;
 
-      // Trigger walking bounce bounce
+      // Trigger walking bounce
       avatarGraphic.classList.remove('avatar-walking');
       void avatarGraphic.offsetWidth; // Reflow
       avatarGraphic.classList.add('avatar-walking');
