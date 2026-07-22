@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>株式会社デジタルプラス 取締役プレゼンテーション | 不確実性を生き抜くキャリア論</title>
+  <title>自伝『不確実性を生き抜く生存戦略』| 著：千葉 博文 (株式会社デジタルプラス 取締役)</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="筑波大学新卒から一度も転職せずに東証上場企業の取締役へ。激動の13年間、会社の天国と地獄をくぐり抜けた当事者が語る「リアルな生存戦略」。">
+  <meta name="description" content="筑波大学新卒から一度も転職せずに東証上場企業の取締役へ。激動の13年間、会社の天国と地獄をくぐり抜けた当事者が語る自伝的ドキュメンタリー。">
   <meta name="author" content="千葉 博文">
 
   <!-- Google Fonts: Outfit & Noto Sans JP -->
@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <!-- Premium Custom Styling (Elite Luxury Agency Design) -->
-  <link rel="stylesheet" href="css/style.css?v=2.1.0">
+  <!-- Premium Custom Styling (Biography Book Edition) -->
+  <link rel="stylesheet" href="css/style.css?v=3.0.0">
 </head>
 <body>
 
@@ -28,27 +28,27 @@
   <header class="top-header">
     <div class="brand-badge" id="google-brand-logo" title="クリックで Do a Barrel Roll ! 🌀">
       <div class="pulse-dot" aria-hidden="true"></div>
-      <span class="brand-title">DIGITAL PLUS / EXECUTIVE BRIEFING</span>
+      <span class="brand-title">BIOGRAPHY BOOK / HIROFUMI CHIBA</span>
     </div>
     
     <div style="display: flex; align-items: center; gap: 0.75rem;">
       <!-- Google Presentation Search Trigger -->
-      <button id="open-search-btn" class="search-trigger-btn" aria-label="スライド内検索">
+      <button id="open-search-btn" class="search-trigger-btn" aria-label="書籍内検索">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <span>プレゼン内を検索...</span>
+        <span>書籍内を検索...</span>
         <span class="shortcut-badge">⌘K</span>
       </button>
 
       <!-- Google "I'm Feeling Lucky" Button -->
-      <button id="lucky-btn" class="lucky-btn" title="ランダムなスライドへジャンプ！">
+      <button id="lucky-btn" class="lucky-btn" title="ランダムな章へジャンプ！">
         <span>🎲 手前勝手</span>
       </button>
 
       <!-- Slide Index Drawer Trigger -->
-      <button id="open-drawer-btn" class="index-trigger-btn" aria-label="スライド目次を開く">
+      <button id="open-drawer-btn" class="index-trigger-btn" aria-label="書籍目次を開く">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -59,7 +59,7 @@
 
       <!-- Countdown Presentation Timer -->
       <div class="timer-container">
-        <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em; display: none; sm:inline;">TIMER</span>
+        <span style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.05em; display: none; sm:inline;">READ TIME</span>
         <div id="timer-display" class="timer-text">60:00</div>
         
         <div style="display: flex; gap: 0.15rem; border-left: 1px solid var(--border-card); padding-left: 0.35rem;">
@@ -89,7 +89,7 @@
   <!-- ================= BOTTOM NAVIGATION & PROGRESS BAR ================= -->
   <footer class="bottom-bar">
     <!-- Prev Slide -->
-    <button id="prev-btn" class="nav-btn" aria-label="前のスライドへ" disabled>
+    <button id="prev-btn" class="nav-btn" aria-label="前のページへ" disabled>
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
@@ -114,8 +114,8 @@
     
     <!-- Next Slide & Counter -->
     <div style="display: flex; align-items: center; gap: 1rem;">
-      <span id="current-slide-num" style="font-family: 'Outfit', monospace; font-size: 0.85rem; font-weight: 800; color: var(--text-muted); min-width: 48px; text-align: right;">1 / 10</span>
-      <button id="next-btn" class="nav-btn" aria-label="次のスライドへ">
+      <span id="current-slide-num" style="font-family: 'Outfit', monospace; font-size: 0.85rem; font-weight: 800; color: var(--text-muted); min-width: 80px; text-align: right;">P. 1 / 10</span>
+      <button id="next-btn" class="nav-btn" aria-label="次のページへ">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
@@ -127,7 +127,10 @@
   <div id="index-drawer" class="index-drawer" aria-modal="true" role="dialog" aria-label="目次ナビゲーション">
     <div class="index-drawer-content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-card); padding-bottom: 1rem;">
-        <h2 style="font-size: 1.15rem; font-weight: 900; letter-spacing: 0.05em; color: var(--text-main);">スライド目次</h2>
+        <div>
+          <span style="font-size: 0.7rem; font-weight: 800; color: #38bdf8; letter-spacing: 0.1em;">TABLE OF CONTENTS</span>
+          <h2 style="font-size: 1.15rem; font-weight: 900; color: var(--text-main); margin-top: 0.1rem;">書籍 目次</h2>
+        </div>
         <button id="drawer-close" style="background: none; border: none; color: var(--text-muted); cursor: pointer;" aria-label="目次を閉じる">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -135,7 +138,7 @@
           </svg>
         </button>
       </div>
-      <nav id="slide-index-list" aria-label="スライド一覧"></nav>
+      <nav id="slide-index-list" aria-label="章一覧"></nav>
     </div>
   </div>
 
@@ -153,14 +156,14 @@
   </div>
 
   <!-- ================= GOOGLE PRESENTATION SEARCH MODAL ================= -->
-  <div id="search-modal" class="search-modal" aria-modal="true" role="dialog" aria-label="スライド内検索">
+  <div id="search-modal" class="search-modal" aria-modal="true" role="dialog" aria-label="書籍内検索">
     <div class="search-modal-box">
       <div class="search-input-header">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="search-query-input" class="search-input-field" placeholder="キーワードでスライドを検索... (例: M&A, GMV, 裁量権)" autofocus>
+        <input type="text" id="search-query-input" class="search-input-field" placeholder="書籍内のキーワードを検索... (例: M&A, GMV, 裁量権)" autofocus>
         <button id="search-close-btn" style="background: none; border: none; color: var(--text-muted); cursor: pointer;" aria-label="検索を閉じる">ESC</button>
       </div>
       <div id="search-results-list" class="search-results-list"></div>
@@ -169,8 +172,8 @@
 
   <!-- ================= SCRIPTS ================= -->
   <!-- Slide Content Database -->
-  <script src="js/data.js?v=2.1.0"></script>
+  <script src="js/data.js?v=3.0.0"></script>
   <!-- Presentation Logic Engine -->
-  <script src="js/app.js?v=2.1.0"></script>
+  <script src="js/app.js?v=3.0.0"></script>
 </body>
 </html>
