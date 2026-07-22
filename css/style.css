@@ -681,6 +681,25 @@ html, body {
   box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
 }
 
+/* --- Timeline Character Floating & Walking Animations --- */
+.avatar-floating {
+  animation: avatarFloat 2.2s infinite ease-in-out alternate;
+}
+@keyframes avatarFloat {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-4px) scale(1.08); }
+}
+
+.avatar-walking {
+  animation: avatarWalkBounce 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+@keyframes avatarWalkBounce {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(-8deg); }
+  75% { transform: translateY(-3px) rotate(8deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
 /* --- Floating Reaction Button & Counter --- */
 .reaction-floating-btn {
   position: fixed;
