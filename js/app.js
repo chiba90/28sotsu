@@ -1,8 +1,8 @@
 /**
  * PRESENTATION ENGINE & CONTROLLER
  * Executive Longform Storytelling Edition
- * Features: Web Audio API Ambient Synth, Living Background Orbs, Bento Glass Cards,
- * Particle Reaction Generator, Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
+ * Features: Living Background Orbs, Bento Glass Cards, Particle Reaction Generator,
+ * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -391,74 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // ==========================================
-  // 4. WEB AUDIO API AMBIENT BGM SYNTHESIZER
-  // ==========================================
-
-  let audioCtx = null;
-  let isPlayingBgm = false;
-  let bgmGainNode = null;
-  let bgmOscillators = [];
-
-  const bgmBtn = document.getElementById('bgm-toggle-btn');
-
-  function toggleBgm() {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-
-    if (isPlayingBgm) {
-      // Stop BGM
-      if (bgmGainNode) {
-        bgmGainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.5);
-        setTimeout(() => {
-          bgmOscillators.forEach(osc => osc.stop());
-          bgmOscillators = [];
-        }, 500);
-      }
-      isPlayingBgm = false;
-      if (bgmBtn) bgmBtn.innerHTML = '<span>🎵 STORY BGM</span>';
-    } else {
-      // Start Inspirational Soft Ambient Chord Synth (C Maj9: C4, E4, G4, B4, D5)
-      const frequencies = [261.63, 329.63, 392.00, 493.88, 587.33];
-      bgmGainNode = audioCtx.createGain();
-      bgmGainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-      bgmGainNode.gain.exponentialRampToValueAtTime(0.04, audioCtx.currentTime + 2);
-
-      bgmOscillators = frequencies.map(freq => {
-        const osc = audioCtx.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        
-        // Gentle modulation for warm pad feel
-        const lfo = audioCtx.createOscillator();
-        lfo.frequency.value = 0.2 + Math.random() * 0.3;
-        const lfoGain = audioCtx.createGain();
-        lfoGain.gain.value = 1.5;
-        lfo.connect(lfoGain);
-        lfoGain.connect(osc.frequency);
-        lfo.start();
-
-        osc.connect(bgmGainNode);
-        osc.start();
-        return osc;
-      });
-
-      bgmGainNode.connect(audioCtx.destination);
-      isPlayingBgm = true;
-      if (bgmBtn) bgmBtn.innerHTML = '<span>🎶 BGM PLAYING...</span>';
-    }
-  }
-
-  if (bgmBtn) {
-    bgmBtn.addEventListener('click', toggleBgm);
-  }
-
-  // ==========================================
-  // 5. FLOATING REACTION PARTICLE GENERATOR
+  // 4. FLOATING REACTION PARTICLE GENERATOR
   // ==========================================
 
   const reactionBtn = document.getElementById('reaction-btn');
@@ -492,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 6. GOOGLE EASTER EGGS & INTERACTIVE TRICKS
+  // 5. GOOGLE EASTER EGGS & INTERACTIVE TRICKS
   // ==========================================
 
   window.doBarrelRoll = function() {
@@ -519,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 7. GOOGLE PRESENTATION SEARCH SYSTEM
+  // 6. GOOGLE PRESENTATION SEARCH SYSTEM
   // ==========================================
 
   const searchModal = document.getElementById('search-modal');
@@ -593,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 8. MODALS & INDEX TIMELINE DRAWER
+  // 7. MODALS & INDEX TIMELINE DRAWER
   // ==========================================
 
   const indexDrawer = document.getElementById('index-drawer');
@@ -615,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 9. INTERACTIVE ZOOM MODAL
+  // 8. INTERACTIVE ZOOM MODAL
   // ==========================================
 
   const zoomModal = document.getElementById('zoom-modal');
@@ -684,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 10. PRESENTATION TIMER
+  // 9. PRESENTATION TIMER
   // ==========================================
 
   const timerToggle = document.getElementById('timer-toggle');
