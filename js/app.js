@@ -45,19 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
       return `
         <div class="hero-grid anim-el delay-2">
           <!-- Presenter Info (Full Row) -->
-          <div class="glass-card" style="grid-column: 1 / -1; min-height: 190px;">
+          <div class="glass-card" style="grid-column: 1 / -1; min-height: 170px;">
             <div class="profile-card-header">
               <div>
                 <span style="font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">PRESENTER PROFILE</span>
                 <h3 style="font-size: 1.65rem; font-weight: 900; margin-top: 0.25rem; color: #f8fafc;">${p.name}</h3>
                 <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.1rem; font-weight: 600;">${p.role}</p>
               </div>
-              <div class="avatar-thumb" onclick="event.stopPropagation(); zoomDaughter();" title="クリックで娘の写真拡大！">
-                <img src="${p.daughterImg}" alt="${p.daughterName}">
+              <div style="padding: 0.4rem 0.85rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 12px; color: #38bdf8; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">
+                BOARD DIRECTOR
               </div>
             </div>
             <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.85rem; line-height: 1.55; font-weight: 500;">
-              ${p.daughterNote}
+              ${p.note}
             </p>
             <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem; font-weight: 700;">
               ${p.university}
@@ -584,8 +584,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function bindCardClickEvents() {
     document.querySelectorAll('.glass-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        if (e.target.closest('.avatar-thumb')) return;
-
         const clone = card.cloneNode(true);
         const badges = clone.querySelectorAll('.slide-badge');
         badges.forEach(b => {
@@ -596,26 +594,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
-  // Daughter Zoom Specific Handler
-  window.zoomDaughter = function() {
-    const daughterHtml = `
-      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.25rem;">
-        <div style="width: 100%; max-width: 360px; aspect-ratio: 3/4; overflow: hidden; border-radius: 20px; border: 3px solid #38bdf8; box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);">
-          <img src="PXL_20260705_051631581.jpg" alt="千葉フローレンス夏歌" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div>
-          <h3 style="font-size: 1.85rem; font-weight: 900; color: #f8fafc;">千葉フローレンス夏歌 ちゃん</h3>
-          <p style="font-size: 0.95rem; color: #38bdf8; font-weight: 800; margin-top: 0.25rem;">Natsuka Florence Chiba</p>
-          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-top: 0.85rem; max-width: 520px;">
-            「娘に誇れる圧倒的に明るい未来をつくること」<br>
-            千葉パパを無限に走らせるエネルギー源であり、泥臭い仕事もすべての逆境も笑顔で乗り越えるための原点です。
-          </p>
-        </div>
-      </div>
-    `;
-    openZoomModal(daughterHtml);
-  };
 
   // ==========================================
   // 8. PRESENTATION TIMER
