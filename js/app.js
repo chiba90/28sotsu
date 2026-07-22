@@ -1,7 +1,7 @@
 /**
  * PRESENTATION ENGINE & CONTROLLER
- * Elite Professional Agency Dark Executive Edition
- * Features: Timeline Avatar Growth Progression (Dignity & Pathos), Bento Glass Cards,
+ * Autobiography Book Edition: 『不確実性を生き抜く生存戦略』
+ * Features: Book Reading Progression, Timeline Avatar Growth (Dignity & Pathos), Bento Glass Cards,
  * Real-time Presentation Search (Ctrl+K), "I'm Feeling Lucky" Jump, "Do a Barrel Roll" Easter Egg.
  */
 
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const templates = {
-    // HERO / INTRO TEMPLATE
+    // HERO / INTRO TEMPLATE (BOOK COVER / PROLOGUE)
     hero: (slide) => {
       const p = slide.presenter;
       const m = slide.metric;
@@ -44,16 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const imp = slide.impact;
       return `
         <div class="hero-grid anim-el delay-2">
-          <!-- Presenter Info (Full Row) -->
+          <!-- Author Info (Full Row) -->
           <div class="glass-card" style="grid-column: 1 / -1; min-height: 170px;">
             <div class="profile-card-header">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">PRESENTER PROFILE</span>
+                <span style="font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">AUTHOR PROFILE</span>
                 <h3 style="font-size: 1.65rem; font-weight: 900; margin-top: 0.25rem; color: #f8fafc;">${p.name}</h3>
                 <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.1rem; font-weight: 600;">${p.role}</p>
               </div>
               <div style="padding: 0.4rem 0.85rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 12px; color: #38bdf8; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">
-                BOARD DIRECTOR
+                AUTOBIOGRAPHY
               </div>
             </div>
             <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.85rem; line-height: 1.55; font-weight: 500;">
@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const progressPercent = ((currentSlideIndex + 1) / slidesData.length) * 100;
     progressFill.style.width = `${progressPercent}%`;
-    currentNumDisplay.textContent = `${currentSlideIndex + 1} / ${slidesData.length}`;
+    currentNumDisplay.textContent = `P. ${currentSlideIndex + 1} / ${slidesData.length}`;
 
     // Update Interactive Timeline Adult Executive Character (威厳と哀愁)
     const avatarStages = [
@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (matches.length === 0) {
-      searchResultsList.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--text-dim); font-size: 0.9rem;">一致するスライドが見つかりませんでした</div>`;
+      searchResultsList.innerHTML = `<div style="padding: 1.5rem; text-align: center; color: var(--text-dim); font-size: 0.9rem;">一致する章が見つかりませんでした</div>`;
       return;
     }
 

@@ -1,31 +1,32 @@
 /**
- * PRESENTATION SLIDE DATA DB
- * Executive Longform Storytelling Edition:
- * Chronological Autobiography of Chiba Hirofumi (Past -> Values -> Grand Vision).
+ * AUTOBIOGRAPHY BOOK DATA DB
+ * 書籍『不確実性を生き抜く生存戦略』— 千葉博文 13年の歩みと哲学と志
+ * Author: 千葉 博文 (株式会社デジタルプラス 取締役)
  */
 const PRESENTATION_DATA = {
   meta: {
-    title: "株式会社デジタルプラス 取締役プレゼンテーション",
-    subtitle: "不確実性を生き抜くキャリア論",
-    presenter: "千葉 博文",
-    totalSlides: 10
+    bookTitle: "不確実性を生き抜く生存戦略",
+    bookSubtitle: "筑波大新卒から13年、一度も転職せずに取締役へ上り詰めた男の全記録",
+    author: "千葉 博文",
+    authorRole: "株式会社デジタルプラス 取締役",
+    totalPages: 10
   },
   slides: [
-    /* CHAPTER 01: INTRO (Past Overview) */
+    /* 第一章：序章 (Book Prelude / Cover) */
     {
       id: "slide-1",
       type: "hero",
-      badge: "CHAPTER 01 / 序章：綺麗事抜きの生存リアル",
+      badge: "第一章 / 序章：綺麗事抜きの生存リアル",
       accent: "blue",
-      title: '天国と地獄のすべてを現場でくぐり抜けた13年の記録',
+      title: '天国と地獄のすべてを現場でくぐり抜けた13年の全記録',
       subtitle: '筑波大学新卒入社から一度も転職せず取締役へ。なぜ私はこの場所で泥臭く戦い続けるのか。',
       presenter: {
         name: "千葉 博文",
         englishName: "Hirofumi Chiba",
-        role: "取締役 (2013年新卒入社)",
+        role: "著者 / 株式会社デジタルプラス 取締役 (2013年新卒入社)",
         university: "筑波大学理工学群 社会工学類 卒",
         tagline: "「どんな逆境も仕組みと行動量で突破し、挑戦者が正当に報われる圧倒的に明るい未来を創る」",
-        note: "🏢 東証上場維持・M&A・事業再生・GMV300億規模への拡大を最前線で完遂。"
+        note: "📖 新卒13年完遂。東証上場維持・M&A・事業再生・GMV300億規模への拡大を最前線で主導。"
       },
       metric: {
         badge: "CONTINUOUS DISRUPT",
@@ -34,26 +35,26 @@ const PRESENTATION_DATA = {
         note: "凡事徹底と、過去の成功体験を壊し続けるアンラーン"
       },
       theme: {
-        badge: "THEME OF TODAY",
+        badge: "THEME OF THIS BOOK",
         title: "不確実性を生き抜くキャリアの「第一原理」",
         note: "成功談・大ピンチ・経営の本音まで100%オープンに開示"
       },
       impact: {
-        badge: "CAREER TRACK RECORD",
+        badge: "AUTHOR TRACK RECORD",
         title: "13年・1社完遂の不屈スピリット",
         note: "東証上場維持・M&A・GMV300億拡大を現場で完遂"
       },
-      footerNote: "※ 左右のキー [←] [→] または下部ボタンでストーリーが進みます"
+      footerNote: "※ 左右のキー [←] [→] または下部ボタンでページをめくります"
     },
 
-    /* CHAPTER 02: ORIGIN (Past - Tohoku 2011) */
+    /* 第二章：原点 (2011 Tohoku Origin) */
     {
       id: "slide-2",
       type: "split",
-      badge: "CHAPTER 02 / 胎動：2011年 震災ボランティアの衝撃",
+      badge: "第二章 / 胎動：2011年 震災ボランティアの衝撃",
       accent: "blue",
       title: '言葉を失ったお婆さんの一言と、一生をかけた誓い',
-      subtitle: '被災地の瓦礫の中で悟った「真の復興」の定義と、私のビジネスキャリアの原点',
+      subtitle: '被災地の瓦礫の中で悟った「真の復興」の定義と、私の人生とキャリアの原点',
       cards: [
         {
           badge: "ORIGIN : 被災地での衝撃と無力感",
@@ -75,11 +76,11 @@ const PRESENTATION_DATA = {
       footerNote: "※この原点があったからこそ、新卒入社から現在に至るまで一貫して「仕事づくり」へ魂を注いできました"
     },
 
-    /* CHAPTER 03: PAST - FIRST PHASE (2013-2018) */
+    /* 第三章：開戦 (2013-2018) */
     {
       id: "slide-3",
       type: "w-star",
-      badge: "CHAPTER 03 / 闘争Ⅰ：追加投資ゼロから年間4億円の利益創出",
+      badge: "第三章 / 闘争Ⅰ：追加投資ゼロから年間4億円の利益創出",
       accent: "blue",
       title: '新卒配属からの新規事業構築と、子会社代表取締役社長への就任',
       subtitle: '追加投資ゼロの厳しい制約を仕組みで突破し、新規営業利益を創出した軌跡',
@@ -98,11 +99,11 @@ const PRESENTATION_DATA = {
       footerNote: "※感情のマネジメントから、システムとエコシステムによる仕組み化への転換を学びました"
     },
 
-    /* CHAPTER 04: PAST - SECOND PHASE (2018-2023 Part 1) */
+    /* 第四章：地獄 (2018-2023 Part 1) */
     {
       id: "slide-4",
       type: "w-star",
-      badge: "CHAPTER 04 / 闘争Ⅱ：売上99%減の地獄と上場維持の決断",
+      badge: "第四章 / 闘争Ⅱ：売上99%減の地獄と上場維持の決断",
       accent: "purple",
       title: '売上99%減の極限状態から、痛みを伴う事業再生と上場維持',
       subtitle: '主力事業の撤退・構造改革を自ら主導し、倒産の危機から会社の命脈を守り抜く',
@@ -121,11 +122,11 @@ const PRESENTATION_DATA = {
       footerNote: "※綺麗事抜きの、会社とステークホルダーを絶対に守り抜く意思決定プロセスを経験しました"
     },
 
-    /* CHAPTER 05: PAST - SECOND PHASE (2018-2023 Part 2) */
+    /* 第五章：不屈 (2018-2023 Part 2) */
     {
       id: "slide-5",
       type: "w-star",
-      badge: "CHAPTER 05 / 闘争Ⅲ：Google大被弾からのV字回復",
+      badge: "第五章 / 闘争Ⅲ：Google大被弾からのV字回復",
       accent: "amber",
       title: '直開拓M&Aのスキーム構築と、Googleアルゴリズム大被弾からの逆転',
       subtitle: '泥臭い行動量とデータ分析力で、投資回収率177%を叩き出した逆転劇',
@@ -144,11 +145,11 @@ const PRESENTATION_DATA = {
       footerNote: "※逆境でも言い訳をせず、オーナーシップを持てば道は開けることを証明しました"
     },
 
-    /* CHAPTER 06: PAST TO PRESENT (2023-Present) */
+    /* 第六章：飛躍 (2023-Present) */
     {
       id: "slide-6",
       type: "w-star",
-      badge: "CHAPTER 06 / 飛躍：フィンテック事業（デジタルギフト®）300億規模へ",
+      badge: "第六章 / 飛躍：フィンテック事業（デジタルギフト®）300億規模へ",
       accent: "emerald",
       title: 'デジタルギフト®の爆発的成長と組織倍増',
       subtitle: '流通額（GMV）6.6倍成長と、取締役自らが先頭に立つトップリクルート',
@@ -167,13 +168,13 @@ const PRESENTATION_DATA = {
       footerNote: "※GMV300億を支えるための筋肉質で自律的な組織づくりの構造化を進めています"
     },
 
-    /* CHAPTER 07: VALUES & PRINCIPLES - Part 1 */
+    /* 第七章：哲学Ⅰ */
     {
       id: "slide-7",
       type: "grid",
-      badge: "CHAPTER 07 / 哲学Ⅰ：自己アップデートを続ける3つの投資指針",
+      badge: "第七章 / 哲学Ⅰ：自己アップデートを続ける3つの投資指針",
       accent: "blue",
-      title: '自身を成長させ続けるための行動原則（現在の価値観）',
+      title: '自身を成長させ続けるための行動原則（著者の価値観）',
       subtitle: '自身の成長を組織の限界にしないため、プロフェッショナルとして守り抜いている基準',
       cards: [
         {
@@ -204,13 +205,13 @@ const PRESENTATION_DATA = {
       footerNote: "※現在のポジションに安住せず、自分自身を投資対象としてアップデートし続ける"
     },
 
-    /* CHAPTER 08: VALUES & PRINCIPLES - Part 2 */
+    /* 第八章：哲学Ⅱ */
     {
       id: "slide-8",
       type: "truth",
-      badge: "CHAPTER 08 / 哲学Ⅱ：キャリアの本音 — 裁量権と大手の本質",
+      badge: "第八章 / 哲学Ⅱ：キャリアの本音 — 裁量権と大手の本質",
       accent: "rose",
-      title: '綺麗事抜きのキャリア論（求職者に伝えたい価値観）',
+      title: '綺麗事抜きのキャリア論（読者に伝えたい真実）',
       subtitle: '甘い言葉で着飾った採用ピッチを剥ぎ取り、本質的な成長環境のリアルを語る',
       myth: {
         label: "よくある採用ピッチの甘い言葉",
@@ -228,11 +229,11 @@ const PRESENTATION_DATA = {
       footerNote: "※明日どんな荒野に放り出されても稼げる「自分の腕＝実力」こそが唯一の安定です"
     },
 
-    /* CHAPTER 09: GRAND VISION & MISSION (Future) */
+    /* 第九章：志とビジョン */
     {
       id: "slide-9",
       type: "split",
-      badge: "CHAPTER 09 / 志：地方起業家エコシステムと未来の約束",
+      badge: "第九章 / 志：地方起業家エコシステムと未来の約束",
       accent: "amber",
       title: '地方から起業家が育つエコシステム構築と、挑戦者への約束',
       subtitle: '何のために働き、どんな未来を次世代に引き渡すのか。千葉博文が描く人生の最終目的地',
@@ -257,18 +258,18 @@ const PRESENTATION_DATA = {
       footerNote: "※地方から新しい産業と仕事を生み出すことこそが、私の人生をかけた挑戦です"
     },
 
-    /* CHAPTER 10: CLOSING DIALOGUE & Q&A */
+    /* 第十章：結び */
     {
       id: "slide-10",
       type: "closing",
-      badge: "CHAPTER 10 / 結び：未来は自分たちの手で創る",
+      badge: "第十章 / 結び：未来は自分たちの手で創る",
       accent: "blue",
       title: '「未来は、絶対に自分たちの手で明るくできる。」',
-      subtitle: '大改革と危機を乗り越えてきた当事者と、NG制限なしの本音で語り合う対話の場へ',
+      subtitle: '大改革と危機を乗り越えてきた著者と、NG制限なしの本音で語り合う対話の場へ',
       cards: [
         {
           icon: "❓",
-          title: "取締役を焦らせる「NGなし」の直球質問を歓迎",
+          title: "著者・取締役を焦らせる「NGなし」の直球質問を歓迎",
           lead: "NG制限なしの直球回答。",
           body: "「事業再生時の離職率は？」「退職勧奨時どう声をかけた？」「取締役の今のぶっちゃけた給与や評価制度は？」など、リアルな経営現場をすべて開示します。",
           note: "💡 クリックで質問例をモーダル表示＆ダイレクト対話が可能です",
@@ -283,7 +284,7 @@ const PRESENTATION_DATA = {
           footer: "🤝 PARTNERSHIP : 未来を創る本気の仲間を探す対話"
         }
       ],
-      footerNote: "※千葉 博文の「生存戦略」、これにて終了。本番のQ&Aセッションに入ります"
+      footerNote: "※千葉 博文の自伝『不確実性を生き抜く生存戦略』これにて完結。本番のQ&A対話へ入ります"
     }
   ]
 };
