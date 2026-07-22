@@ -24,10 +24,8 @@ const PRESENTATION_DATA = {
         englishName: "Hirofumi Chiba",
         role: "取締役 (2013年新卒入社)",
         university: "筑波大学理工学群 社会工学類 卒",
-        tagline: "「どんな逆境も仕組みで突破し、娘に誇れる圧倒的に明るい未来を創る」",
-        daughterName: "千葉フローレンス夏歌 ちゃん",
-        daughterNote: "👧 愛娘に誇れる明るい未来をつくることが、すべての挑戦の原動力！",
-        daughterImg: "PXL_20260705_051631581.jpg"
+        tagline: "「どんな逆境も仕組みと行動量で突破し、挑戦者が正当に報われる圧倒的に明るい未来を創る」",
+        note: "🏢 東証上場維持・M&A・事業再生・GMV300億規模への拡大を最前線で完遂。"
       },
       metric: {
         badge: "CONTINUOUS DISRUPT",
@@ -236,7 +234,7 @@ const PRESENTATION_DATA = {
       type: "split",
       badge: "CHAPTER 09 / 志：地方起業家エコシステムと未来の約束",
       accent: "amber",
-      title: '地方から起業家が育つエコシステム構築と、娘に誇れる未来',
+      title: '地方から起業家が育つエコシステム構築と、挑戦者への約束',
       subtitle: '何のために働き、どんな未来を次世代に引き渡すのか。千葉博文が描く人生の最終目的地',
       cards: [
         {
@@ -248,15 +246,15 @@ const PRESENTATION_DATA = {
           footer: "💡 MISSION : 挑戦者が自立し稼げる仕組みを全国へ"
         },
         {
-          badge: "MOTIVATION : 個人としての覚悟",
+          badge: "COMMITMENT : 挑戦者への覚悟と約束",
           badgeColor: "blue",
-          title: "「愛娘・夏歌ちゃんに誇れる圧倒的に明るい未来をつくる」",
-          lead: "私を無限に走らせる最大原動力。",
-          body: "娘が大人になった時、いまよりずっと挑戦者が報われる日本を引き渡す。父親として恥じない背中を見せ続けるためなら、泥臭い仕事もすべての逆境も笑顔で乗り越えられます。",
-          footer: "🔥 KEY REALITY : 大切な家族への愛が、限界突破のエネルギー"
+          title: "「挑戦する人が正当に報われ、自立したプロが育つ社会へ」",
+          lead: "自らの足で立ち、次世代へバトンを繋ぐ。",
+          body: "綺麗事の支援ではなく、自ら稼ぎ生活を営む仕組みを全国へ広げる。自分が13年間泥臭く積み上げてきた事業開発のノウハウと信用をすべて注ぎ込み、次世代の挑戦者が活躍する舞台を創り出します。",
+          footer: "🔥 COMMITMENT : 13年の経験と信用をすべて次世代の挑戦へ"
         }
       ],
-      footerNote: "※愛娘の写真（スライド上部のサムネイル）はクリックして大きく表示できます"
+      footerNote: "※地方から新しい産業と仕事を生み出すことこそが、私の人生をかけた挑戦です"
     },
 
     /* CHAPTER 10: CLOSING DIALOGUE & Q&A */
