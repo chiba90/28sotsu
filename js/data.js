@@ -1,6 +1,7 @@
 /**
  * PRESENTATION SLIDE DATA DB
- * Chronological Biographical Storytelling Edition: Chiba Hirofumi's Journey, Values, and Vision.
+ * Executive Longform Storytelling Edition:
+ * Chronological Autobiography of Chiba Hirofumi (Past -> Values -> Grand Vision).
  */
 const PRESENTATION_DATA = {
   meta: {
@@ -47,7 +48,7 @@ const PRESENTATION_DATA = {
       footerNote: "※ 左右のキー [←] [→] または下部ボタンでストーリーが進みます"
     },
 
-    /* CHAPTER 02: ORIGIN (Past - Origin) */
+    /* CHAPTER 02: ORIGIN (Past - Tohoku 2011) */
     {
       id: "slide-2",
       type: "split",
@@ -57,20 +58,20 @@ const PRESENTATION_DATA = {
       subtitle: '被災地の瓦礫の中で悟った「真の復興」の定義と、私のビジネスキャリアの原点',
       cards: [
         {
-          badge: "ORIGIN : 被災地での挫折感と教訓",
+          badge: "ORIGIN : 被災地での衝撃と無力感",
           badgeColor: "blue",
           title: "「この街が綺麗になる頃には、もう誰も住んでいないだろうね」",
           lead: "被災地のお婆さんの一言に言葉を失った。",
-          body: "瓦礫を片付けても仕事がなければ人は去る。<strong>「真の復興とは一時的なボランティアではなく、この場所で持続的にお金を稼ぎ使える仕組み＝仕事の創出である」</strong>と強く確信しました。",
+          body: "瓦礫を片付けても仕事がなければ人は去る。<strong>「真の復興とは一時的な支援ではなく、この場所で持続的にお金を稼ぎ使える仕組み＝仕事の創出である」</strong>と深く確信しました。",
           footer: "🔥 TURNING POINT : 「仕事の創出」こそが最大の社会貢献"
         },
         {
-          badge: "VISION : キャリアの終着地点",
+          badge: "DECISION : 覚悟の新卒入社",
           badgeColor: "amber",
-          title: "地方から「自ら仕事を生み出す起業家」が育つエコシステム構築",
-          lead: "雇用創出と挑戦者の後押し。",
-          body: "仕事を選べない環境にある地方の現実に立ち向かう。若者から自立した起業家が生まれ、挑戦が連鎖する<span class=\"text-highlight-amber\">持続可能な事業生態系</span>を全国に創り出すことが私の人生のミッションです。",
-          footer: "💡 MISSION : 挑戦者が自立し稼げる仕組みを全国へ"
+          title: "ビジネスの力で「持続可能な雇用」を生み出す道へ",
+          lead: "支援ではなく、稼ぐ仕組みを作る当事者へ。",
+          body: "新卒でリアルワールド（現デジタルプラス）へ入社した理由はただ一つ。<strong>どんな逆境でも自らの手で事業を立ち上げ、人を雇い、経済を回す力を身につけるため</strong>でした。",
+          footer: "💡 PROMISE : 支援ではなく「稼げる仕組み」を自ら創る"
         }
       ],
       footerNote: "※この原点があったからこそ、新卒入社から現在に至るまで一貫して「仕事づくり」へ魂を注いできました"
@@ -229,38 +230,43 @@ const PRESENTATION_DATA = {
       footerNote: "※明日どんな荒野に放り出されても稼げる「自分の腕＝実力」こそが唯一の安定です"
     },
 
-    /* CHAPTER 09: FUTURE - PERSONAL MISSION */
+    /* CHAPTER 09: GRAND VISION & MISSION (Future) */
     {
       id: "slide-9",
-      type: "truth",
-      badge: "CHAPTER 09 / 未来：愛娘フローレンス夏歌と創る明るい未来",
-      accent: "blue",
-      title: '私を突き動かす究極のモチベーション（個人としての未来）',
-      subtitle: '仕事に情熱を燃やし、逆境を乗り越えるエネルギーの原泉',
-      myth: {
-        label: "会社のためだけのビジネスの限界",
-        quote: "「会社の売上や利益のためだけに、身を削って深夜まで働き続ける」",
-        body: "それは持続しません。ただの作業マシーンになってはいけない。自分の大切な存在のためにこそ、人間は限界を超えられる。",
-        footer: "⚠️ CAUTION : 単なる義務感での仕事は限界がある"
-      },
-      fact: {
-        label: "私を無限に走らせる原動力のファクト",
-        quote: "娘に誇れる圧倒的に明るい未来をつくること。",
-        lead: "愛娘・夏歌ちゃんのために恥じない父親でありたい。",
-        body: "娘が大人になったとき、いまよりずっと明るく、挑戦者が報われる日本を引き渡す。そのためなら、泥臭い仕事もすべての逆境も笑顔で乗り越えられます。",
-        footer: "🔥 KEY REALITY : 大切な家族への愛が、限界突破のエネルギー"
-      },
+      type: "split",
+      badge: "CHAPTER 09 / 志：地方起業家エコシステムと未来の約束",
+      accent: "amber",
+      title: '地方から起業家が育つエコシステム構築と、娘に誇れる未来',
+      subtitle: '何のために働き、どんな未来を次世代に引き渡すのか。千葉博文が描く人生の最終目的地',
+      cards: [
+        {
+          badge: "GOAL : 人生の最終ミッション",
+          badgeColor: "amber",
+          title: "地方から「自ら仕事を生み出す起業家」が育つ生態系構築",
+          lead: "雇用創出と挑戦者の後押し。",
+          body: "仕事を選べない環境にある地方の現実に立ち向かう。若者から自立した起業家が生まれ、挑戦が連鎖する<span class=\"text-highlight-amber\">持続可能な事業生態系</span>を全国に創り出すことが、私の人生をかけたミッションです。",
+          footer: "💡 MISSION : 挑戦者が自立し稼げる仕組みを全国へ"
+        },
+        {
+          badge: "MOTIVATION : 個人としての覚悟",
+          badgeColor: "blue",
+          title: "「愛娘・夏歌ちゃんに誇れる圧倒的に明るい未来をつくる」",
+          lead: "私を無限に走らせる最大原動力。",
+          body: "娘が大人になった時、いまよりずっと挑戦者が報われる日本を引き渡す。父親として恥じない背中を見せ続けるためなら、泥臭い仕事もすべての逆境も笑顔で乗り越えられます。",
+          footer: "🔥 KEY REALITY : 大切な家族への愛が、限界突破のエネルギー"
+        }
+      ],
       footerNote: "※愛娘の写真（スライド上部のサムネイル）はクリックして大きく表示できます"
     },
 
-    /* CHAPTER 10: FUTURE - CAREER MISSION */
+    /* CHAPTER 10: CLOSING DIALOGUE & Q&A */
     {
       id: "slide-10",
       type: "closing",
-      badge: "CHAPTER 10 / 志：地方に自立した「事業生態系」を創り出すこと",
+      badge: "CHAPTER 10 / 結び：未来は自分たちの手で創る",
       accent: "blue",
       title: '「未来は、絶対に自分たちの手で明るくできる。」',
-      subtitle: '大改革と危機を乗り越えてきたからこそ語れる、本音のQ&Aセッション',
+      subtitle: '大改革と危機を乗り越えてきた当事者と、NG制限なしの本音で語り合う対話の場へ',
       cards: [
         {
           icon: "❓",
