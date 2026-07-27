@@ -31,6 +31,22 @@ const PRESENTATION_DATA = {
         daughterImg: "PXL_20260705_051631581.jpg",
         note: "📖 新卒13年完遂。東証上場維持・M&A・事業再生・GMV300億規模への拡大を最前線で主導。"
       },
+      stories: [
+        {
+          storyId: "1-1",
+          pill: "STORY 01：13年・1社の現場実績",
+          pillColor: "blue",
+          title: "上場維持・M&A・GMV300億拡大の完遂",
+          note: "東証上場維持・M&A・GMV300億拡大を現場最前線で主導。"
+        },
+        {
+          storyId: "1-2",
+          pill: "STORY 02：自己変革 & 第一原理",
+          pillColor: "amber",
+          title: "910日+の凡事徹底とアンラーン",
+          note: "毎日継続の英語学習と既成概念の破壊、成功談も経営の本音も100%オープン開示。"
+        }
+      ],
       metric: {
         badge: "CONTINUOUS DISRUPT",
         value: "910日+",
@@ -60,6 +76,8 @@ const PRESENTATION_DATA = {
       subtitle: '被災地の瓦礫の中で悟った「真の復興」の定義と、私の人生とキャリアの原点',
       cards: [
         {
+          storyTag: "STORY 01",
+          storyTitle: "【被災地での衝撃と無力感】",
           badge: "ORIGIN : 被災地での衝撃と無力感",
           badgeColor: "blue",
           title: "「この街が綺麗になる頃には、もう誰も住んでいないだろうね」",
@@ -68,6 +86,8 @@ const PRESENTATION_DATA = {
           footer: "🔥 TURNING POINT : 「仕事の創出」こそが最大の社会貢献"
         },
         {
+          storyTag: "STORY 02",
+          storyTitle: "【覚悟のキャリア選択】",
           badge: "DECISION : 覚悟の新卒入社",
           badgeColor: "amber",
           title: "ビジネスの力で「持続可能な雇用」を生み出す道へ",
@@ -87,17 +107,30 @@ const PRESENTATION_DATA = {
       accent: "blue",
       title: '新卒配属からの新規事業構築と、子会社代表取締役社長への就任',
       subtitle: '追加投資ゼロの厳しい制約を仕組みで突破し、新規営業利益を創出した軌跡',
+      stories: [
+        {
+          tag: "STORY 01",
+          tagColor: "blue",
+          title: "B2B2C OEMプラットフォーム構築（年間4億円利益）"
+        },
+        {
+          tag: "STORY 02",
+          tagColor: "amber",
+          title: "置かれた場所で言い訳を捨て子会社社長へ就任"
+        }
+      ],
       star: {
-        s: "主力ポイントメディア責任者に就任も、急激なスマホシフトに対し獲得投資資金ゼロの極限状態。",
-        t: "追加資金ゼロの制約下で、競合を超える「新規収益エンジン」を立ち上げること。",
-        a: "アドテクを融合したポイントゲームを自社開発。競合メディア群へもOEM展開（B2B2C）するプラットフォーム戦略を実行。",
-        r: '<span class="stat-callout text-highlight-blue">年間4億円の新規営業利益</span>を創出し、子会社社長に就任。'
+        s: "<span class=\"story-pill story-pill-blue\" style=\"margin-bottom:0.35rem;\">STORY 01：事業の制約</span><br>主力ポイントメディア責任者に就任も、急激なスマホシフトに対し獲得投資資金ゼロの極限状態。",
+        t: "<span class=\"story-pill story-pill-blue\" style=\"margin-bottom:0.35rem;\">STORY 01：ミッション</span><br>追加資金ゼロの制約下で、競合を超える「新規収益エンジン」を立ち上げること。",
+        a: "<span class=\"story-pill story-pill-blue\" style=\"margin-bottom:0.35rem;\">STORY 01：突破口</span><br>アドテクを融合したポイントゲームを自社開発。競合メディア群へもOEM展開（B2B2C）するプラットフォーム戦略を実行。",
+        r: '<span class="story-pill story-pill-blue" style="margin-bottom:0.35rem;">STORY 01 & 02：成果と昇格</span><br><span class="stat-callout text-highlight-blue">年間4億円の新規営業利益</span>を創出し、20代で子会社社長に就任。'
       },
       why: {
-        title: "W : Why (当事者意識の覚悟)",
+        storyTag: "STORY 02",
+        title: "STORY 02：Why (当事者意識とマインドセット)",
         lead: "「自身の事業が全体の投資源泉である」と解釈を転換。",
-        body: "新卒時にやりたかった部署ではなかったが、置かれた場所で言い訳を捨て圧倒的な結果を出し、自らの手で存在意義を創出しました。",
-        footer: "🔥 PRINCIPLE : 置かれた場所で圧倒的結果を出す"
+        body: "新卒時にやりたかった部署ではなかったが、置かれた場所で言い訳を捨て圧倒的な結果を出し、自らの手でやりがいと存在意義を創出しました。",
+        footer: "🔥 PRINCIPLE : 置かれた場所で言い訳を捨て圧倒的結果を出す"
       },
       footerNote: "※感情のマネジメントから、システムとエコシステムによる仕組み化への転換を学びました"
     },
@@ -110,14 +143,27 @@ const PRESENTATION_DATA = {
       accent: "purple",
       title: '売上99%減の暗闇、毎夜の悪夢とお酒に逃げた不眠の試練',
       subtitle: '辞めていった仲間の夢とうなされる不眠、逃げ出したい恐怖の中で掴み取った上場維持',
+      stories: [
+        {
+          tag: "STORY 01",
+          tagColor: "purple",
+          title: "売上99%減からの全社構造改革と東証上場維持の完遂"
+        },
+        {
+          tag: "STORY 02",
+          tagColor: "rose",
+          title: "毎夜の悪夢・お酒への逃避・絶望的な弱さとの戦い"
+        }
+      ],
       star: {
-        s: "年商46億円から<span class=\"text-highlight-rose\">月商500万円（99%減）</span>へ急降下。辞めていく社員の姿にさいなまれ、1時間おきに悪夢で目が覚める精神的極限状態。",
-        t: "不眠と不安から毎夜朝方までお酒を飲んでしまう弱さと闘いながら、会社の倒産を完全に回避し東証上場維持を達成すること。",
-        a: "自身の弱さと過酷な現実から逃げないと覚悟を決め、役員報酬30%カット断行、不採算事業の売却、誠実な対話による構造改革を主導。",
-        r: '<span class="stat-callout text-highlight-purple">不可能と言われた「上場維持」を完遂</span>し、会社の命脈を守り抜く。'
+        s: "<span class=\"story-pill story-pill-purple\" style=\"margin-bottom:0.35rem;\">STORY 01：事業の崩壊</span><br>年商46億円から<span class=\"text-highlight-rose\">月商500万円（99%減）</span>へ急降下。辞めていく社員の姿と事業消失の絶望。",
+        t: "<span class=\"story-pill story-pill-rose\" style=\"margin-bottom:0.35rem;\">STORY 02：個人の葛藤</span><br>不眠と不安から毎夜朝方までお酒を飲んでしまう自身の弱さと闘いながら、倒産を回避し東証上場維持を命懸けで果たすこと。",
+        a: "<span class=\"story-pill story-pill-purple\" style=\"margin-bottom:0.35rem;\">STORY 01：覚悟の断行</span><br>弱さから逃げないと覚悟を決め、役員報酬30%カット断行、不採算事業売却、誠実な対話による構造改革を主導。",
+        r: '<span class="story-pill story-pill-purple" style="margin-bottom:0.35rem;">STORY 01：奇跡の完遂</span><br><span class="stat-callout text-highlight-purple">不可能と言われた「上場維持」を完遂</span>し、会社の命脈を守り抜く。'
       },
       why: {
-        title: "W : Why (弱さを知る者の覚悟)",
+        storyTag: "STORY 02",
+        title: "STORY 02：Why (弱さを知る者の覚悟)",
         lead: "「極限の苦しさと弱さを知ったからこそ、逃げずに戦う」。",
         body: "狂いそうなほどのプレッシャーとお酒に逃げた夜を経験したからこそ、綺麗事ではない当事者の覚悟が生まれ、最後の一人になっても会社と社員を守り抜く決意が固まりました。",
         footer: "🔥 RESILIENCE : 絶望と弱さを乗り越え守り抜く"
@@ -129,18 +175,31 @@ const PRESENTATION_DATA = {
     {
       id: "slide-5",
       type: "w-star",
-      badge: "第五章 / 闘争Ⅲ：Google大被弾からのV字回復",
+      badge: "第五章 / 闘争Ⅲ：Googleアルゴリズム大被弾からの逆転",
       accent: "amber",
       title: '直開拓M&Aのスキーム構築と、Googleアルゴリズム大被弾からの逆転',
       subtitle: '泥臭い行動量とデータ分析力で、投資回収率177%を叩き出した逆転劇',
+      stories: [
+        {
+          tag: "STORY 01",
+          tagColor: "amber",
+          title: "仲介手数料ゼロの直開拓M&Aスキーム構築（月2万件営業）"
+        },
+        {
+          tag: "STORY 02",
+          tagColor: "blue",
+          title: "Googleアルゴリズム大被弾からの不眠不休SEO分析・回収率177%"
+        }
+      ],
       star: {
-        s: "新事業補強のWebメディアM&A直後に、Googleアルゴリズム大被弾（利益90%減）。仲介手数料の予算も一切ない危機的状況。",
-        t: "仲介なし直開拓M&Aスキームの構築と、被弾メディアの爆速V字回復。",
-        a: "自身と若手のみで月2万件アプローチ・200件商談。SEO構造を不眠不休で分析し全面リライト。",
-        r: '被弾メディアをわずか2ヶ月で回復。<span class="stat-callout text-highlight-amber">投資4.21億円に対し 7.48億円回収（回収率177%）</span>。'
+        s: "<span class=\"story-pill story-pill-amber\" style=\"margin-bottom:0.35rem;\">STORY 01 & 02：倍重苦</span><br>WebメディアM&A直後にGoogleアルゴリズム大被弾（利益90%減）。仲介手数料の予算も一切ない危機的状況。",
+        t: "<span class=\"story-pill story-pill-amber\" style=\"margin-bottom:0.35rem;\">STORY 01 & 02：二大課題</span><br>仲介なし直開拓M&Aスキームの構築と、被弾メディアの爆速V字回復。",
+        a: "<span class=\"story-pill story-pill-amber\" style=\"margin-bottom:0.35rem;\">STORY 01：泥臭い行動量</span><span class=\"story-pill story-pill-blue\" style=\"margin-bottom:0.35rem;\">STORY 02：緻密な分析</span><br>自身と若手のみで月2万件アプローチ・200件商談。SEO構造を不眠不休で分析し全面リライト。",
+        r: '<span class="story-pill story-pill-blue" style="margin-bottom:0.35rem;\">STORY 02：爆速回復</span><br>被弾メディアをわずか2ヶ月で回復。<span class="stat-callout text-highlight-amber">投資4.21億円に対し 7.48億円回収（回収率177%）</span>。'
       },
       why: {
-        title: "W : Why (絶対的オーナーシップ)",
+        storyTag: "STORY 01 & 02",
+        title: "STORY 01 & 02：Why (絶対的オーナーシップ)",
         lead: "「自分が利益の太い柱を作らなければ会社が倒れる」。",
         body: "言い訳を一切捨て、自らの行動量と分析力で切り開きました。その後、自立を見極め戦略売却しフィンテックへ資源を集中。",
         footer: "🚀 RECOVERY : 泥臭い行動量と分析でV字回復"
@@ -156,14 +215,27 @@ const PRESENTATION_DATA = {
       accent: "emerald",
       title: 'デジタルギフト®の爆発的成長と組織倍増',
       subtitle: '流通額（GMV）6.6倍成長と、取締役自らが先頭に立つトップリクルート',
+      stories: [
+        {
+          tag: "STORY 01",
+          tagColor: "emerald",
+          title: "ABM戦略によるデジタルギフト® GMV 45億→300億規模（6.6倍）"
+        },
+        {
+          tag: "STORY 02",
+          tagColor: "gold",
+          title: "専任人事不在の現場で取締役自らが挑むトップリクルート"
+        }
+      ],
       star: {
-        s: "フィンテック事業管掌役に就任。薄利多売モデルのため巨額広告不可。大改革直後で専任人事担当者も完全不在。",
-        t: "流通総額（GMV）の非連続成長と、人事不在の中での優秀人材の獲得。",
-        a: "ABMマーケティングを主導。採用では取締役自らがトップリクルーターとして最前線に立ち、経営のリアルを100%オープンに対話。",
-        r: 'GMVを45億円から<span class="stat-callout text-highlight-emerald">300億円規模（6.6倍）</span>へ拡大。'
+        s: "<span class=\"story-pill story-pill-emerald\" style=\"margin-bottom:0.35rem;\">STORY 01 & 02：成長の壁</span><br>フィンテック事業管掌役に就任。薄利多売モデルのため巨額広告不可。大改革直後で専任人事担当者も完全不在。",
+        t: "<span class=\"story-pill story-pill-emerald\" style=\"margin-bottom:0.35rem;\">STORY 01：GMV拡大</span><span class=\"story-pill story-pill-gold\" style=\"margin-bottom:0.35rem;\">STORY 02：採用</span><br>流通総額（GMV）の非連続成長と、人事不在の中での優秀人材の獲得。",
+        a: "<span class=\"story-pill story-pill-emerald\" style=\"margin-bottom:0.35rem;\">STORY 01：ABM</span><span class=\"story-pill story-pill-gold\" style=\"margin-bottom:0.35rem;\">STORY 02：トップ採用</span><br>ABMマーケティングを主導。採用では取締役自らがトップリクルーターとして最前線に立ち、経営のリアルを100%オープンに対話。",
+        r: '<span class="story-pill story-pill-emerald" style="margin-bottom:0.35rem;">STORY 01：新記録達成</span><br>GMVを45億円から<span class="stat-callout text-highlight-emerald">300億円規模（6.6倍）</span>へ拡大。'
       },
       why: {
-        title: "W : Why (トップリクルートの思想)",
+        storyTag: "STORY 02",
+        title: "STORY 02：Why (トップリクルートの思想)",
         lead: "「ビジョンを解像度高く語れるのは経営陣自身」。",
         body: "変化の激しい成長現場において、人事に任せきりにせず、自ら汗をかくことこそが最高の仲間を惹きつけると確信しています。",
         footer: "✨ LEADERSHIP : 自ら汗をかき仲間を惹きつける"
@@ -181,6 +253,7 @@ const PRESENTATION_DATA = {
       subtitle: '自身の成長を組織の限界にしないため、プロフェッショナルとして守り抜いている基準',
       cards: [
         {
+          storyTag: "STORY 01",
           badge: "1. Unlearn & Scale",
           badgeColor: "amber",
           title: "自分が組織の成長のボトルネックにならない",
@@ -189,6 +262,7 @@ const PRESENTATION_DATA = {
           footer: "💡 UNLEARN : 過去の成功体験を壊し進化"
         },
         {
+          storyTag: "STORY 02",
           badge: "2. Systems over Heroism",
           badgeColor: "blue",
           title: "個人の実績を「再現可能なシステム」へ昇華",
@@ -197,6 +271,7 @@ const PRESENTATION_DATA = {
           footer: "⚡ SYSTEM : 個人技に頼らず仕組みで勝つ"
         },
         {
+          storyTag: "STORY 03",
           badge: "3. Gravitational Credibility",
           badgeColor: "purple",
           title: "圧倒的な「社会的信用」を勝ち取る",
@@ -217,13 +292,15 @@ const PRESENTATION_DATA = {
       title: '綺麗事抜きのキャリア論（読者に伝えたい真実）',
       subtitle: '甘い言葉で着飾った採用ピッチを剥ぎ取り、本質的な成長環境のリアルを語る',
       myth: {
-        label: "よくある採用ピッチの甘い言葉",
+        storyTag: "STORY 01",
+        label: "よくある採用ピッチの甘い言葉（幻想）",
         quote: "「うちはベンチャーだから、1年目から億円単位の予算と裁量を渡して自由に挑戦させるよ！」",
         note: "採用ブランディング用の耳ざわりの良い定型文。",
         footer: "⚠️ CAUTION : 自由という名の「作業丸投げ」に注意"
       },
       fact: {
-        label: "経営者・プロリクルーターの本音ファクト",
+        storyTag: "STORY 02",
+        label: "経営者・プロリクルーターの本音ファクト（現実）",
         quote: "実力も信頼関係もない人物に、決定権を渡せるわけがありません。",
         lead: "多くの場合、人員不足による「作業の丸投げ」に過ぎません。",
         body: "本当の裁量権（意思決定の権利）とは、<strong>「成果」と「信頼残高」</strong>をもぎ取ったプロにのみ与えられる報酬です。成果を出したメンバーには最高の打席を用意します。",
@@ -242,6 +319,8 @@ const PRESENTATION_DATA = {
       subtitle: '何のために働き、どんな未来を次世代に引き渡すのか。千葉博文が描く人生の最終目的地',
       cards: [
         {
+          storyTag: "STORY 01",
+          storyTitle: "【人生の最終ミッション】",
           badge: "GOAL : 人生の最終ミッション",
           badgeColor: "amber",
           title: "地方から「自ら仕事を生み出す起業家」が育つ生態系構築",
@@ -250,9 +329,11 @@ const PRESENTATION_DATA = {
           footer: "💡 MISSION : 挑戦者が自立し稼げる仕組みを全国へ"
         },
         {
+          storyTag: "STORY 02",
+          storyTitle: "【挑戦者への覚悟と約束】",
           badge: "COMMITMENT : 挑戦者への覚悟と約束",
           badgeColor: "blue",
-          title: "「挑戦する人が正当に報われ、自立したプロが育つ社会へ」",
+          title: "「挑戦する人が正当に報われ、自律したプロが育つ社会へ」",
           lead: "自らの足で立ち、次世代へバトンを繋ぐ。",
           body: "綺麗事の支援ではなく、自ら稼ぎ生活を営む仕組みを全国へ広げる。自分が13年間泥臭く積み上げてきた事業開発のノウハウと信用をすべて注ぎ込み、次世代の挑戦者が活躍する舞台を創り出します。",
           footer: "🔥 COMMITMENT : 13年の経験と信用をすべて次世代の挑戦へ"
@@ -271,6 +352,7 @@ const PRESENTATION_DATA = {
       subtitle: '大改革と危機を乗り越えてきた著者と、NG制限なしの本音で語り合う対話の場へ',
       cards: [
         {
+          storyTag: "STORY 01",
           icon: "❓",
           title: "著者・取締役を焦らせる「NGなし」の直球質問を歓迎",
           lead: "NG制限なしの直球回答。",
@@ -279,8 +361,9 @@ const PRESENTATION_DATA = {
           footer: "❓ DIRECT Q&A : 経営の裏側もすべてオープンに開示"
         },
         {
+          storyTag: "STORY 02",
           icon: "🤝",
-          title: "本気の仲間を探すため、着飾らず向き合う",
+          title: "本気の仲間を探すため, 着飾らず向き合う",
           lead: "本気の対話。",
           body: "地方から起業家が育つエコシステムを共に創るパートナーを見つけるために、私は最前線に立っています。熱量のある本気のキャリア対話を始めましょう。",
           note: "🔥 あなたの本気のキャリア観と疑問をぶつけてください",

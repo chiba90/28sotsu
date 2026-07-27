@@ -47,10 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const m = slide.metric;
       const t = slide.theme;
       const imp = slide.impact;
+      const storiesHtml = slide.stories ? `
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+          ${slide.stories.map(s => `<span class="story-pill story-pill-${s.pillColor || 'blue'}">${s.pill}</span>`).join('')}
+        </div>
+      ` : '';
       return `
         <div class="hero-grid anim-el delay-2">
           <!-- Author Info (Full Row) -->
           <div class="glass-card" style="grid-column: 1 / -1; min-height: 170px;">
+            ${storiesHtml}
             <div class="profile-card-header">
               <div>
                 <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #fef08a; tracking-wider; text-transform: uppercase;">AUTHOR PROFILE</span>
@@ -114,7 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="glass-card ${getCardAccentClass(c.badgeColor)}">
           <div style="display: flex; flex-direction: column; height: 100%;">
             <div>
-              <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
+              <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                ${c.storyTag ? `<span class="story-pill story-pill-${c.badgeColor || 'blue'}">${c.storyTag}</span>` : ''}
+                <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
+              </div>
               <h3 style="font-size: 1.45rem; font-weight: 900; color: var(--text-main); margin: 0.75rem 0 0.85rem 0; line-height: 1.35;">${c.title}</h3>
               ${c.lead ? `<p style="font-size: 1.125rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.45rem;">${c.lead}</p>` : ''}
               <p style="font-size: 1.025rem; color: var(--text-muted); line-height: 1.7;">${c.body}</p>
@@ -132,7 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="glass-card ${getCardAccentClass(c.badgeColor)}">
           <div style="display: flex; flex-direction: column; height: 100%;">
             <div>
-              <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
+              <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                ${c.storyTag ? `<span class="story-pill story-pill-${c.badgeColor || 'blue'}">${c.storyTag}</span>` : ''}
+                <span class="slide-badge badge-${c.badgeColor}">${c.badge}</span>
+              </div>
               <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin: 0.75rem 0 0.65rem 0; line-height: 1.35;">${c.title}</h3>
               ${c.lead ? `<p style="font-size: 1.075rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.4rem;">${c.lead}</p>` : ''}
               <p style="font-size: 0.975rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
@@ -148,8 +160,20 @@ document.addEventListener('DOMContentLoaded', () => {
     "w-star": (slide) => {
       const s = slide.star;
       const w = slide.why;
+      const storyHeader = slide.stories ? `
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap; background: rgba(15, 23, 42, 0.6); padding: 0.5rem 0.85rem; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.25);">
+          <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #d4af37; letter-spacing: 0.08em; text-transform: uppercase;">スライド内共存ストーリー:</span>
+          ${slide.stories.map(st => `
+            <span class="story-pill story-pill-${st.tagColor || 'blue'}">
+              <strong>${st.tag}</strong>: ${st.title}
+            </span>
+          `).join('')}
+        </div>
+      ` : '';
+
       return `
         <div class="wstar-container anim-el delay-2">
+          ${storyHeader}
           <!-- STAR 2x2 Columns -->
           <div class="star-2x2">
             <!-- Situation -->
@@ -186,8 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border-color: rgba(212, 175, 55, 0.5);">
             <div style="display: flex; flex-direction: column; height: 100%;">
               <div>
-                <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #fef08a; tracking-wider; text-transform: uppercase;">${w.title}</span>
-                ${w.lead ? `<p style="font-size: 1.15rem; font-weight: 900; color: var(--text-main); margin-top: 0.6rem; line-height: 1.4;">${w.lead}</p>` : ''}
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                  ${w.storyTag ? `<span class="story-pill story-pill-amber">${w.storyTag}</span>` : ''}
+                  <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #fef08a; tracking-wider; text-transform: uppercase;">${w.title}</span>
+                </div>
+                ${w.lead ? `<p style="font-size: 1.15rem; font-weight: 900; color: var(--text-main); margin-top: 0.4rem; line-height: 1.4;">${w.lead}</p>` : ''}
                 <p style="font-size: 1.025rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.65;">${w.body}</p>
               </div>
               ${w.footer ? `<div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-card); font-size: 0.85rem; font-weight: 800; color: #fef08a;">${w.footer}</div>` : ''}
@@ -207,7 +234,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="glass-card" style="border-color: rgba(244, 63, 94, 0.4); background: linear-gradient(135deg, rgba(159, 18, 57, 0.25), rgba(17, 24, 39, 0.85));">
             <div style="display: flex; flex-direction: column; height: 100%;">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 800; color: #fb7185; tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: rgba(15, 23, 42, 0.8); border-radius: 6px; border: 1px solid rgba(244, 63, 94, 0.4);">${m.label}</span>
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                  ${m.storyTag ? `<span class="story-pill story-pill-rose">${m.storyTag}</span>` : ''}
+                  <span style="font-size: 0.75rem; font-weight: 800; color: #fb7185; tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: rgba(15, 23, 42, 0.8); border-radius: 6px; border: 1px solid rgba(244, 63, 94, 0.4);">${m.label}</span>
+                </div>
                 <h3 style="font-size: 1.35rem; font-weight: 900; color: #fecdd3; margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${m.quote}"</h3>
                 ${m.body ? `<p style="font-size: 1rem; color: #fda4af; line-height: 1.65; border-top: 1px solid rgba(244, 63, 94, 0.25); padding-top: 0.75rem;">${m.body}</p>` : ''}
               </div>
@@ -219,7 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div style="display: flex; flex-direction: column; height: 100%;">
               <div>
-                <span style="font-size: 0.75rem; font-weight: 800; color: #fef08a; tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: rgba(15, 23, 42, 0.8); border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.5);">${f.label}</span>
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                  ${f.storyTag ? `<span class="story-pill story-pill-gold">${f.storyTag}</span>` : ''}
+                  <span style="font-size: 0.75rem; font-weight: 800; color: #fef08a; tracking-wider; text-transform: uppercase; padding: 0.25rem 0.65rem; background: rgba(15, 23, 42, 0.8); border-radius: 6px; border: 1px solid rgba(212, 175, 55, 0.5);">${f.label}</span>
+                </div>
                 <h3 style="font-size: 1.45rem; font-weight: 900; color: var(--text-main); margin: 1rem 0 0.85rem 0; line-height: 1.4;">"${f.quote}"</h3>
                 ${f.lead ? `<p style="font-size: 1.125rem; font-weight: 900; color: var(--text-main); margin: 0.5rem 0;">${f.lead}</p>` : ''}
                 <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65; border-top: 1px solid var(--border-card); padding-top: 0.75rem;">${f.body}</p>
@@ -237,7 +270,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="glass-card ${getCardAccentClass(slide.accent)}">
           <div style="display: flex; flex-direction: column; height: 100%;">
             <div>
-              <div style="font-size: 2.4rem; margin-bottom: 0.65rem;">${c.icon}</div>
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                <div style="font-size: 2.4rem;">${c.icon}</div>
+                ${c.storyTag ? `<span class="story-pill story-pill-blue">${c.storyTag}</span>` : ''}
+              </div>
               <h3 style="font-size: 1.35rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.75rem;">${c.title}</h3>
               ${c.lead ? `<p style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">${c.lead}</p>` : ''}
               <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
