@@ -278,11 +278,70 @@ document.addEventListener('DOMContentLoaded', () => {
               ${c.lead ? `<p style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">${c.lead}</p>` : ''}
               <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.65;">${c.body}</p>
             </div>
-            ${c.footer ? `<div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-card); font-size: 0.85rem; font-weight: 800; color: #fef08a;">${c.footer}</div>` : ''}
+            ${c.footer ? `<div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-card); font-size: 0.875rem; font-weight: 800; color: #fef08a;">${c.footer}</div>` : ''}
           </div>
         </div>
       `).join('');
       return `<div class="split-grid anim-el delay-2" style="position: relative; z-index: 10;">${cardsHtml}</div>`;
+    },
+
+    // DUAL-STORY SPLIT CARDS TEMPLATE (明確に分かれた2つの独立ストーリーカード)
+    "dual-story": (slide) => {
+      const s1 = slide.story1;
+      const s2 = slide.story2;
+      const w = slide.why;
+
+      return `
+        <div class="dual-story-container anim-el delay-2">
+          <!-- STORY 1 & STORY 2 DUAL GRID -->
+          <div class="dual-story-grid">
+            <!-- STORY 01 CARD -->
+            <div class="story-card ${getCardAccentClass(s1.tagColor || 'amber')}">
+              <div>
+                <div class="story-card-header">
+                  <span class="story-pill story-pill-${s1.tagColor || 'amber'}" style="width: fit-content;">${s1.tag}</span>
+                  <h3 class="story-card-title">${s1.title}</h3>
+                  ${s1.subtitle ? `<div class="story-card-subtitle">${s1.subtitle}</div>` : ''}
+                </div>
+                ${s1.lead ? `<p style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">${s1.lead}</p>` : ''}
+                <div class="story-card-body">${s1.body}</div>
+              </div>
+              ${s1.footer ? `<div class="story-card-footer">${s1.footer}</div>` : ''}
+            </div>
+
+            <!-- STORY 02 CARD -->
+            <div class="story-card ${getCardAccentClass(s2.tagColor || 'blue')}">
+              <div>
+                <div class="story-card-header">
+                  <span class="story-pill story-pill-${s2.tagColor || 'blue'}" style="width: fit-content;">${s2.tag}</span>
+                  <h3 class="story-card-title">${s2.title}</h3>
+                  ${s2.subtitle ? `<div class="story-card-subtitle">${s2.subtitle}</div>` : ''}
+                </div>
+                ${s2.lead ? `<p style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">${s2.lead}</p>` : ''}
+                <div class="story-card-body">${s2.body}</div>
+              </div>
+              ${s2.footer ? `<div class="story-card-footer">${s2.footer}</div>` : ''}
+            </div>
+          </div>
+
+          <!-- COMMON WHY / THEME CARD -->
+          ${w ? `
+            <div class="glass-card ${getCardAccentClass(slide.accent)}" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border-color: rgba(212, 175, 55, 0.5);">
+              <div style="display: flex; flex-direction: column; height: 100%;">
+                <div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+                    ${w.storyTag ? `<span class="story-pill story-pill-amber">${w.storyTag}</span>` : ''}
+                    <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #fef08a; tracking-wider; text-transform: uppercase;">${w.title}</span>
+                  </div>
+                  ${w.lead ? `<p style="font-size: 1.1rem; font-weight: 900; color: var(--text-main); margin-top: 0.4rem; line-height: 1.4;">${w.lead}</p>` : ''}
+                  <p style="font-size: 1.025rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.65;">${w.body}</p>
+                </div>
+                ${w.footer ? `<div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-card); font-size: 0.85rem; font-weight: 800; color: #fef08a;">${w.footer}</div>` : ''}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
     }
   };
 
@@ -625,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function bindCardClickEvents() {
-    document.querySelectorAll('.glass-card').forEach(card => {
+    document.querySelectorAll('.glass-card, .story-card').forEach(card => {
       card.addEventListener('click', (e) => {
         if (e.target.closest('.avatar-thumb')) return;
 
