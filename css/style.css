@@ -907,3 +907,85 @@ html, body {
 .search-result-item:hover {
   background: rgba(212, 175, 55, 0.12);
 }
+
+/* ==========================================================================
+   STORY CLASSIFICATION & STRUCTURED MULTI-STORY STYLES
+   ========================================================================== */
+.story-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-family: 'Cinzel', 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.story-pill-gold {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(133, 77, 14, 0.35));
+  border-color: rgba(212, 175, 55, 0.5);
+  color: #fef08a;
+}
+.story-pill-blue {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(30, 64, 175, 0.35));
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #7dd3fc;
+}
+.story-pill-purple {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.25), rgba(107, 33, 168, 0.35));
+  border-color: rgba(192, 132, 252, 0.5);
+  color: #e9d5ff;
+}
+.story-pill-amber {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.25), rgba(180, 83, 9, 0.35));
+  border-color: rgba(251, 191, 36, 0.5);
+  color: #fde68a;
+}
+.story-pill-emerald {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.25), rgba(4, 120, 87, 0.35));
+  border-color: rgba(52, 211, 153, 0.5);
+  color: #a7f3d0;
+}
+.story-pill-rose {
+  background: linear-gradient(135deg, rgba(251, 113, 133, 0.25), rgba(190, 18, 60, 0.35));
+  border-color: rgba(251, 113, 133, 0.5);
+  color: #fecdd3;
+}
+
+.story-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.25);
+}
+
+.story-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.story-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.3) 30%, rgba(212, 175, 55, 0.3) 70%, transparent 100%);
+  margin: 0.85rem 0;
+}
+
+.story-block {
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 0.6rem;
+}
