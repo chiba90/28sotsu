@@ -44,12 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const templates = {
+    // COVER TEMPLATE (FRONT HARDCOVER)
+    cover: (slide) => '',
+
     // HERO / INTRO TEMPLATE (BOOK COVER / PROLOGUE)
     hero: (slide) => {
-      const p = slide.presenter;
-      const m = slide.metric;
-      const t = slide.theme;
-      const imp = slide.impact;
+      const p = slide.presenter || {};
+      const m = slide.metric || {};
+      const t = slide.theme || {};
+      const imp = slide.impact || {};
       const storiesHtml = slide.stories ? `
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
           ${slide.stories.map(s => `<span class="story-pill story-pill-${s.pillColor || 'blue'}">${s.pill}</span>`).join('')}
@@ -63,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="profile-card-header">
               <div>
                 <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #fef08a; tracking-wider; text-transform: uppercase;">AUTHOR PROFILE</span>
-                <h3 style="font-size: 1.65rem; font-weight: 900; margin-top: 0.25rem; color: var(--text-main);">${p.name}</h3>
-                <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.1rem; font-weight: 600;">${p.role}</p>
+                <h3 style="font-size: 1.65rem; font-weight: 900; margin-top: 0.25rem; color: var(--text-main);">${p.name || ''}</h3>
+                <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.1rem; font-weight: 600;">${p.role || ''}</p>
               </div>
               ${p.daughterImg ? `
                 <div class="avatar-thumb" onclick="event.stopPropagation(); zoomDaughter();" title="クリックで愛娘の写真拡大！">
@@ -73,44 +76,44 @@ document.addEventListener('DOMContentLoaded', () => {
               ` : ''}
             </div>
             <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.85rem; line-height: 1.55; font-weight: 500;">
-              ${p.daughterNote ? p.daughterNote : p.note}
+              ${p.daughterNote ? p.daughterNote : (p.note || '')}
             </p>
             <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem; font-weight: 700;">
-              ${p.university}
+              ${p.university || ''}
             </p>
           </div>
 
           <!-- Bottom Row Card 1: Continuity Metric -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
-              <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">${m.badge}</span>
-              <div style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #fef08a 0%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 0.35rem; line-height: 1; letter-spacing: -0.03em;">${m.value}</div>
-              <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 0.6rem;">${m.label}</h4>
+              <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">${m.badge || ''}</span>
+              <div style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #fef08a 0%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 0.35rem; line-height: 1; letter-spacing: -0.03em;">${m.value || ''}</div>
+              <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 0.6rem;">${m.label || ''}</h4>
             </div>
             <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem;">
-              ${m.note}
+              ${m.note || ''}
             </p>
           </div>
 
           <!-- Bottom Row Card 2: Today's Theme -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
-              <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">${t.badge}</span>
-              <h4 style="font-size: 1.35rem; font-weight: 900; color: var(--text-main); margin-top: 0.6rem; line-height: 1.35;">${t.title}</h4>
+              <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">${t.badge || ''}</span>
+              <h4 style="font-size: 1.35rem; font-weight: 900; color: var(--text-main); margin-top: 0.6rem; line-height: 1.35;">${t.title || ''}</h4>
             </div>
             <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem;">
-              ${t.note}
+              ${t.note || ''}
             </p>
           </div>
 
           <!-- Bottom Row Card 3: Career Track Record -->
           <div class="glass-card ${getCardAccentClass(slide.accent)}">
             <div>
-              <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">${imp.badge}</span>
-              <h4 style="font-size: 1.35rem; font-weight: 900; color: var(--text-main); margin-top: 0.6rem; line-height: 1.35;">${imp.title}</h4>
+              <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #38bdf8; tracking-wider; text-transform: uppercase;">${imp.badge || ''}</span>
+              <h4 style="font-size: 1.35rem; font-weight: 900; color: var(--text-main); margin-top: 0.6rem; line-height: 1.35;">${imp.title || ''}</h4>
             </div>
             <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.85rem; border-top: 1px solid var(--border-card); padding-top: 0.65rem;">
-              ${imp.note}
+              ${imp.note || ''}
             </p>
           </div>
         </div>
