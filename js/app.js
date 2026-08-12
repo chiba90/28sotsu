@@ -298,93 +298,79 @@ document.addEventListener('DOMContentLoaded', () => {
       const bodyContent = templateFn(slide);
 
       if (index === 0) {
-        // SLIDE 1: HARDCOVER BOOK FRONT COVER (自伝・単行本 表紙・扉)
+        // SLIDE 1: LANDSCAPE AUTOBIOGRAPHY BOOK FRONT COVER (自伝・単行本 表紙・扉)
         slideEl.innerHTML = `
           <div class="light-sweep light-sweep-active"></div>
           <div class="book-cover-container anim-el delay-1">
-            <div style="font-family: 'Cinzel', serif; font-size: 0.8rem; font-weight: 800; color: #d4af37; letter-spacing: 0.22em; text-transform: uppercase;">
+            <div style="font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 800; color: #d4af37; letter-spacing: 0.22em; text-transform: uppercase;">
               ⚜️ EXECUTIVE MEMOIR AUTOBIOGRAPHY ⚜️
             </div>
             
-            <div style="margin: 1.25rem 0;">
-              <span style="font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 700; color: #fef08a; letter-spacing: 0.15em; display: block; margin-bottom: 0.5rem;">― 東証上場企業 取締役の当事者記録 ―</span>
+            <div style="margin: 1.1rem 0;">
+              <span style="font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 700; color: #fef08a; letter-spacing: 0.15em; display: block; margin-bottom: 0.4rem;">― 東証上場企業 取締役の当事者記録 ―</span>
               <h1 style="font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-size: clamp(2rem, 3.8vw, 3.1rem); font-weight: 900; background: linear-gradient(135deg, #fffbeb 0%, #fef08a 40%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.3;">
                 自伝 『不確実性を生き抜く生存戦略』
               </h1>
-              <p style="font-family: 'Shippori Mincho', serif; font-size: clamp(1rem, 1.5vw, 1.2rem); color: #e2e8f0; margin-top: 0.85rem; font-weight: 600; line-height: 1.6;">
+              <p style="font-family: 'Shippori Mincho', serif; font-size: clamp(1rem, 1.5vw, 1.2rem); color: #e2e8f0; margin-top: 0.65rem; font-weight: 600; line-height: 1.6;">
                 筑波大学新卒から一度も転職せずに東証上場企業の取締役へ。<br>激動の13年間、会社の天国と地獄をくぐり抜けた生存記録
               </p>
             </div>
 
-            <div style="width: 100%; max-width: 780px;">
+            <div style="width: 100%; max-width: 820px;">
               ${bodyContent}
             </div>
 
-            <div style="font-family: 'Shippori Mincho', serif; font-size: 1.1rem; font-weight: 800; color: #fef08a; border-top: 1px solid rgba(212,175,55,0.4); padding-top: 0.85rem; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-family: 'Shippori Mincho', serif; font-size: 1.05rem; font-weight: 800; color: #fef08a; border-top: 1px solid rgba(212,175,55,0.4); padding-top: 0.75rem; width: 100%; display: flex; justify-content: space-between; align-items: center;">
               <span>著：千葉 博文 <small style="font-size: 0.85rem; color: #94a3b8; font-weight: 600;">(株式会社デジタルプラス 取締役)</small></span>
               <span style="font-family: 'Cinzel', serif; font-size: 0.8rem; color: #d4af37; font-weight: 800;">FIRST EDITION 2026</span>
             </div>
           </div>
         `;
       } else {
-        // SLIDES 2-10: PHYSICAL OPENED BOOK SPREAD (実物の開いた自伝見開き本)
-        const pageLeftNum = index * 2 + 1;
-        const pageRightNum = index * 2 + 2;
-
+        // SLIDES 2-10: LANDSCAPE PICTURE BOOK (PC向け横長絵本・左綴じ自伝)
         slideEl.innerHTML = `
           <div class="light-sweep light-sweep-active"></div>
           ${index === slidesData.length - 1 ? '<div class="super-glow super-glow-active"></div>' : ''}
           
-          <div class="real-book-spread anim-el delay-1">
-            <!-- Silk Bookmark Ribbon -->
-            <div class="book-silk-bookmark"></div>
+          <div class="landscape-picture-book anim-el delay-1">
+            <!-- Left Binding Spine Fold (左側の背表紙・折り目) -->
+            <div class="picture-book-spine-left">
+              <span class="spine-vertical-text">自伝・千葉博文手記</span>
+            </div>
 
-            <div class="book-spread-inner">
-              <!-- LEFT PAGE: Running Header, Chapter Title, Epigraph & Background -->
-              <div class="book-page book-page-left">
-                <div class="book-page-header">
-                  <span class="book-chapter-number">${ROMAN_NUMERALS[index]}</span>
-                  <span style="font-weight: 800; font-size: 0.8rem; color: #b45309;">${slide.badge}</span>
+            <!-- Silk Crimson Bookmark Ribbon extending from Top Left Spine -->
+            <div class="picture-book-ribbon"></div>
+
+            <!-- Main Parchment Paper Canvas (横長紙面) -->
+            <div class="picture-book-page">
+              <!-- Running Header Line -->
+              <div class="picture-book-header">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <span class="picture-book-chapter-num">${ROMAN_NUMERALS[index]}</span>
+                  <span class="picture-book-badge">${slide.badge}</span>
                 </div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #854d0e;">自伝 『不確実性を生き抜く生存戦略』 著 千葉 博文</span>
+              </div>
 
-                <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start;">
-                  <h2 class="book-chapter-title">${slide.title}</h2>
-                  <p class="book-chapter-subtitle">${slide.subtitle}</p>
-                  
-                  <div style="text-align: center; color: #b45309; margin: 0.4rem 0; font-size: 0.85rem;">── ❖ ──</div>
-                  
-                  <div class="book-epigraph">
-                    “ ${slide.subtitle.replace(/<[^>]*>?/gm, '')} ”
-                  </div>
-
-                  <p style="font-size: 0.9rem; color: #475569; line-height: 1.65; margin-top: 0.5rem; font-weight: 600; background: rgba(255,255,255,0.6); padding: 0.65rem 0.85rem; border-radius: 6px; border: 1px solid rgba(212,175,55,0.3);">
-                    📖 <strong>【手記・当事者の視点】</strong><br>
-                    筑波大学卒業後、第一志望で入社したベンチャー企業で天国と地獄の双方を経験。不確実性の極限下で修羅場を突破した思考と行動の記録。
-                  </p>
-                </div>
-
-                <div class="book-page-footer">
-                  — Page ${pageLeftNum} —
+              <!-- Chapter Title & Subtitle / Epigraph -->
+              <div>
+                <h2 class="picture-book-title">${slide.title}</h2>
+                <p class="picture-book-subtitle">${slide.subtitle}</p>
+                
+                <div class="picture-book-quote">
+                  “ ${slide.subtitle.replace(/<[^>]*>?/gm, '')} ”
                 </div>
               </div>
 
-              <!-- CENTER SPINE CREASE SHADOW -->
-              <div class="book-center-spine"></div>
+              <!-- Content Body (STAR Grid / Story Cards) -->
+              <div class="picture-book-body">
+                ${bodyContent}
+              </div>
 
-              <!-- RIGHT PAGE: Chapter Content / STAR Breakdown / Philosophy Cards -->
-              <div class="book-page book-page-right">
-                <div class="book-page-header">
-                  <span>自伝 『不確実性を生き抜く生存戦略』</span>
-                  <span>著者 千葉 博文</span>
-                </div>
-
-                <div style="flex: 1; overflow-y: auto; padding-right: 0.25rem;">
-                  ${bodyContent}
-                </div>
-
-                <div class="book-page-footer">
-                  — Page ${pageRightNum} —
-                </div>
+              <!-- Page Footer & Running Page Number -->
+              <div class="picture-book-footer">
+                <span>— CHAPTER ${index + 1} OF 10 —</span>
+                <span>PAGE ${index + 1}</span>
               </div>
             </div>
           </div>
