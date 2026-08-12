@@ -403,7 +403,28 @@ html, body {
 
 .slide-header-block {
   flex-shrink: 0;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-height: 920px) {
+  .slide-content-scroll {
+    padding: 0.85rem 1.5rem;
+  }
+  .slide-header-block {
+    margin-bottom: 0.5rem;
+  }
+  .slide-badge {
+    margin-bottom: 0.35rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+  }
+  .slide-title {
+    font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+    margin-bottom: 0.2rem;
+  }
+  .slide-subtitle {
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+  }
 }
 
 /* Clean Scrollbar */
@@ -596,7 +617,7 @@ html, body {
 .wstar-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.35rem;
+  gap: 0.85rem;
   width: 100%;
   flex: 1;
 }
@@ -608,7 +629,7 @@ html, body {
 .star-2x2 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.15rem;
+  gap: 0.75rem;
 }
 @media (min-width: 640px) {
   .star-2x2 {
@@ -616,7 +637,27 @@ html, body {
   }
 }
 .star-2x2 .glass-card {
-  padding: 1.5rem 1.5rem;
+  padding: 0.95rem 1.15rem;
+}
+.star-2x2 .glass-card p {
+  line-height: 1.45;
+  margin-top: 0.35rem;
+}
+@media (max-height: 920px) {
+  .star-2x2 .glass-card {
+    padding: 0.7rem 0.95rem;
+  }
+  .star-2x2 .glass-card p {
+    font-size: 0.9rem;
+    line-height: 1.38;
+    margin-top: 0.2rem;
+  }
+  .star-2x2 {
+    gap: 0.55rem;
+  }
+  .wstar-container {
+    gap: 0.65rem;
+  }
 }
 
 .truth-grid {
