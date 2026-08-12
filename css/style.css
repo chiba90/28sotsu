@@ -553,7 +553,7 @@ html, body {
   outline: 2px solid rgba(212, 175, 55, 0.65);
   outline-offset: -8px;
   box-shadow: 
-    0 35px 80px -15px rgba(0, 0, 0, 0.95),
+    0 35px 80px -15px rgba(0, 0, 0, 0.98),
     0 15px 35px -10px rgba(0, 0, 0, 0.8),
     inset 0 0 25px rgba(0, 0, 0, 0.7);
   overflow: hidden;
@@ -601,11 +601,11 @@ html, body {
 .picture-book-ribbon {
   position: absolute;
   top: 0;
-  left: 68px;
-  width: 20px;
-  height: 55%;
+  left: 44px;
+  width: 14px;
+  height: 50%;
   background: linear-gradient(to bottom, #991b1b 0%, #b91c1c 85%, #d4af37 100%);
-  box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
   z-index: 25;
   pointer-events: none;
   border-bottom-left-radius: 4px;
@@ -617,7 +617,7 @@ html, body {
   flex: 1;
   background: linear-gradient(135deg, #fdfcf7 0%, #f6f2e8 50%, #fdfbf7 100%);
   color: #1e293b;
-  padding: 1.0rem 1.85rem;
+  padding: 1.0rem 2.0rem 1.0rem 2.8rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
