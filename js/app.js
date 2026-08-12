@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const slidesData = PRESENTATION_DATA.slides;
 
   const ROMAN_NUMERALS = [
-    "CHAPTER I", "CHAPTER II", "CHAPTER III", "CHAPTER IV", "CHAPTER V",
+    "COVER", "CHAPTER I", "CHAPTER II", "CHAPTER III", "CHAPTER IV", "CHAPTER V",
     "CHAPTER VI", "CHAPTER VII", "CHAPTER VIII", "CHAPTER IX", "CHAPTER X"
   ];
+
+  // Expose navigation to window for button clicks
+  window.goToSlide = goToSlide;
 
   // ==========================================
   // 1. SLIDE TEMPLATE GENERATORS
@@ -298,36 +301,52 @@ document.addEventListener('DOMContentLoaded', () => {
       const bodyContent = templateFn(slide);
 
       if (index === 0) {
-        // SLIDE 1: LANDSCAPE AUTOBIOGRAPHY BOOK FRONT COVER (自伝・単行本 表紙・扉)
+        // SLIDE 0: LANDSCAPE AUTOBIOGRAPHY BOOK FRONT COVER (絵本・自伝 豪華ハードカバー表表紙)
         slideEl.innerHTML = `
           <div class="light-sweep light-sweep-active"></div>
-          <div class="book-cover-container anim-el delay-1">
-            <div style="font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 800; color: #d4af37; letter-spacing: 0.22em; text-transform: uppercase;">
-              ⚜️ EXECUTIVE MEMOIR AUTOBIOGRAPHY ⚜️
-            </div>
-            
-            <div style="margin: 1.1rem 0;">
-              <span style="font-family: 'Shippori Mincho', serif; font-size: 0.9rem; font-weight: 700; color: #fef08a; letter-spacing: 0.15em; display: block; margin-bottom: 0.4rem;">― 東証上場企業 取締役の当事者記録 ―</span>
-              <h1 style="font-family: 'Shippori Mincho', 'Noto Serif JP', serif; font-size: clamp(2rem, 3.8vw, 3.1rem); font-weight: 900; background: linear-gradient(135deg, #fffbeb 0%, #fef08a 40%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.3;">
-                自伝 『不確実性を生き抜く生存戦略』
-              </h1>
-              <p style="font-family: 'Shippori Mincho', serif; font-size: clamp(1rem, 1.5vw, 1.2rem); color: #e2e8f0; margin-top: 0.65rem; font-weight: 600; line-height: 1.6;">
-                筑波大学新卒から一度も転職せずに東証上場企業の取締役へ。<br>激動の13年間、会社の天国と地獄をくぐり抜けた生存記録
-              </p>
+          <div class="landscape-picture-book-cover anim-el delay-1">
+            <!-- Left Binding Spine Fold (左側の背表紙・折り目) -->
+            <div class="picture-book-spine-left">
+              <span class="spine-vertical-text">自伝・千葉博文手記</span>
             </div>
 
-            <div style="width: 100%; max-width: 820px;">
-              ${bodyContent}
-            </div>
+            <!-- Silk Crimson Bookmark Ribbon extending from Top Left Spine -->
+            <div class="picture-book-ribbon"></div>
 
-            <div style="font-family: 'Shippori Mincho', serif; font-size: 1.05rem; font-weight: 800; color: #fef08a; border-top: 1px solid rgba(212,175,55,0.4); padding-top: 0.75rem; width: 100%; display: flex; justify-content: space-between; align-items: center;">
-              <span>著：千葉 博文 <small style="font-size: 0.85rem; color: #94a3b8; font-weight: 600;">(株式会社デジタルプラス 取締役)</small></span>
-              <span style="font-family: 'Cinzel', serif; font-size: 0.8rem; color: #d4af37; font-weight: 800;">FIRST EDITION 2026</span>
+            <!-- Front Cover Parchment & Gold Foil Stamping Area -->
+            <div class="book-cover-page">
+              <div class="cover-crest">⚜️ EXECUTIVE MEMOIR AUTOBIOGRAPHY ⚜️</div>
+
+              <div class="cover-title-group">
+                <span class="cover-eyebrow">― 東証上場企業 取締役の当事者記録 ―</span>
+                <h1 class="cover-main-title">自伝 『不確実性を生き抜く生存戦略』</h1>
+                <p class="cover-main-subtitle">
+                  筑波大学新卒から一度も転職せずに東証上場企業の取締役へ。<br>
+                  激動の13年間、会社の天国と地獄をくぐり抜けた生存記録
+                </p>
+              </div>
+
+              <div class="cover-highlights-grid">
+                <div class="cover-tag-item">📌 東証上場維持・売上99%減からの事業再生</div>
+                <div class="cover-tag-item">📌 M&A事業統合・GMV300億円規模への飛躍</div>
+                <div class="cover-tag-item">📌 綺麗事抜きのキャリア哲学・裁量権の本音</div>
+                <div class="cover-tag-item">👧 愛娘・夏歌ちゃんに誇れる未来を創る原動力</div>
+              </div>
+
+              <div class="cover-author-footer">
+                <div class="cover-author-info">
+                  <span class="author-name">著者：千葉 博文</span>
+                  <span class="author-role">株式会社デジタルプラス 取締役 (2013年新卒入社)</span>
+                </div>
+                <button class="open-book-btn" onclick="window.goToSlide(1)">
+                  📖 本を開いて読む (第一章へ) ➔
+                </button>
+              </div>
             </div>
           </div>
         `;
       } else {
-        // SLIDES 2-10: LANDSCAPE PICTURE BOOK (PC向け横長絵本・左綴じ自伝)
+        // SLIDES 1-10: LANDSCAPE PICTURE BOOK PAGES (本編全10章・左綴じ横長紙面)
         slideEl.innerHTML = `
           <div class="light-sweep light-sweep-active"></div>
           ${index === slidesData.length - 1 ? '<div class="super-glow super-glow-active"></div>' : ''}
@@ -369,8 +388,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
               <!-- Page Footer & Running Page Number -->
               <div class="picture-book-footer">
-                <span>— CHAPTER ${index + 1} OF 10 —</span>
-                <span>PAGE ${index + 1}</span>
+                <span>— CHAPTER ${index} OF 10 —</span>
+                <span>PAGE ${index} OF 10</span>
               </div>
             </div>
           </div>
@@ -439,8 +458,8 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.disabled = currentSlideIndex === slidesData.length - 1;
 
     // Update Progress Fill
-    const progressPercent = ((currentSlideIndex + 1) / slidesData.length) * 100;
-    progressFill.style.width = `${progressPercent}%`;
+    const progressPercent = ((currentSlideIndex) / (slidesData.length - 1)) * 100;
+    progressFill.style.width = `${Math.max(5, progressPercent)}%`;
 
     // Update Chapter Counter
     currentNumDisplay.textContent = ROMAN_NUMERALS[currentSlideIndex];
@@ -480,6 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Stage Labels
     const STAGE_LABELS = [
+      "表表紙",
       "2013 覚悟の第一歩",
       "2011 原点・被災地",
       "2013 利益4億創出",
