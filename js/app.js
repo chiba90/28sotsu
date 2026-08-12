@@ -166,48 +166,37 @@ document.addEventListener('DOMContentLoaded', () => {
     "w-star": (slide) => {
       const s = slide.star;
       const w = slide.why;
-      const storyHeader = slide.stories ? `
-        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap; background: rgba(15, 23, 42, 0.6); padding: 0.5rem 0.85rem; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.25);">
-          <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #d4af37; letter-spacing: 0.08em; text-transform: uppercase;">スライド内共存ストーリー:</span>
-          ${slide.stories.map(st => `
-            <span class="story-pill story-pill-${st.tagColor || 'blue'}">
-              <strong>${st.tag}</strong>: ${st.title}
-            </span>
-          `).join('')}
-        </div>
-      ` : '';
 
       return `
         <div class="wstar-container anim-el delay-2">
-          ${storyHeader}
           <!-- STAR 2x2 Columns -->
           <div class="star-2x2">
             <!-- Situation -->
             <div class="glass-card">
               <div>
                 <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #d4af37; tracking-wider; text-transform: uppercase;">S : Situation</span>
-                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.6;">${s.s}</p>
+                <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.5;">${s.s}</p>
               </div>
             </div>
             <!-- Task -->
             <div class="glass-card">
               <div>
                 <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #d4af37; tracking-wider; text-transform: uppercase;">T : Task</span>
-                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.6;">${s.t}</p>
+                <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.5;">${s.t}</p>
               </div>
             </div>
             <!-- Action -->
             <div class="glass-card">
               <div>
                 <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #d4af37; tracking-wider; text-transform: uppercase;">A : Action</span>
-                <p style="font-size: 0.975rem; color: var(--text-muted); margin-top: 0.65rem; line-height: 1.6;">${s.a}</p>
+                <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.4rem; line-height: 1.5;">${s.a}</p>
               </div>
             </div>
             <!-- Result -->
             <div class="glass-card ${getCardAccentClass(slide.accent)}">
               <div>
                 <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #d4af37; tracking-wider; text-transform: uppercase;">R : Result</span>
-                <p style="font-size: 1rem; color: var(--text-main); margin-top: 0.65rem; line-height: 1.6; font-weight: 700;">${s.r}</p>
+                <p style="font-size: 0.95rem; color: var(--text-main); margin-top: 0.4rem; line-height: 1.5; font-weight: 700;">${s.r}</p>
               </div>
             </div>
           </div>
@@ -220,10 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
                   ${w.storyTag ? `<span class="story-pill story-pill-amber">${w.storyTag}</span>` : ''}
                   <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; font-weight: 800; color: #fef08a; tracking-wider; text-transform: uppercase;">${w.title}</span>
                 </div>
-                ${w.lead ? `<p style="font-size: 1.15rem; font-weight: 900; color: var(--text-main); margin-top: 0.4rem; line-height: 1.4;">${w.lead}</p>` : ''}
-                <p style="font-size: 1.025rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.65;">${w.body}</p>
+                ${w.lead ? `<p style="font-size: 1.05rem; font-weight: 900; color: var(--text-main); margin-top: 0.35rem; line-height: 1.4;">${w.lead}</p>` : ''}
+                <p style="font-size: 0.925rem; color: var(--text-muted); margin-top: 0.45rem; line-height: 1.55;">${w.body}</p>
               </div>
-              ${w.footer ? `<div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-card); font-size: 0.85rem; font-weight: 800; color: #fef08a;">${w.footer}</div>` : ''}
+              ${w.footer ? `<div style="margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border-card); font-size: 0.825rem; font-weight: 800; color: #fef08a;">${w.footer}</div>` : ''}
             </div>
           </div>
         </div>
@@ -324,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="cover-eyebrow">― 東証上場企業 取締役の当事者記録 ―</span>
                 <h1 class="cover-main-title">自伝 『不確実性を生き抜く生存戦略』</h1>
                 <p class="cover-main-subtitle">
-                  筑波大学新卒から一度も転職せずに東証上場企業の取締役へ。<br>
+                  筑波大学新卒入社から一度も転職せずに東証上場企業の取締役へ。<br>
                   激動の13年間、会社の天国と地獄をくぐり抜けた生存記録
                 </p>
               </div>
