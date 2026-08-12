@@ -21,8 +21,8 @@
   --gradient-purple: linear-gradient(135deg, #c084fc 0%, #6b21a8 100%);
   --gradient-emerald: linear-gradient(135deg, #34d399 0%, #047857 100%);
 
-  --font-title: 'Noto Serif JP', 'Cinzel', serif;
-  --font-body: 'Outfit', 'Noto Sans JP', sans-serif;
+  --font-title: 'Shippori Mincho', 'Noto Serif JP', 'Cinzel', serif;
+  --font-body: 'Shippori Mincho', 'Noto Serif JP', 'Outfit', serif;
   --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -359,13 +359,28 @@ html, body {
   background: rgba(212, 175, 55, 0.15);
 }
 
-/* --- Main Slider Viewport --- */
+/* --- Main Slider Viewport (Hardcover Book Canvas) --- */
 .slider-viewport {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   z-index: 10;
+}
+
+/* Center Book Spine Crease & Shadow */
+.slider-viewport::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 82vh;
+  background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.3), rgba(0, 0, 0, 0.6), rgba(212, 175, 55, 0.3), transparent);
+  box-shadow: 0 0 35px 12px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .slide {
@@ -380,6 +395,7 @@ html, body {
   transform: translateY(12px) scale(0.99);
   transition: opacity 0.4s ease, transform 0.4s ease;
   z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(18, 26, 44, 0.75) 0%, rgba(11, 16, 29, 0.98) 100%);
 }
 .slide.active {
   opacity: 1;
@@ -439,20 +455,20 @@ html, body {
   border-radius: 9999px;
 }
 
-/* --- Slide Badges & Titles --- */
+/* --- Slide Badges & Titles (Book Chapter Stamping) --- */
 .slide-badge {
   display: inline-flex;
   align-items: center;
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
+  font-family: 'Shippori Mincho', 'Cinzel', serif;
+  font-size: 0.8rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 0.35rem 0.95rem;
-  border-radius: 9999px;
-  margin-bottom: 0.6rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
   width: fit-content;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
 }
 .badge-amber { background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(133, 77, 14, 0.35)); color: #fef08a; border: 1px solid rgba(212, 175, 55, 0.6); }
 .badge-blue { background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(37, 99, 235, 0.35)); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.6); }
@@ -501,22 +517,31 @@ html, body {
 
 /* --- HARDCOVER MEMOIR CARD DESIGN (DOUBLE GOLD BORDER) --- */
 .glass-card {
-  background: var(--bg-card);
+  background: linear-gradient(145deg, rgba(18, 25, 42, 0.94) 0%, rgba(12, 17, 30, 0.97) 100%);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border-card);
-  outline: 1px solid rgba(212, 175, 55, 0.15);
+  outline: 1px solid rgba(212, 175, 55, 0.2);
   outline-offset: -6px;
-  border-radius: 18px;
-  padding: 2.1rem 1.85rem;
+  border-radius: 16px;
+  padding: 1.85rem 1.65rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: var(--transition-smooth);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(254, 240, 138, 0.1);
   cursor: zoom-in;
   position: relative;
   overflow: hidden;
+}
+.glass-card::after {
+  content: '❖';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.65rem;
+  color: rgba(212, 175, 55, 0.3);
+  pointer-events: none;
 }
 .glass-card:hover {
   border-color: var(--border-card-hover);
