@@ -374,14 +374,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span style="font-size: 0.8rem; font-weight: 700; color: #854d0e;">自伝 『不確実性を生き抜く生存戦略』 著 千葉 博文</span>
               </div>
 
-              <!-- Chapter Title & Subtitle / Epigraph -->
-              <div>
+              <!-- Chapter Title & Subtitle -->
+              <div style="margin-bottom: 0.45rem;">
                 <h2 class="picture-book-title">${slide.title}</h2>
                 <p class="picture-book-subtitle">${slide.subtitle}</p>
-                
-                <div class="picture-book-quote">
-                  “ ${slide.subtitle.replace(/<[^>]*>?/gm, '')} ”
-                </div>
               </div>
 
               <!-- Content Body (STAR Grid / Story Cards) -->
