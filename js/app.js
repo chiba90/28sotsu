@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <!-- Front Cover Parchment & Gold Foil Stamping Area -->
             <div class="book-cover-page">
-              <div class="cover-crest">⚜️ EXECUTIVE MEMOIR AUTOBIOGRAPHY ⚜️</div>
+              <div class="cover-crest">EXECUTIVE MEMOIR AUTOBIOGRAPHY</div>
 
               <div class="cover-title-group">
                 <span class="cover-eyebrow">― 東証上場企業 取締役の当事者記録 ―</span>
@@ -319,10 +319,10 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
 
               <div class="cover-highlights-grid">
-                <div class="cover-tag-item">📌 東証上場維持・売上99%減からの事業再生</div>
-                <div class="cover-tag-item">📌 M&A事業統合・GMV300億円規模への飛躍</div>
-                <div class="cover-tag-item">📌 綺麗事抜きのキャリア哲学・裁量権の本音</div>
-                <div class="cover-tag-item">👧 愛娘・夏歌ちゃんに誇れる未来を創る原動力</div>
+                <div class="cover-tag-item"><span class="tag-bullet">✦</span> 東証上場維持・売上99%減からの事業再生</div>
+                <div class="cover-tag-item"><span class="tag-bullet">✦</span> M&A事業統合・GMV300億円規模への飛躍</div>
+                <div class="cover-tag-item"><span class="tag-bullet">✦</span> 綺麗事抜きのキャリア哲学・裁量権の本音</div>
+                <div class="cover-tag-item"><span class="tag-bullet">✦</span> 愛娘・夏歌ちゃんに誇れる未来を創る原動力</div>
               </div>
 
               <div class="cover-author-footer">
@@ -331,7 +331,11 @@ document.addEventListener('DOMContentLoaded', () => {
                   <span class="author-role">株式会社デジタルプラス 取締役 (2013年新卒入社)</span>
                 </div>
                 <button class="open-book-btn" onclick="window.goToSlide(1)">
-                  📖 本を開いて読む (第一章へ) ➔
+                  <span>本を開いて読む (第一章へ)</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </button>
               </div>
             </div>
@@ -360,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <span class="picture-book-chapter-num">${ROMAN_NUMERALS[index]}</span>
                   <span class="picture-book-badge">${slide.badge}</span>
                 </div>
-                <span style="font-size: 0.8rem; font-weight: 700; color: #d4af37;">自伝 『不確実性を生き抜く生存戦略』 著 千葉 博文</span>
+                <span class="running-header-title">自伝 『不確実性を生き抜く生存戦略』 著 千葉 博文</span>
               </div>
 
               <!-- Chapter Title & Subtitle -->
@@ -717,11 +721,11 @@ document.addEventListener('DOMContentLoaded', () => {
     zoomModalBody.innerHTML = `
       <div style="text-align: center;">
         <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; color: #d4af37; font-weight: 800; letter-spacing: 0.12em;">MOST PRECIOUS MOTIVATION</span>
-        <h3 style="font-size: 1.5rem; font-weight: 900; color: #fffbeb; margin: 0.35rem 0 1.25rem 0;">千葉 フローレンス夏歌 ちゃん 👧</h3>
-        <div style="max-width: 480px; margin: 0 auto; border-radius: 18px; overflow: hidden; border: 3px solid #d4af37; box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);">
+        <h3 style="font-size: 1.45rem; font-weight: 800; color: #f8fafc; margin: 0.35rem 0 1.25rem 0;">千葉 フローレンス夏歌 ちゃん</h3>
+        <div style="max-width: 440px; margin: 0 auto; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(212, 175, 55, 0.5); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);">
           <img src="PXL_20260705_051631581.jpg" alt="千葉フローレンス夏歌ちゃん" style="width: 100%; height: auto; display: block;">
         </div>
-        <p style="font-size: 1.05rem; color: #e2e8f0; margin-top: 1.25rem; font-weight: 600; line-height: 1.6;">
+        <p style="font-size: 0.975rem; color: #cbd5e1; margin-top: 1.25rem; font-weight: 500; line-height: 1.6;">
           「愛娘・夏歌ちゃんに誇れる、圧倒的に明るい未来をこの手で創る。」<br>
           これこそが、著者がどんな泥惨な逆境も不屈の意志で突破し続ける最大の原動力です。
         </p>
@@ -734,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!zoomModalEl || !zoomModalBody) return;
     const qData = [
       {
-        title: "❓ 著者・取締役を焦らせる「NGなし」の直球質問例",
+        title: "著者・取締役を焦らせる「NGなし」の直球質問例",
         questions: [
           "・売上99%減の事業再生時、組織再編や人員最適化の現場でどうメンバーと向き合った？",
           "・取締役として、今のぶっちゃけた役員報酬や評価制度はどう決まっている？",
@@ -743,7 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
       },
       {
-        title: "🤝 本気のキャリア対話・パートナーシップ",
+        title: "本気のキャリア対話・パートナーシップ",
         questions: [
           "・「自ら仕事を作り出せるプロフェッショナル」を目指す熱量ある挑戦者を歓迎します。",
           "・綺麗事抜きの経営現場の裏側、戦略の意思決定ロジックを100%オープンに対話します。",
@@ -756,15 +760,15 @@ document.addEventListener('DOMContentLoaded', () => {
     zoomModalBody.innerHTML = `
       <div>
         <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; color: #d4af37; font-weight: 800; letter-spacing: 0.12em;">DIRECT EXECUTIVE Q&A SESSION</span>
-        <h3 style="font-size: 1.45rem; font-weight: 900; color: #fffbeb; margin: 0.35rem 0 1.25rem 0;">${currentQ.title}</h3>
-        <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: #f8fafc; margin: 0.35rem 0 1.25rem 0;">${currentQ.title}</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
           ${currentQ.questions.map(q => `
-            <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(212, 175, 55, 0.3); padding: 1rem 1.25rem; border-radius: 12px; font-size: 1rem; color: #fef08a; font-weight: 700; line-height: 1.5;">
+            <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.9rem 1.15rem; border-radius: 10px; font-size: 0.95rem; color: #fef08a; font-weight: 600; line-height: 1.5;">
               ${q}
             </div>
           `).join('')}
         </div>
-        <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 1.35rem; text-align: center;">
+        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 1.25rem; text-align: center;">
           ※ Q&A対話セッション中は、挙手またはマイクにて直球でご質問ください。
         </p>
       </div>
