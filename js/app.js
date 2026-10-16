@@ -723,7 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; color: #d4af37; font-weight: 800; letter-spacing: 0.12em;">MOST PRECIOUS MOTIVATION</span>
         <h3 style="font-size: 1.45rem; font-weight: 800; color: #f8fafc; margin: 0.35rem 0 1.25rem 0;">千葉 フローレンス夏歌 ちゃん</h3>
         <div style="max-width: 440px; margin: 0 auto; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(212, 175, 55, 0.5); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);">
-          <img src="PXL_20260705_051631581.jpg" alt="千葉フローレンス夏歌ちゃん" style="width: 100%; height: auto; display: block;">
+          <img src="daughter.jpg" alt="千葉フローレンス夏歌ちゃん" style="width: 100%; height: auto; display: block;">
         </div>
         <p style="font-size: 0.975rem; color: #cbd5e1; margin-top: 1.25rem; font-weight: 500; line-height: 1.6;">
           「愛娘・夏歌ちゃんに誇れる、圧倒的に明るい未来をこの手で創る。」<br>
