@@ -1,0 +1,15 @@
+# 話す用メモ（手元だけに置く。公開しない）
+js/notes.js
+
+# 手元で発表するための起動ファイルと作業用ファイル
+start-presentation.bat
+tools/
+.claude/
+
+# 作業中のコピーとバックアップ（元の写真を含むので公開しない）
+backup-*.bundle
+backup-head.txt
+fixed/
+img/
+r/
+w/
