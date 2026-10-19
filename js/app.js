@@ -29,7 +29,7 @@ function getNotes(slide) {
   return window.SPEAKER_NOTES[slide.id] || [];
 }
 
-const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV'];
 
 function chapterLabel(index) {
   return index === 0 ? 'COVER' : `CHAPTER ${ROMAN[index] || index}`;
@@ -203,6 +203,28 @@ function initMainView() {
             <div class="glass-card glass-card-accent-amber message-card">
               <h3>${c.title}</h3>
               <p>${c.body}</p>
+            </div>
+          `).join('')}
+        </div>
+        ${slide.closing ? `<p class="slide-message">${slide.closing}</p>` : ''}
+      </div>
+    `,
+
+    // 教訓のまとめ：冒頭の3つごとに、どの経験から何を学んだか
+    lessons: (slide) => `
+      <div class="message-layout anim-el delay-2">
+        <div class="lesson-grid" style="grid-template-columns: repeat(${slide.groups.length}, 1fr);">
+          ${slide.groups.map(g => `
+            <div class="lesson-group">
+              <h3>${g.title}</h3>
+              <ul>
+                ${g.items.map(item => `
+                  <li>
+                    <span class="lesson-from">${item.from}</span>
+                    <span class="lesson-text">${item.text}</span>
+                  </li>
+                `).join('')}
+              </ul>
             </div>
           `).join('')}
         </div>

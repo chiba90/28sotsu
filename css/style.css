@@ -1166,6 +1166,49 @@ html, body {
   line-height: 1.7;
 }
 
+.lesson-grid {
+  display: grid;
+  gap: 1rem;
+}
+.lesson-group {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+.lesson-group h3 {
+  font-family: var(--font-title);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 900;
+  color: var(--accent-gold);
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+.lesson-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.lesson-group li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--border-card);
+}
+.lesson-from {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-dim);
+}
+.lesson-text {
+  font-size: clamp(0.85rem, 1.15vw, 0.98rem);
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--text-main);
+}
+
 .question-grid {
   flex: 1;
   min-height: 0;
