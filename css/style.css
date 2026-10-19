@@ -1079,6 +1079,22 @@ html, body {
   align-items: center;
   text-align: center;
 }
+.point-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.point-chips li {
+  font-size: clamp(0.85rem, 1.15vw, 1rem);
+  font-weight: 700;
+  color: var(--text-muted);
+  background: #F5F4F3;
+  border: 1px solid var(--border-card);
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+}
 .statement-text {
   font-family: var(--font-title);
   font-size: clamp(2rem, 4vw, 3.4rem);

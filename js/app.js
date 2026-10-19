@@ -136,13 +136,19 @@ function initMainView() {
             </div>
           `).join('')}
         </div>
+        ${slide.quote ? `<blockquote class="big-quote story-quote">「${slide.quote}」</blockquote>` : ''}
         ${slide.message ? `<p class="slide-message">${slide.message}</p>` : ''}
       </div>
     `,
 
-    // 一文だけ
+    // 一文だけ（上に小さな事実を並べられる）
     statement: (slide) => `
       <div class="statement-layout anim-el delay-2">
+        ${slide.points ? `
+          <ul class="point-chips">
+            ${slide.points.map(p => `<li>${p}</li>`).join('')}
+          </ul>
+        ` : ''}
         <p class="statement-text">${slide.statement}</p>
         ${slide.lead ? `<p class="statement-lead">${slide.lead}</p>` : ''}
       </div>
@@ -192,7 +198,7 @@ function initMainView() {
     // 伝えたいこと2つ
     message: (slide) => `
       <div class="message-layout anim-el delay-2">
-        <div class="message-grid">
+        <div class="message-grid" style="grid-template-columns: repeat(${slide.cards.length}, 1fr);">
           ${slide.cards.map(c => `
             <div class="glass-card glass-card-accent-amber message-card">
               <h3>${c.title}</h3>
@@ -422,8 +428,7 @@ function initMainView() {
   }
 
   function openPresenterWindow() {
-    const url = `${location.pathname}?presenter`;
-    window.open(url, 'presenter-view', 'width=900,height=700');
+    window.open(`${location.pathname}?presenter`, 'presenter-view', 'width=900,height=700');
   }
 
   if (notesToggleBtn) notesToggleBtn.addEventListener('click', toggleNotes);
