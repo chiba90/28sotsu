@@ -4,6 +4,7 @@
  *
  * - ← → / PageUp PageDown / Space：ページ移動
  * - N：話す用メモの表示切り替え（画面共有中は使わない）
+ * - C：各ページ下の「解説」の表示切り替え（公開ページでは最初から表示、手元では最初は非表示）
  * - P：発表者ウィンドウを開く（メモ・次のページ・タイマー。共有するのはメインの画面だけ）
  * - optional: true のページは「時間があれば」。飛ばしても話がつながる
  * - 話す用メモは js/notes.js（手元だけ）。手元で開いたときだけ読み込み、公開ページでは読み込まない
@@ -309,6 +310,12 @@ function initMainView() {
           <div class="picture-book-body">
             ${bodyContent}
           </div>
+          ${slide.context ? `
+            <div class="page-context">
+              <span class="page-context-label">解説</span>
+              <p>${slide.context}</p>
+            </div>
+          ` : ''}
           <div class="picture-book-footer">
             <span>— ${chapterLabel(index)} —</span>
             <span>PAGE ${index} OF ${pageCount}</span>
@@ -456,6 +463,21 @@ function initMainView() {
   if (notesToggleBtn) notesToggleBtn.addEventListener('click', toggleNotes);
   if (presenterBtn) presenterBtn.addEventListener('click', openPresenterWindow);
 
+  // 解説（配布して読む人向けの文章）：公開ページでは表示、手元で発表するときは最初は隠す
+  const contextToggleBtn = document.getElementById('context-toggle-btn');
+
+  function setContextVisible(visible) {
+    document.body.classList.toggle('hide-context', !visible);
+    if (contextToggleBtn) contextToggleBtn.classList.toggle('active', visible);
+  }
+
+  function toggleContext() {
+    setContextVisible(document.body.classList.contains('hide-context'));
+  }
+
+  setContextVisible(!IS_LOCAL);
+  if (contextToggleBtn) contextToggleBtn.addEventListener('click', toggleContext);
+
   function broadcastState() {
     if (!channel) return;
     channel.postMessage({
@@ -495,6 +517,8 @@ function initMainView() {
       goToSlide(slidesData.length - 1);
     } else if (e.key.toLowerCase() === 'n') {
       toggleNotes();
+    } else if (e.key.toLowerCase() === 'c') {
+      toggleContext();
     } else if (e.key.toLowerCase() === 'p') {
       openPresenterWindow();
     } else if (e.key === 'Escape') {

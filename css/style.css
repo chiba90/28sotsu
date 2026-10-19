@@ -1166,6 +1166,35 @@ html, body {
   line-height: 1.7;
 }
 
+/* 解説：配布して読む人向けに、各ページの下で話の流れを補う */
+.page-context {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.9rem;
+  background: #F5F4F3;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.page-context-label {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  border: 1px solid rgba(182, 0, 5, 0.3);
+  border-radius: 4px;
+  padding: 0.05rem 0.45rem;
+}
+.page-context p {
+  font-size: clamp(0.78rem, 1vw, 0.88rem);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+body.hide-context .page-context {
+  display: none;
+}
+
 .lesson-grid {
   display: grid;
   gap: 1rem;
