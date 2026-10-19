@@ -566,7 +566,7 @@ function initMainView() {
     zoomModalBody.innerHTML = `
       <div style="text-align: center;">
         <span style="font-family: 'Cinzel', serif; font-size: 0.75rem; color: #B60005; font-weight: 800; letter-spacing: 0.12em;">MOST PRECIOUS MOTIVATION</span>
-        <h3 style="font-size: 1.45rem; font-weight: 800; color: #231815; margin: 0.35rem 0 1.25rem 0;">${p.daughterName} ちゃん</h3>
+        <h3 style="font-size: 1.45rem; font-weight: 800; color: #231815; margin: 0.35rem 0 1.25rem 0;">${p.daughterName}ちゃん</h3>
         <div style="max-width: 440px; margin: 0 auto; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(182, 0, 5, 0.5); box-shadow: 0 15px 35px rgba(35, 24, 21, 0.14);">
           <img src="${p.daughterImg}" alt="${p.daughterName}" style="width: 100%; height: auto; display: block;">
         </div>

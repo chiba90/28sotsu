@@ -16,7 +16,7 @@ const PRESENTATION_DATA = {
     timerMinutes: 20,
     presenter: {
       name: "千葉 博文",
-      daughterName: "千葉 フローレンス夏歌",
+      daughterName: "夏歌",
       daughterImg: "daughter.jpg"
     },
     cover: {
@@ -54,7 +54,7 @@ const PRESENTATION_DATA = {
         { value: "13年", label: "同じ会社で働き続けて" },
         { value: "取締役", label: "東証グロース上場 デジタルプラス" }
       ],
-      photoNote: "いちばんの原動力は、娘です"
+      photoNote: "いちばんの原動力は、娘の夏歌です"
     },
 
     /* 2: 原点 */
